@@ -1,0 +1,6 @@
+
+zsquid:S1450"YRemove the "checkboxes" field and declare it as a local variable in the relevant methods.(„âÀİøÿÿÿÿ8‡¦ÕÛ²+
+jsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(¯‹·Ğ8Ç©ğ¿¶+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(˜ü«ˆıÿÿÿÿ8µÔ ¿¶+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(èúÁÿıÿÿÿÿ8ûÉş²+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ

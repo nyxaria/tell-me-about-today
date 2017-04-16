@@ -1,0 +1,58 @@
+
+Gsquid:S1659"&Declare "graphics" on a separate line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+Xsquid:HiddenFieldCheck"8Rename "left" which hides the field declared at line 19.(¢³·ˆ
+Bsquid:S1905"&Remove this unnecessary cast to "Map".(àıïô8Œ„ê¾¶+
+=squid:S1659"#Declare "right" on a separate line.(¬æ­Ÿÿÿÿÿÿ
+‚"squid:ClassVariableVisibilityCheck"QMake right a static final constant or non-public and provide accessors if needed.(¬æ­Ÿÿÿÿÿÿ
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÑÿØ¯8¾­…À¶+
+lsquid:S2259"PNullPointerException might be thrown as 'bottomLeftShadowPoint' is nullable here(€Æ©Å8Œ„ê¾¶+
+Asquid:S1905"&Remove this unnecessary cast to "Map".(ï‡³:8Œ„ê¾¶+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(åéóÿùÿÿÿÿ8Œ„ê¾¶+
+jsquid:S2259"NNullPointerException might be thrown as 'topRightShadowPoint' is nullable here(åşô©8Œ„ê¾¶+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(šŒÁıÿÿÿÿ8Œ„ê¾¶+
+msquid:S2259"QNullPointerException might be thrown as 'bottomRightShadowPoint' is nullable here(÷şò8Œ„ê¾¶+
+"squid:ClassVariableVisibilityCheck"PMake from a static final constant or non-public and provide accessors if needed.(ç™Ô®ùÿÿÿÿ
+osquid:S2259"NNullPointerException might be thrown as 'topRightShadowPoint' is nullable here(¤åµÎûÿÿÿÿ8Œ„ê¾¶+
+Dsquid:S1659"#Declare "width" on a separate line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+Bsquid:S1905"&Remove this unnecessary cast to "Map".(ÀÃ”ñ8Œ„ê¾¶+
+vsquid:S00122"TAt most one statement is allowed per line, but 6 statements were found on this line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ß·Ù©ûÿÿÿÿ8¾­…À¶+
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ªãïP8Œ„ê¾¶+
+"squid:ClassVariableVisibilityCheck"PMake left a static final constant or non-public and provide accessors if needed.(¬æ­Ÿÿÿÿÿÿ
+Gsquid:S1905"&Remove this unnecessary cast to "Map".(¿ÜÛÍşÿÿÿÿ8Œ„ê¾¶+
+lsquid:S2259"PNullPointerException might be thrown as 'bottomLeftShadowPoint' is nullable here(÷şò8Œ„ê¾¶+
+€"squid:ClassVariableVisibilityCheck"OMake top a static final constant or non-public and provide accessors if needed.(¬æ­Ÿÿÿÿÿÿ
+osquid:S2259"NNullPointerException might be thrown as 'topRightShadowPoint' is nullable here(ÿÔŠúÿÿÿÿ8Œ„ê¾¶+
+nsquid:S2259"MNullPointerException might be thrown as 'topLeftShadowPoint' is nullable here(ÿÔŠúÿÿÿÿ8Œ„ê¾¶+
+;squid:S1659"!Declare "top" on a separate line.(¬æ­Ÿÿÿÿÿÿ
+@squid:S1659"Declare "x" on a separate line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+Gsquid:S1905"&Remove this unnecessary cast to "Map".(¯áŞ²ÿÿÿÿÿ8Œ„ê¾¶+
+nsquid:S2259"MNullPointerException might be thrown as 'topLeftShadowPoint' is nullable here(¯ÔÛãÿÿÿÿÿ8Œ„ê¾¶+
+Bsquid:S1905"&Remove this unnecessary cast to "Map".(üÀÛê8Œ„ê¾¶+
+†"squid:ClassVariableVisibilityCheck"SMake opacity a static final constant or non-public and provide accessors if needed.(ƒ€ÚÊ8²Óæ¿¶+
+@squid:S1659"Declare "y" on a separate line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+Dsquid:S1172"(Remove this unused method parameter "c".(‘·8Œ„ê¾¶+
+Bsquid:S1905"&Remove this unnecessary cast to "Map".(Ûô¹¢8Œ„ê¾¶+
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 49 to the 15 allowed.(ÈÊ“À8Œ„ê¾¶+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+Csquid:S2786")Remove this redundant "static" qualifier.(¤ˆ–úÿÿÿÿ
+lsquid:S2259"PNullPointerException might be thrown as 'bottomLeftShadowPoint' is nullable here(ÿÓœ¿8Œ„ê¾¶+
+Gsquid:S1481"&Remove this unused "c" local variable.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+rsquid:S2259"QNullPointerException might be thrown as 'bottomRightShadowPoint' is nullable here(¤åµÎûÿÿÿÿ8Œ„ê¾¶+
+Esquid:S1659"$Declare "height" on a separate line.(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+csquid:S00107"AConstructor has 9 parameters, which is greater than 7 authorized.(½´™œúÿÿÿÿ8Œ„ê¾¶+
+;squid:S1640"Convert this Map to an EnumMap.(óÃ·•8Œ„ê¾¶+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(­ûûÿÿÿÿ8Œ„ê¾¶+
+Ysquid:HiddenFieldCheck"9Rename "right" which hides the field declared at line 19.(²Ñï
+ƒ"squid:ClassVariableVisibilityCheck"RMake bottom a static final constant or non-public and provide accessors if needed.(¬æ­Ÿÿÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"NMake to a static final constant or non-public and provide accessors if needed.(ç™Ô®ùÿÿÿÿ
+Vsquid:S1854"5Remove this useless assignment to local variable "c".(¶òæóûÿÿÿÿ8Œ„ê¾¶+
+^squid:HiddenFieldCheck"7Rename "top" which hides the field declared at line 19.(ñáˆ±8Œ„ê¾¶+
+<squid:S1659""Declare "from" on a separate line.(ç™Ô®ùÿÿÿÿ
+isquid:S2259"MNullPointerException might be thrown as 'topLeftShadowPoint' is nullable here(€Æ©Å8Œ„ê¾¶+
+Bsquid:S1905"&Remove this unnecessary cast to "Map".(íê·”8Œ„ê¾¶+
+rsquid:S2259"QNullPointerException might be thrown as 'bottomRightShadowPoint' is nullable here(º¤ùüÿÿÿÿ8Œ„ê¾¶+
+Tsquid:S1213"8Move this variable to comply with Java Code Conventions.(ËÈ•8Œ„ê¾¶+
+>squid:S1659"$Declare "bottom" on a separate line.(¬æ­Ÿÿÿÿÿÿ
+_squid:HiddenFieldCheck":Rename "bottom" which hides the field declared at line 19.(İá³ÿÿÿÿÿ
+\squid:S1213";Move this constructor to comply with Java Code Conventions.(½´™œúÿÿÿÿ8²¸ß¿¶+

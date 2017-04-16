@@ -1,0 +1,23 @@
+
+}squid:S1188"\Reduce this anonymous class number of lines from 39 to at most 20, or make it a named class.(ºØšÿÿÿÿÿ8È¹ÇŸµ+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(çÂŸû8ãĞí¿¶+
+ƒ"squid:ClassVariableVisibilityCheck"PMake wrap a static final constant or non-public and provide accessors if needed.(€ëªÛ8Ç½ÿ³+
+Rsquid:S2696"6Make the enclosing method "static" or remove this set.(Â‡½€8Ğ»Â¶+
+dsquid:HiddenFieldCheck"=Rename "lineCount" which hides the field declared at line 19.(ƒÏ‹Ä8ãĞí¿¶+
+Ysquid:S1244"=Equality tests should not be made with floating point values.(Å†Å8Ç©ğ¿¶+
+msquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(’Ê«!8‹¸µ+
+[
+squid:S106";Replace this usage of System.out or System.err by a logger.(Ú®Ò¶üÿÿÿÿ8ãĞí¿¶+
+Gsquid:S1172",Remove this unused method parameter "width".(’Ê«!8‚ƒ°û³+
+xsquid:S1188"\Reduce this anonymous class number of lines from 24 to at most 20, or make it a named class.(ª›ŒÀ8ÇËú³+
+Fsquid:S1166"%Either log or rethrow this exception.(…ÿÁ ùÿÿÿÿ8ÇËú³+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‰­÷Ÿúÿÿÿÿ8ÉÚ½Ÿµ+
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(¦”÷Éşÿÿÿÿ8â”ğÁ¶+
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(«ä‚èÿÿÿÿÿ8â”ğÁ¶+
+jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ºÍÃ´8™åîú³+
+Isquid:S1068"-Remove this unused "doubleTap" private field.(© ƒ¤8â¢Êµ+
+Fsquid:S1166"%Either log or rethrow this exception.(…ÿÁ ùÿÿÿÿ8ãĞí¿¶+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ñÏ¡‰8–µ¿¶+
+V
+squid:S106";Replace this usage of System.out or System.err by a logger.(–İÅ8ÖçéÁ¶+
