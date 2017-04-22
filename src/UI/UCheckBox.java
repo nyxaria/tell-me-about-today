@@ -71,7 +71,10 @@ public class UCheckBox extends JComponent implements MouseListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         checked = !checked;
-        Main.activeDay.reminders.add(reminderIndex, (checked ? "y" : "n") + Main.activeDay.reminders.get(reminderIndex).substring(1,Main.activeDay.reminders.get(reminderIndex).length()));
+        repaint();
+
+        if(content == null) return;
+        Main.activeDay.reminders.add(reminderIndex, (checked ? "y" : "n") + content.getText());
         Main.activeDay.reminders.remove(reminderIndex+1);
                 mouseDown = false;
         StyledDocument doc = content.getStyledDocument();
@@ -83,7 +86,6 @@ public class UCheckBox extends JComponent implements MouseListener{
             doc.setCharacterAttributes(0, content.getText().length(), doc.getStyle("normal"), true);
             content.setEnabled(true);
         }
-        repaint();
     }
 
     @Override

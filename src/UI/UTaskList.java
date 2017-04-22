@@ -4,6 +4,7 @@ import Modules.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,8 @@ import java.util.ArrayList;
  */
 public class UTaskList extends UPanel {
 
-    private ArrayList<UCheckBox> checkboxes;
+    public ArrayList<UCheckBox> checkboxes;
+
 
     public UTaskList() {
         setOpaque(false);
@@ -22,8 +24,7 @@ public class UTaskList extends UPanel {
         ArrayList<String> reminders = Main.activeDay.reminders;
         checkboxes = new ArrayList<UCheckBox>();
         //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(new Color(88, 88, 93));
-        setBackground(new Color(88, 88, 93));
+        setBackground(U.tertiary);
         FlowLayout layout = (FlowLayout) getLayout();
         layout.setVgap(0);
 
@@ -32,10 +33,10 @@ public class UTaskList extends UPanel {
             UWrap wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, true, true, true, true);
             String reminderFormatted = reminder.substring(1, reminder.length()).trim();
             while(reminderFormatted.endsWith("\n") || reminderFormatted.endsWith(" ")) {
-                reminderFormatted = reminderFormatted.substring(0, reminderFormatted.length()-1);
+                reminderFormatted = reminderFormatted.substring(0, reminderFormatted.length() - 1);
             }
 
-            UTextField content = new UTextField(reminderFormatted, 11, new Color(220,220,225), new Color(0,0,0,0), wrapTextWidth);
+            UTextField content = new UTextField(reminderFormatted, 11, U.theme == U.Theme.Light ? Color.white : U.text, new Color(0, 0, 0, 0));
 
             wrap.add(content, BorderLayout.CENTER);
             UCheckBox checkbox = new UCheckBox();
@@ -43,8 +44,8 @@ public class UTaskList extends UPanel {
             checkbox.checked = reminder.charAt(0) == 'y';
             checkbox.content = content;
 
-            checkbox.setPreferredSize(new Dimension(16,16));
-            checkbox.setBorder(BorderFactory.createEmptyBorder(0,3,0,3));
+            checkbox.setPreferredSize(new Dimension(16, 16));
+            checkbox.setBorder(BorderFactory.createEmptyBorder(0, 3, 0, 3));
             checkboxes.add(checkbox);
             checkbox.reminderIndex = checkboxes.indexOf(checkbox);
             content.reminderIndex = checkbox.reminderIndex;
@@ -53,13 +54,21 @@ public class UTaskList extends UPanel {
             checkBoxWrap.add(checkbox);
             content.setPreferredSize(new Dimension(getWidth() - checkBoxWrap.getPreferredSize().width, content.getPreferredSize().height));
 
+            content.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    Main.activeDay.reminders.add(content.reminderIndex, (checkbox.checked ? "y" : "n") + content.getText());
+                    Main.activeDay.reminders.remove(content.reminderIndex + 1);
+                }
+            });
+
             wrap.add(checkBoxWrap, BorderLayout.WEST);
             wrap.setPreferredSize(new Dimension(getWidth(), content.getPreferredSize().height + 13));
             wrap.listPane = this;
             content.wrap = wrap;
             wrap.setOpaque(false);
             wrap.setOpacity(0);
-            wrap.setBorder(BorderFactory.createEmptyBorder(6,6,6,12));
+            wrap.setBorder(BorderFactory.createEmptyBorder(6, 6, 6, 12));
             wrap.setBackground(new Color(48, 48, 52, 0));
             add(wrap);
 

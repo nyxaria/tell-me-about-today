@@ -15,9 +15,8 @@ import java.util.Map;
  * Created by gedr on 18/03/2017.
  */
 public class UPanel extends JPanel {
-    public Color to, from;
-    public boolean left, right, bottom, top;
     public float opacity = 1f;
+    public int expandingHeight;
 
     private static enum Position {
         TOP,
@@ -50,15 +49,6 @@ public class UPanel extends JPanel {
     }
 
     public void setOpacity(float f) {
-//        shadowOpacity = f*0.6f;
-//        for(Component c : getComponents()) {
-//            System.out.println(c.getBackground() + " " + f);
-//
-//            c.setBackground(new Color(c.getBackground().getRed(),c.getBackground().getGreen(),c.getBackground().getBlue(),c.getBackground().getAlpha()*f));
-//            c.setForeground(new Color(c.getForeground().getRed(),c.getForeground().getGreen(),c.getForeground().getBlue(),c.getForeground().getAlpha()*f));
-//        }
-//        setBackground(new Color(getBackground().getRed(),getBackground().getGreen(),getBackground().getBlue(),getBackground().getAlpha()*f));
-//        setForeground(new Color(getForeground().getRed(),getForeground().getGreen(),getForeground().getBlue(),getForeground().getAlpha()*f));
         repaint();
         this.opacity = f;
     }

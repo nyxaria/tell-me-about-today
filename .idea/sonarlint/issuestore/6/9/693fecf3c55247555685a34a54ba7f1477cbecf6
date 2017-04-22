@@ -1,29 +1,37 @@
 
-:squid:S1166"%Either log or rethrow this exception.(‹±ÃÆ
-esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¦ëÙüÿÿÿÿ
 'squid:S1700"Rename field "day"(ğâ°—
-_squid:S1226">Introduce a new variable instead of reusing the parameter "n".(êÍ¯“şÿÿÿÿ8µù‘…³+
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-msquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(˜½Ë©
-N"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÜŸ•
-Psquid:S1068"4Remove this unused "vanillaReminders" private field.(»ºĞ¶8Œµ¨„³+
-ˆ"squid:ClassVariableVisibilityCheck"UMake reminders a static final constant or non-public and provide accessors if needed.(Ë•íÃ8Ë¹™Û²+
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-`squid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-"squid:ClassVariableVisibilityCheck"TMake textArea a static final constant or non-public and provide accessors if needed.(‚–ó6
-"squid:ClassVariableVisibilityCheck"PMake text a static final constant or non-public and provide accessors if needed.(øò¨ıÿÿÿÿ
-Gsquid:S1068"+Remove this unused "opacity" private field.(¼ŠÅÿ8ÛÕÃÀ¶+
 `squid:S3027"FPut single-quotes around '=' to use the faster "indexOf(char)" method.(ø¡°ûÿÿÿÿ
-esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ªÃƒûÿÿÿÿ
-qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(µè¼8ï›À¶+
+Psquid:S1068"4Remove this unused "vanillaReminders" private field.(»ºĞ¶8Œµ¨„³+
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ĞÇ8ÛèÁ¯+
+msquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(˜½Ë©
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(öå‰‚8Éğ€è·+
+?squid:S1166"%Either log or rethrow this exception.(…ÿÁ ùÿÿÿÿ
+_squid:S1226">Introduce a new variable instead of reusing the parameter "n".(êÍ¯“şÿÿÿÿ8µù‘…³+
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+vsquid:S1067"ZReduce the number of conditional operators (7) used in the expression (maximum allowed 3).(öå‰‚8¨Áè·+
+ˆ"squid:ClassVariableVisibilityCheck"UMake reminders a static final constant or non-public and provide accessors if needed.(Ë•íÃ8Ë¹™Û²+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(¶ëºü8°Ãƒè·+
 b
 squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ÜŸ•
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-ƒ"squid:ClassVariableVisibilityCheck"PMake wrap a static final constant or non-public and provide accessors if needed.(€ëªÛ8¨²êß°+
-`squid:S3027"FPut single-quotes around '=' to use the faster "indexOf(char)" method.(‰ËÅ÷úÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"TMake textArea a static final constant or non-public and provide accessors if needed.(‚–ó6
+N"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÜŸ•
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(öå‰‚8®è·+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(öå‰‚8¨Áè·+
+:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
 1squid:S1643"Use a StringBuilder instead.(¢Ÿ‡Î
-?squid:S1166"%Either log or rethrow this exception.(…ÿÁ ùÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(‹±ÃÆ
 vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(µæÿŒûÿÿÿÿ8ï›À¶+
-fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ĞÇ8ÛèÁ¯+
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ú¿ŸÔ8®è·+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(Óø«Ü8ºó„è·+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(öå‰‚8Ÿ±èç·+
+`squid:S3027"FPut single-quotes around '=' to use the faster "indexOf(char)" method.(‰ËÅ÷úÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"PMake text a static final constant or non-public and provide accessors if needed.(øò¨ıÿÿÿÿ
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(µè¼8ï›À¶+
+`squid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ªÃƒûÿÿÿÿ
+ƒ"squid:ClassVariableVisibilityCheck"PMake wrap a static final constant or non-public and provide accessors if needed.(€ëªÛ8¨²êß°+
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¦ëÙüÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(†²àª8éƒ‚è·+
 squid:S1319"tThe type of the "reminders" object should be an interface such as "List" rather than the implementation "ArrayList".(Ë•íÃ8Ë¹™Û²+

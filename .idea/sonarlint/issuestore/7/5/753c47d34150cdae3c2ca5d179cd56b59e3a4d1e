@@ -1,16 +1,43 @@
 
+Hsquid:S1444",Make this "public static border" field final(î¦è³8á¨Ñß·+
+psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
+…"squid:ClassVariableVisibilityCheck"RMake border a static final constant or non-public and provide accessors if needed.(î¦è³8á¨Ñß·+
 rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
-psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Úš»¹
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ÿ¨·¾øÿÿÿÿ
+|squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Œ™¹ºúÿÿÿÿ8£’Ùß·+
+psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
+vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.( ¹ËØùÿÿÿÿ8âú”¹+
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÈÅ€ûÿÿÿÿ
+‡"squid:ClassVariableVisibilityCheck"TMake tertiary a static final constant or non-public and provide accessors if needed.(Ï€•8ˆé®å·+
 usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ñà£ûÿÿÿÿ
+psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
+psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
+ˆ"squid:ClassVariableVisibilityCheck"PMake text a static final constant or non-public and provide accessors if needed.(û ÈÆşÿÿÿÿ8ôğãá·+
+‹"squid:ClassVariableVisibilityCheck"SMake toolbar a static final constant or non-public and provide accessors if needed.(ã…†ìûÿÿÿÿ8° »ß·+
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ÿ¨·¾øÿÿÿÿ
+†"squid:ClassVariableVisibilityCheck"SMake primary a static final constant or non-public and provide accessors if needed.(ùê8§ù¦ß·+
+psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Úš»¹
+"squid:ClassVariableVisibilityCheck"WMake transparent a static final constant or non-public and provide accessors if needed.(ØÎ¤Ëúÿÿÿÿ8Ó¯Îß·+
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(’íÜØ8âú”¹+
+usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
+Jsquid:S1444".Make this "public static tertiary" field final(Ï€•8ˆé®å·+
+Nsquid:S1444"-Make this "public static toolbar" field final(ã…†ìûÿÿÿÿ8° »ß·+
+Msquid:S1444",Make this "public static accent" field final(’¦ñıûÿÿÿÿ8÷¾©ß·+
+Isquid:S1444"-Make this "public static primary" field final(ùê8§ù¦ß·+
+|squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Œ™¹ºúÿÿÿÿ8£’Ùß·+
+Ksquid:S1444"/Make this "public static secondary" field final(ßÇıå8©ß·+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ó¬°8Éƒëà·+
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(’íÜØ8âú”¹+
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ÀÎô“8âú”¹+
 usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÈÅ€ûÿÿÿÿ
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
+Lsquid:S1444"+Make this "public static theme" field final(º§—¡üÿÿÿÿ8ÿ÷âß·+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‘¼…úıÿÿÿÿ8âú”¹+
+Ksquid:S1444"*Make this "public static text" field final(û ÈÆşÿÿÿÿ8ôğãá·+
+ˆ"squid:ClassVariableVisibilityCheck"UMake secondary a static final constant or non-public and provide accessors if needed.(ßÇıå8©ß·+
+Rsquid:S1444"1Make this "public static transparent" field final(ØÎ¤Ëúÿÿÿÿ8Ó¯Îß·+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(øëø³ùÿÿÿÿ8âú”¹+
+‰"squid:ClassVariableVisibilityCheck"QMake theme a static final constant or non-public and provide accessors if needed.(º§—¡üÿÿÿÿ8ùŠâß·+
+Š"squid:ClassVariableVisibilityCheck"RMake accent a static final constant or non-public and provide accessors if needed.(’¦ñıûÿÿÿÿ8÷¾©ß·+
 psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
-psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
-psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
-psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
-psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÈÅ€ûÿÿÿÿ
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
-usquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ß–¡ÿÿÿÿÿ
 psquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ó½ÏĞ

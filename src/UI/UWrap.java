@@ -10,8 +10,9 @@ public class UWrap extends UPanel {
     public ULabel title, content;
     public JPanel leftPane;
     int prevHeight = getPreferredSize().height;
-    public JPanel listPane;
+    public UPanel listPane;
     private int delta = 0;
+    public ULabel date;
 
     public UWrap(BorderLayout layout, Color shadowColor, int shadowSize, float shadowOpacity, int cornerSize, boolean showTopShadow, boolean showLeftShadow, boolean showBottomShadow, boolean showRightShadow) {
         super(layout, shadowColor, shadowSize, shadowOpacity, cornerSize, showTopShadow, showLeftShadow, showBottomShadow, showRightShadow);
@@ -64,10 +65,9 @@ public class UWrap extends UPanel {
             return;
         changeTitle(text);
         changeContent(text);
-        Main.leftScrollPane.resizing = true;
         Main.leftScrollPane.repaint();
 
-        setPreferredSize(new Dimension((int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 7), title.getPreferredSize().height + content.getPreferredSize().height + 25));
+        setPreferredSize(new Dimension(getWidth(), title.getPreferredSize().height + content.getPreferredSize().height + 25));
         setMaximumSize(getPreferredSize());
         if(prevHeight != getPreferredSize().height && prevHeight != 0) {
             delta = getPreferredSize().height - prevHeight;
@@ -75,7 +75,6 @@ public class UWrap extends UPanel {
             leftPane.setPreferredSize(new Dimension(leftPane.getPreferredSize().width, (Main.size  >= Main.mainFrame.getHeight() - Main.navBarPane.getHeight() ? Main.size : Main.mainFrame.getHeight() - Main.navBarPane.getHeight() )));
             leftPane.repaint();
             leftPane.revalidate();
-            Main.leftScrollPane.resizing = true;
             Main.leftScrollPane.repaint();
         }
         prevHeight = getPreferredSize().height;

@@ -1,7 +1,10 @@
 
-†"squid:ClassVariableVisibilityCheck"SMake checked a static final constant or non-public and provide accessors if needed.(½Õîø8­ÆÏÚ²+
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(èñ§Ó8ÓÆ­¥µ+
-‘"squid:ClassVariableVisibilityCheck"YMake reminderIndex a static final constant or non-public and provide accessors if needed.(“å‹îüÿÿÿÿ8ô…¢ş²+
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îŞÉô8´÷ÒÚ²+
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ôãƒ8´÷ÒÚ²+
 rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+Qsquid:S2209"5Change this instance-reference to a static reference.(Ñ«Ã‘8 µ”’¹+
+‘"squid:ClassVariableVisibilityCheck"YMake reminderIndex a static final constant or non-public and provide accessors if needed.(“å‹îüÿÿÿÿ8ô…¢ş²+
+†"squid:ClassVariableVisibilityCheck"SMake checked a static final constant or non-public and provide accessors if needed.(½Õîø8­ÆÏÚ²+
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îŞÉô8´÷ÒÚ²+
+…"squid:ClassVariableVisibilityCheck"SMake content a static final constant or non-public and provide accessors if needed.(äğ¢!8Ä¸Í¸·+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(èñ§Ó8ÓÆ­¥µ+
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ôãƒ8´÷ÒÚ²+
+vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(²ô¦ªùÿÿÿÿ8‚Ûµ¹+

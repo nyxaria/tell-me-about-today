@@ -1,0 +1,4 @@
+text=Wednesday, 19th April year
+Title
+
+What did you get up to today?|reminders=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry for today`nSpeak to one stranger

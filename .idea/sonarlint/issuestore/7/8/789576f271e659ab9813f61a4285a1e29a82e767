@@ -1,23 +1,36 @@
 
-Esquid:S1444"+Make this "public static plain" field final(Ùúışÿÿÿÿ
-Bsquid:S1444"-Make this "public static itallic" field final(€¨éÖ
+‰"squid:ClassVariableVisibilityCheck"VMake dateFormat a static final constant or non-public and provide accessors if needed.(ÕÖ…â8ù··ç·+
 ?squid:S1444"*Make this "public static bold" field final(úØ¸¢
-”"squid:ClassVariableVisibilityCheck"\Make reminderTemplate a static final constant or non-public and provide accessors if needed.(‚Ò´ƒùÿÿÿÿ8òúßƒ³+
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8——·ƒ³+
-Rsquid:S1444"1Make this "public static dateCreated" field final(¶Œ–£øÿÿÿÿ8ÚÚáƒ³+
-gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•8Âêµƒ³+
-asquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(·ÕˆÃıÿÿÿÿ
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥Ù¹ƒ³+
-U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÜŸ•8Âêµƒ³+
-Asquid:S1166"%Either log or rethrow this exception.(°ıÑø8¥Ù¹ƒ³+
-|"squid:ClassVariableVisibilityCheck"PMake bold a static final constant or non-public and provide accessors if needed.(úØ¸¢
-"squid:ClassVariableVisibilityCheck"SMake itallic a static final constant or non-public and provide accessors if needed.(€¨éÖ
-Usquid:S1118":Add a private constructor to hide the implicit public one.(¦¹¼8ÄÏ¬ƒ³+
+"squid:ClassVariableVisibilityCheck"ZMake americanFormat a static final constant or non-public and provide accessors if needed.(¤§Ÿğ8§“ıç·+
+Asquid:S1166"%Either log or rethrow this exception.(‹±ÃÆ8¾¡æ¹·+
 i
 squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ÜŸ•8Âêµƒ³+
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
-"squid:ClassVariableVisibilityCheck"WMake dateCreated a static final constant or non-public and provide accessors if needed.(¶Œ–£øÿÿÿÿ8ÚÚáƒ³+
-Asquid:S1166"%Either log or rethrow this exception.(‹±ÃÆ8——·ƒ³+
-‚"squid:ClassVariableVisibilityCheck"QMake plain a static final constant or non-public and provide accessors if needed.(Ùúışÿÿÿÿ
 Wsquid:S1444"6Make this "public static reminderTemplate" field final(‚Ò´ƒùÿÿÿÿ8òúßƒ³+
+Œ"squid:ClassVariableVisibilityCheck"YMake titleTemplate a static final constant or non-public and provide accessors if needed.(ñÜ¶å8ÅÄ‘ç·+
 >squid:S2386"Make this member "protected".(¶Œ–£øÿÿÿÿ8ÚÚáƒ³+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8——·ƒ³+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¾¡æ¹·+
+‹"squid:ClassVariableVisibilityCheck"XMake dateTemplate a static final constant or non-public and provide accessors if needed.(Âƒÿ8ÅÄ‘ç·+
+Asquid:S1166"%Either log or rethrow this exception.(°ıÑø8¥Ù¹ƒ³+
+Bsquid:S1444"-Make this "public static itallic" field final(€¨éÖ
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥Ù¹ƒ³+
+Lsquid:S1444"0Make this "public static dateFormat" field final(ÕÖ…â8ù··ç·+
+"squid:ClassVariableVisibilityCheck"SMake itallic a static final constant or non-public and provide accessors if needed.(€¨éÖ
+Usquid:S1118":Add a private constructor to hide the implicit public one.(¦¹¼8ÄÏ¬ƒ³+
+Psquid:S1444"4Make this "public static americanFormat" field final(¤§Ÿğ8§“ıç·+
+qsquid:S1132"PMove the "dd-MM-yyyy" string literal on the left side of this string comparison.(ë’”øÿÿÿÿ8Ùíûç·+
+”"squid:ClassVariableVisibilityCheck"\Make reminderTemplate a static final constant or non-public and provide accessors if needed.(‚Ò´ƒùÿÿÿÿ8òúßƒ³+
+Osquid:S1444"3Make this "public static titleTemplate" field final(ñÜ¶å8ÅÄ‘ç·+
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÜŸ•8Âêµƒ³+
+Nsquid:S1444"2Make this "public static textTemplate" field final(·íÁº8ÓËç·+
+Asquid:S1166"%Either log or rethrow this exception.(‹±ÃÆ8——·ƒ³+
+gsquid:S1192"KDefine a constant instead of duplicating this literal "dd-MM-yyyy" 5 times.(¾¡Àš8§æ·+
+‹"squid:ClassVariableVisibilityCheck"XMake textTemplate a static final constant or non-public and provide accessors if needed.(·íÁº8ÓËç·+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+Esquid:S1444"+Make this "public static plain" field final(Ùúışÿÿÿÿ
+Nsquid:S1444"2Make this "public static dateTemplate" field final(Âƒÿ8ÅÄ‘ç·+
+‚"squid:ClassVariableVisibilityCheck"QMake plain a static final constant or non-public and provide accessors if needed.(Ùúışÿÿÿÿ
+Rsquid:S1444"1Make this "public static dateCreated" field final(¶Œ–£øÿÿÿÿ8ÚÚáƒ³+
+|"squid:ClassVariableVisibilityCheck"PMake bold a static final constant or non-public and provide accessors if needed.(úØ¸¢
+"squid:ClassVariableVisibilityCheck"WMake dateCreated a static final constant or non-public and provide accessors if needed.(¶Œ–£øÿÿÿÿ8ÚÚáƒ³+
+asquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(·ÕˆÃıÿÿÿÿ

@@ -26,7 +26,6 @@ public class Day {
     public String text;
     public ArrayList<String> reminders;
     public UWrap wrap;
-    private float opacity = 0;
 
     public Day(String date, UTextArea writingZone) {
         this.date = date;
@@ -100,8 +99,15 @@ public class Day {
         if(!new File(U.data + date + ".txt").exists()) { //creating for the first time
             try(PrintWriter out = new PrintWriter(U.data + date + ".txt")) {
                 String[] dateData = date.split("-");
-                String dateFormatted = (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0]) + getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1) + " " + new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1] + " " + dateData[2];
-                out.print("text=" + day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1] + ", " + dateFormatted + "\nTitle\n\nWhat did you enjoy the most today?\nWhat were you feeling throughout the day?\nWhy were you feeling this day?\nDid you accomplish something you are proud of?\nWas there some area that you felt you could improve on?\nDid you improve someone's life today?\nDid you get out of your comfort zone?|reminders=" + Global.reminderTemplate);
+                String dateFormatted = Global.dateTemplate.replace("dd", (dateData[(Global.americanFormat ? 1:0)].startsWith("0") ? dateData[(Global.americanFormat ? 1:0)].replace("0", "") : dateData[(Global.americanFormat ? 1:0)])).
+                        replace("MM", dateData[(Global.americanFormat ? 0:1)]).
+                        replace("yyyy", dateData[2]).
+                        replace("YY", dateData[2].substring(dateData[2].length()-2, dateData[2].length())).
+                        replace("day",  day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1]).
+                        replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[(Global.americanFormat ? 0:1)]) - 1]).
+                        replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[(Global.americanFormat ? 1:0)]) + 1));
+
+                out.print("text=" + dateFormatted + "\n"+Global.titleTemplate+"\n\n"+Global.textTemplate+"|reminders=" + Global.reminderTemplate);
             }
             initialize();
         } else {

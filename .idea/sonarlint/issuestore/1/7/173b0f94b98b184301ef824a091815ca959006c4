@@ -1,0 +1,9 @@
+
+=squid:S1170"!Make this final field static too.(Ü•Ú×8Éåƒ¹+
+Lsquid:S1068"0Remove this unused "dateCheckbox" private field.(‚ì8²á±¹+
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ÁˆÕ 8²á±¹+
+qsquid:S1192"UDefine a constant instead of duplicating this literal "American Date Format" 3 times.(Ü•Ú×8˜œ¼¹+
+jsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(Úƒäç8’£õ‘¹+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+vsquid:S1132"ZMove the "American Date Format" string literal on the left side of this string comparison.(ŠÅÒ•8·óÇ‘¹+
+‹squid:S1151"jReduce this switch case number of lines from 17 to at most 5, for example by extracting code into methods.(ñ¡Ê›úÿÿÿÿ8ªä¡‘¹+

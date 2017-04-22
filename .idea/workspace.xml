@@ -2,62 +2,75 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2b454c1-fd98-45e3-9126-e3287f8f058c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe6c2121ec3a65b0d825e86fdf618a1acac882c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39185b657618759a4c13598d76787c33c17b70b8" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40b5b1ebfbcd870d843db05a3b95463a2ae90432" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/501d6b744de209fd885e192c2d9b3d084ca11326" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/693fecf3c55247555685a34a54ba7f1477cbecf6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/753c47d34150cdae3c2ca5d179cd56b59e3a4d1e" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/789576f271e659ab9813f61a4285a1e29a82e767" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/900e3d69f7f2a6cd7718061da3cb7370e36d16c7" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96346747ab2be2532a09401013cb880e367373da" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a90c0bb5db3ba47319c83aea92c077da9905b38a" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce271cd0895770ee8deb749ba995d1036a706617" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9ed49c4be2002398659aa0c74ce955218f5b826" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/eddb28d30d71388bd60099e233dee075d275c225" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f9207dfc01caae9283bfca8677223560d9a33570" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/Cantarell-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/Cantarell-Oblique.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/Cantarell-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/13654165_10154389210743944_7864199242702911245_n.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/14183808_1345967505426910_7544586886969585123_n.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/A5av7JA.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/DP130155.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/FV2Qp.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/Unknown-Pleasures.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/bxr7Cft.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/newordercover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/bg_pics/pCAL_1370285793.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/gedr.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SonarLint.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/swingx_0_9_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Modules/Day.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Modules/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/Global.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/U.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UButton.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UCheckBox.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/ULabel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UScrollPane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UTextArea.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UTextField.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/UWrap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tellmeabouttoday.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tellmeabouttoday/data/02-04-2017.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tellmeabouttoday/data/13-04-2017.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tellmeabouttoday/settings.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/UI/SettingsPane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe6c2121ec3a65b0d825e86fdf618a1acac882c" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe6c2121ec3a65b0d825e86fdf618a1acac882c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39185b657618759a4c13598d76787c33c17b70b8" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39185b657618759a4c13598d76787c33c17b70b8" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40b5b1ebfbcd870d843db05a3b95463a2ae90432" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40b5b1ebfbcd870d843db05a3b95463a2ae90432" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/693fecf3c55247555685a34a54ba7f1477cbecf6" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/693fecf3c55247555685a34a54ba7f1477cbecf6" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/753c47d34150cdae3c2ca5d179cd56b59e3a4d1e" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/753c47d34150cdae3c2ca5d179cd56b59e3a4d1e" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/789576f271e659ab9813f61a4285a1e29a82e767" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/789576f271e659ab9813f61a4285a1e29a82e767" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/900e3d69f7f2a6cd7718061da3cb7370e36d16c7" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/900e3d69f7f2a6cd7718061da3cb7370e36d16c7" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96346747ab2be2532a09401013cb880e367373da" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96346747ab2be2532a09401013cb880e367373da" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a90c0bb5db3ba47319c83aea92c077da9905b38a" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a90c0bb5db3ba47319c83aea92c077da9905b38a" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce271cd0895770ee8deb749ba995d1036a706617" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce271cd0895770ee8deb749ba995d1036a706617" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9ed49c4be2002398659aa0c74ce955218f5b826" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9ed49c4be2002398659aa0c74ce955218f5b826" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/eddb28d30d71388bd60099e233dee075d275c225" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/eddb28d30d71388bd60099e233dee075d275c225" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Day.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Day.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$6.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/Global.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/Global.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/MyLabelView.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/MyLabelView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/NewViewFactory.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/NewViewFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Shape.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Shape.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Size.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Size.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Style.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U$Style.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UCheckBox.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UCheckBox.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/ULabel.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/ULabel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UPanel$Position.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UPanel$Position.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UPanel.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$6.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UWrap.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UWrap.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modules/Day.java" afterPath="$PROJECT_DIR$/src/Modules/Day.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modules/Main.java" afterPath="$PROJECT_DIR$/src/Modules/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/Global.java" afterPath="$PROJECT_DIR$/src/UI/Global.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" afterPath="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/U.java" afterPath="$PROJECT_DIR$/src/UI/U.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UCheckBox.java" afterPath="$PROJECT_DIR$/src/UI/UCheckBox.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/ULabel.java" afterPath="$PROJECT_DIR$/src/UI/ULabel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UPanel.java" afterPath="$PROJECT_DIR$/src/UI/UPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTaskList.java" afterPath="$PROJECT_DIR$/src/UI/UTaskList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTextArea.java" afterPath="$PROJECT_DIR$/src/UI/UTextArea.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTextField.java" afterPath="$PROJECT_DIR$/src/UI/UTextField.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UWrap.java" afterPath="$PROJECT_DIR$/src/UI/UWrap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tellmeabouttoday/settings.txt" afterPath="$PROJECT_DIR$/tellmeabouttoday/settings.txt" />
     </list>
     <ignored path="tellmeabouttoday.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,38 +92,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UTaskList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
+      <file leaf-file-name="UTextArea.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/UPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="137" column="23" selection-start-line="137" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UTextField.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2661448">
-              <caret line="156" column="14" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="14" />
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1397#1398#0" expanded="true" />
-                <element signature="e#1456#1457#0" expanded="true" />
-                <element signature="class#2046:2883" expanded="false" />
-                <element signature="e#7505#7506#0" expanded="true" />
-                <element signature="e#7532#7533#0" expanded="true" />
+                <element signature="class#1629:2121" expanded="false" />
+                <element signature="class#3145:3408" expanded="false" />
+                <element signature="class#4789:5867" expanded="false" />
+                <element signature="class#5898:6247" expanded="false" />
+                <element signature="class#6277:6623" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,57 +113,56 @@
         <entry file="file://$PROJECT_DIR$/src/Modules/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="402" column="53" selection-start-line="402" selection-start-column="53" selection-end-line="402" selection-end-column="53" />
+              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#3737:4093" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UTextArea.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
+      <file leaf-file-name="UPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/UPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="261" column="45" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="45" />
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTaskList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTextField.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="36" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#1587:2079" expanded="false" />
-                <element signature="class#3761:4301" expanded="false" />
-                <element signature="class#6827:7176" expanded="false" />
-                <element signature="class#7206:7552" expanded="false" />
+                <element signature="class#2209:3046" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Day.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Modules/Day.java">
+      <file leaf-file-name="SettingsPane.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UI/SettingsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="450" selection-start-line="103" selection-start-column="450" selection-end-line="103" selection-end-column="450" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Global.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TranslucentScrollBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/TranslucentScrollBar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.90215266">
+              <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
               <folding>
-                <element signature="class#1792:2842" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <marker date="1492816469000" expanded="true" signature="1693:2655" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -180,21 +172,42 @@
         <entry file="file://$PROJECT_DIR$/src/UI/UCheckBox.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="74" selection-end-column="57" />
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Global.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="137" column="21" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="U.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/U.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="113" column="57" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
               <folding>
-                <element signature="e#612#613#0" expanded="true" />
-                <element signature="e#650#651#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UWrap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
+      <file leaf-file-name="TranslucentScrollBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/TranslucentScrollBar.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-              <folding />
+              <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+              <folding>
+                <element signature="class#2227:3277" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -223,20 +236,22 @@
         <option value="$PROJECT_DIR$/src/UI/UFrame.java" />
         <option value="$PROJECT_DIR$/src/UI/ImagePane.java" />
         <option value="$PROJECT_DIR$/src/UI/UButton.java" />
-        <option value="$PROJECT_DIR$/src/UI/U.java" />
         <option value="$PROJECT_DIR$/src/UI/UScrollPane.java" />
         <option value="$PROJECT_DIR$/src/UI/ButtonlessScrollBarUI.java" />
         <option value="$PROJECT_DIR$/src/UI/ULabel.java" />
-        <option value="$PROJECT_DIR$/src/UI/UPanel.java" />
         <option value="$PROJECT_DIR$/src/Modules/Day.java" />
-        <option value="$PROJECT_DIR$/src/UI/UWrap.java" />
-        <option value="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" />
+        <option value="$PROJECT_DIR$/src/UI/SettingsPopup.java" />
         <option value="$PROJECT_DIR$/src/UI/UCheckBox.java" />
-        <option value="$PROJECT_DIR$/src/UI/Global.java" />
         <option value="$PROJECT_DIR$/src/UI/UTaskList.java" />
-        <option value="$PROJECT_DIR$/src/UI/UTextArea.java" />
+        <option value="$PROJECT_DIR$/src/UI/UPanel.java" />
+        <option value="$PROJECT_DIR$/src/UI/UWrap.java" />
+        <option value="$PROJECT_DIR$/src/UI/Global.java" />
         <option value="$PROJECT_DIR$/src/Modules/Main.java" />
+        <option value="$PROJECT_DIR$/src/UI/U.java" />
         <option value="$PROJECT_DIR$/src/UI/UTextField.java" />
+        <option value="$PROJECT_DIR$/src/UI/UTextArea.java" />
+        <option value="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" />
+        <option value="$PROJECT_DIR$/src/UI/SettingsPane.java" />
       </list>
     </option>
   </component>
@@ -278,7 +293,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,25 +325,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tellmeabouttoday" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tellmeabouttoday" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tellmeabouttoday" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tellmeabouttoday" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="UI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -349,6 +349,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="UI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UTextField.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -386,6 +390,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -398,11 +403,11 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="UI" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/res" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="UI" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -708,7 +713,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -717,11 +722,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -732,8 +736,34 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39925373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -761,22 +791,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Modules/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="97" selection-start-line="54" selection-start-column="97" selection-end-line="54" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="119" column="57" selection-start-line="119" selection-start-column="57" selection-end-line="119" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/ULabel.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/TranslucentScrollBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="class#2227:3277" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -810,6 +838,7 @@
           <caret line="54" column="97" selection-start-line="54" selection-start-column="97" selection-end-line="54" selection-end-column="97" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#3737:4093" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,6 +882,7 @@
           <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#3737:4093" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -966,20 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="1181" column="22" selection-start-line="1181" selection-start-column="22" selection-end-line="1181" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../swingx-0.9.3.jar!/org/jdesktop/swingx/border/DropShadowBorder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7747934">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/src.zip!/java/awt/GradientPaint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1005,13 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7729941">
           <caret line="115" column="67" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/U.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1055,7 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,27 +1078,9 @@
     <entry file="file://$PROJECT_DIR$/src/UI/ULabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="181" column="19" selection-start-line="181" selection-start-column="19" selection-end-line="181" selection-end-column="19" />
+          <caret line="214" column="42" selection-start-line="214" selection-start-column="42" selection-end-line="214" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/TranslucentScrollBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="class#1792:2842" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1098,15 +1088,26 @@
     <entry file="file://$PROJECT_DIR$/src/Modules/Day.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="450" selection-start-line="103" selection-start-column="450" selection-end-line="103" selection-end-column="450" />
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/src.zip!/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
+          <caret line="269" column="7" selection-start-line="269" selection-start-column="7" selection-end-line="269" selection-end-column="7" />
+          <folding>
+            <element signature="e#10333#10334#0" expanded="false" />
+            <element signature="e#10414#10415#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1114,26 +1115,15 @@
     <entry file="file://$PROJECT_DIR$/src/UI/UCheckBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="74" selection-end-column="57" />
-          <folding>
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-          </folding>
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/UPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="137" column="23" selection-start-line="137" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1141,38 +1131,83 @@
     <entry file="file://$PROJECT_DIR$/src/Modules/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="402" column="53" selection-start-line="402" selection-start-column="53" selection-end-line="402" selection-end-column="53" />
+          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#3737:4093" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="261" column="45" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="45" />
+          <caret line="137" column="21" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/U.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="57" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#1587:2079" expanded="false" />
-            <element signature="class#3761:4301" expanded="false" />
-            <element signature="class#6827:7176" expanded="false" />
-            <element signature="class#7206:7552" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2661448">
-          <caret line="156" column="14" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="36" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1456#1457#0" expanded="true" />
-            <element signature="class#2046:2883" expanded="false" />
-            <element signature="e#7505#7506#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
+            <element signature="class#2209:3046" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#1629:2121" expanded="false" />
+            <element signature="class#3145:3408" expanded="false" />
+            <element signature="class#4789:5867" expanded="false" />
+            <element signature="class#5898:6247" expanded="false" />
+            <element signature="class#6277:6623" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/TranslucentScrollBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <folding>
+            <element signature="class#2227:3277" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/SettingsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90215266">
+          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1492816469000" expanded="true" signature="1693:2655" placeholder="..." />
           </folding>
         </state>
       </provider>

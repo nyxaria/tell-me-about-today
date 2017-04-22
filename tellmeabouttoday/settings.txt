@@ -1,2 +1,7 @@
-created=02-04-2017
-reminderTemplate=nWorkout`nMeditate`Read for 30 minutes`nWrite diary entry for today`nSpeak to one stranger`nChores
+created=17-04-2017
+reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry for today`nSpeak to one stranger
+theme=Light
+titleTemplate=Title
+dateTemplate=day, ddsuffix month year
+textTemplate=What did you get up to today?
+dateFormat=dd-MM-yyyy

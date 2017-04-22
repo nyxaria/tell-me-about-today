@@ -207,12 +207,12 @@ public class ULabel extends JLabel implements MouseListener {
                 g2.setColor(Color.white);
                 g2.fillRect(squareX/6, squareX*2/10, squareX*4/6, squareX*6/9);
 
-                if(mouseDown)
+                if(U.theme == U.Theme.Dark)
                     g2.setPaint(new GradientPaint(0,0,Color.YELLOW,0, 20,Color.RED));
                 else
                     g2.setColor(new Color(135,206,250));
                 g2.fillRect(squareX/6 + 1, squareX*2/10 + 1, squareX*4/6 - 2, squareX*2*6/9/3);
-                if(mouseDown)
+                if(U.theme == U.Theme.Dark)
                     g2.setColor(Color.orange);
                 else
                     g2.setColor(Color.yellow);

@@ -7,8 +7,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.Executors;
@@ -18,17 +16,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by gedr on 05/04/2017.
  */
-public class UTextField extends JTextPane implements FocusListener {
+public class UTextField extends JTextPane {
 
-    public final SimpleAttributeSet strike;
+    public static AttributeSet strike;
     int lineCount = 0;
     public UWrap wrap;
-    private static int size;
 
     int maxNumberOfCharacters = 110;
     public int reminderIndex;
 
-    public UTextField(String s, int sizeInt, Color textColor, Color borderColor, int width) {
+    public UTextField(String s, int sizeInt, Color textColor, Color borderColor) {
 
         DefaultStyledDocument document = new DefaultStyledDocument() {
             @Override
@@ -47,7 +44,6 @@ public class UTextField extends JTextPane implements FocusListener {
             }
         });
 
-        addFocusListener(this);
 
         setStyledDocument(document);
         setText(s);
@@ -56,13 +52,20 @@ public class UTextField extends JTextPane implements FocusListener {
         setForeground(textColor);
         setDisabledTextColor(textColor);
 
-        strike = new SimpleAttributeSet();
-        strike.addAttribute("strike-color", new Color(180,180,180, 215));
+        if(U.theme == U.Theme.Light) {
+            setSelectedTextColor(Color.white);
+        } else {
+            setSelectedTextColor(U.text);
+        }
 
-        setBackground(new Color(88, 88, 93));
+        StyleContext sc = StyleContext.getDefaultStyleContext();
+        UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, new Color(255, 255, 255));
+        UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 215));
+
+        setBackground(U.tertiary);
 
         setFont(Global.plain.deriveFont((float) sizeInt));
-        setSelectionColor(new Color(180, 180, 180, 75));
+        setSelectionColor(new Color(180, 180, 180, 160));
         DefaultCaret dc = new DefaultCaret() {
             @Override
             public void paint(Graphics g) {
@@ -100,7 +103,8 @@ public class UTextField extends JTextPane implements FocusListener {
             @Override
             public void keyTyped(KeyEvent e) { resize(); }
 
-            @Override public void keyPressed(KeyEvent e) { resize(); }
+            @Override
+            public void keyPressed(KeyEvent e) { resize(); }
 
             @Override
             public void keyReleased(KeyEvent e) { resize(); }
@@ -109,10 +113,12 @@ public class UTextField extends JTextPane implements FocusListener {
         document.addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                if(getText().charAt(getText().length() - 1) == '\n') {
-                    Runnable removeText = () -> setText(getText().substring(0, getText().length() - 1));
-                    SwingUtilities.invokeLater(removeText);
-                    return;
+                if(wrap.listPane != null && wrap.listPane.expandingHeight==0) {
+                    wrap.listPane.expandingHeight = 2;
+                    for(Component comp : wrap.listPane.getComponents()) {
+                        wrap.listPane.expandingHeight += comp.getPreferredSize().height;
+                    }
+                    System.out.println(wrap.listPane.expandingHeight);
                 }
                 resize();
             }
@@ -125,23 +131,27 @@ public class UTextField extends JTextPane implements FocusListener {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 resize();
-                if(wrap.opacity == 0) {
-                    size = 2;
+                if(wrap != null && wrap.listPane != null) {
+                    wrap.listPane.expandingHeight = 2;
                     for(Component comp : wrap.listPane.getComponents()) {
-                        size += comp.getPreferredSize().height;
+                        wrap.listPane.expandingHeight += comp.getPreferredSize().height;
                     }
-                    ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+                    System.out.println(wrap.listPane.expandingHeight);
 
-                    Runnable r = () -> {
-                        if(wrap.opacity + .01f> 1f) {
-                            wrap.setOpacity(1f);
-                            executor.shutdown();
-                        } else {
-                            wrap.setOpacity(wrap.opacity + .01f);
-                        }
-                    };
+                    if(wrap.opacity == 0) {
+                        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-                    executor.scheduleAtFixedRate(r, 0, 25, TimeUnit.MILLISECONDS);
+                        Runnable r = () -> {
+                            if(wrap.opacity + .01f > 1f) {
+                                wrap.setOpacity(1f);
+                                executor.shutdown();
+                            } else {
+                                wrap.setOpacity(wrap.opacity + .01f);
+                            }
+                        };
+                        executor.scheduleAtFixedRate(r, 0, 30, TimeUnit.MILLISECONDS);
+                    }
+
                 }
             }
         });
@@ -152,15 +162,18 @@ public class UTextField extends JTextPane implements FocusListener {
         if(lineCount != countLines() && countLines() != 0) {
             int delta = countLines() - lineCount;
             lineCount = countLines();
-            wrap.setPreferredSize(new Dimension(wrap.getWidth(), wrap.getPreferredSize().height + (14 * (delta))));
+            wrap.setPreferredSize(new Dimension(wrap.getWidth(), wrap.getPreferredSize().height + (14 * delta)));
+
 
             //if(lineCount == 1) wrap.setPreferredSize(new Dimension(wrap.getWidth(), 14));
-            size += delta*14;
-            wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), size));
-            wrap.listPane.getParent().repaint();
-            wrap.listPane.getParent().revalidate();
+            if(wrap.listPane != null) {
+                wrap.listPane.expandingHeight += delta * 14;
+                wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));
+//                wrap.listPane.getParent().repaint();
+//                wrap.listPane.getParent().revalidate();
+            }
         }
-        Main.taskScrollPane.getVerticalScrollBar().repaint();
+        if(Main.taskScrollPane != null) Main.taskScrollPane.getVerticalScrollBar().repaint();
     }
 
     private int countLines() {
@@ -180,22 +193,13 @@ public class UTextField extends JTextPane implements FocusListener {
             }
 
         } catch(BadLocationException e) {
-            System.out.println(lineCount);
             //setText(getText().substring(0, getText().length() - 1));
             return lineCount;
         }
 
+        if(getText().charAt(getText().length()-1) == '\n')
+            lineCount++;
         return lineCount;
-
-    }
-
-    @Override
-    public void focusGained(FocusEvent e) {}
-
-    @Override
-    public void focusLost(FocusEvent e) {
-        Main.activeDay.reminders.add(reminderIndex, Main.activeDay.reminders.get(reminderIndex).substring(0,1) + getText());
-        Main.activeDay.reminders.remove(reminderIndex+1);
 
     }
 }
@@ -203,22 +207,18 @@ public class UTextField extends JTextPane implements FocusListener {
 class NewViewFactory implements ViewFactory {
     public View create(Element elem) {
         String kind = elem.getName();
-        if (kind != null) {
-            if (kind.equals(AbstractDocument.ContentElementName)) {
+        if(kind != null) {
+            if(kind.equals(AbstractDocument.ContentElementName)) {
 
                 return new MyLabelView(elem);
-            }
-            else if (kind.equals(AbstractDocument.ParagraphElementName)) {
+            } else if(kind.equals(AbstractDocument.ParagraphElementName)) {
                 return new ParagraphView(elem);
-            }
-            else if (kind.equals(AbstractDocument.SectionElementName)) {
+            } else if(kind.equals(AbstractDocument.SectionElementName)) {
                 return new BoxView(elem, View.Y_AXIS);
 
-            }
-            else if (kind.equals(StyleConstants.ComponentElementName)) {
+            } else if(kind.equals(StyleConstants.ComponentElementName)) {
                 return new ComponentView(elem);
-            }
-            else if (kind.equals(StyleConstants.IconElementName)) {
+            } else if(kind.equals(StyleConstants.IconElementName)) {
                 return new IconView(elem);
             }
 
@@ -231,7 +231,6 @@ class NewViewFactory implements ViewFactory {
 
 class MyLabelView extends LabelView {
 
-
     public MyLabelView(Element elem) {
         super(elem);
     }
@@ -243,14 +242,13 @@ class MyLabelView extends LabelView {
     }
 
     public void paintStrikeLine(Graphics g, Shape a) {
-        Color c=(Color)getElement().getAttributes().getAttribute("strike-color");
-        if (c!=null) {
+        Color c = (Color) getElement().getAttributes().getAttribute("strike-color");
+        if(c != null) {
             int y = a.getBounds().y + a.getBounds().height - (int) getGlyphPainter().getDescent(this);
 
             y = y - (int) (getGlyphPainter().getAscent(this) * 0.3f);
             int x1 = (int) a.getBounds().getX();
             int x2 = (int) (a.getBounds().getX() + a.getBounds().getWidth());
-
 
             Color old = g.getColor();
             g.setColor(c);

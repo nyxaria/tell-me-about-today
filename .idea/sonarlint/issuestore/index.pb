@@ -27,3 +27,5 @@ F
 src/UI/UTextField.java,4/0/40b5b1ebfbcd870d843db05a3b95463a2ae90432
 P
  src/UI/TranslucentScrollBar.java,9/0/900e3d69f7f2a6cd7718061da3cb7370e36d16c7
+H
+src/UI/SettingsPane.java,1/7/173b0f94b98b184301ef824a091815ca959006c4

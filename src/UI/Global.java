@@ -15,7 +15,13 @@ public class Global {
     public static Font itallic;
 
     public static String reminderTemplate;
+    public static String titleTemplate;
+    public static String dateTemplate;
+    public static String textTemplate;
+
     public static Date dateCreated;
+    public static String dateFormat;
+    public static boolean americanFormat;
 
     public static void init() throws Exception {
         InputStream istream = Global.class.getResourceAsStream("/res/Cantarell-Regular.ttf");
@@ -34,12 +40,22 @@ public class Global {
             new File(U.data).mkdirs();
             try(PrintWriter out = new PrintWriter(U.settings)) {
                 out.println("created=" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-                out.println("reminderTemplate=nWorkout`nMeditate`Read for 30 minutes`nWrite diary entry for today`nSpeak to one stranger");
+                out.println("reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry for today`nSpeak to one stranger");
+                out.println("theme=Light");
+                out.println("titleTemplate=Title");
+                out.println("dateTemplate=day, ddsuffix month year");
+                out.println("textTemplate=What did you get up to today?");
+                out.println("dateFormat=dd-MM-yyyy");
             } catch(FileNotFoundException e) {
                 e.printStackTrace();
             }
-            Global.dateCreated = new Date();
-            Global.reminderTemplate = "nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry for today`nSpeak to one stranger`nChores";
+            dateCreated = new Date();
+            reminderTemplate = "nWorkout`nMeditate`nRead for 30 minutes`nWrite a diary entry for today`nSpeak to one stranger`nChores";
+            U.theme = U.Theme.Light;
+            titleTemplate = "Title";
+            dateTemplate = "day, ddsuffix month yyyy";
+            textTemplate = "What did you get up to today?";
+            dateFormat = "dd-MM-yyyy";
 
         } else {
             try(BufferedReader br = new BufferedReader(new FileReader(U.root + "settings.txt"))) {
@@ -59,22 +75,49 @@ public class Global {
                     switch(type) {
                         case "created":
                             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-                                dateCreated = format.parse(data);
+                            dateCreated = format.parse(data);
                             break;
                         case "reminderTemplate":
                             reminderTemplate = data;
+                            break;
+                        case "theme":
+                            U.theme = U.Theme.valueOf(data);
+                            break;
+                        case "titleTemplate":
+                            titleTemplate = data;
+                            break;
+                        case "dateTemplate":
+                            dateTemplate = data;
+                            break;
+                        case "textTemplate":
+                            textTemplate = data;
+                            break;
+                        case "dateFormat":
+                            dateFormat = data;
+                            break;
                     }
                 }
             } catch(ParseException | IOException e) {
                 e.printStackTrace();
             }
         }
+
+        if(dateFormat.replace("/", "-").replace(" ", "-").equals("dd-MM-yyyy")) {
+            americanFormat = false;
+        } else {
+            americanFormat = true;
+        }
     }
 
     public static void writeSettings() {
         try(PrintWriter out = new PrintWriter(U.settings)) {
-            out.println("created=" + Global.dateCreated);
-            out.println("reminderTemplate="+Global.reminderTemplate);
+            out.println("created=" + new SimpleDateFormat("dd-MM-yyyy").format(Global.dateCreated));
+            out.println("reminderTemplate=" + Global.reminderTemplate);
+            out.println("theme=" + U.theme.toString());
+            out.println("titleTemplate=" + Global.titleTemplate);
+            out.println("dateTemplate=" + Global.dateTemplate);
+            out.println("textTemplate=" + Global.textTemplate);
+            out.println("dateFormat=" + Global.dateFormat);
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -89,5 +132,15 @@ public class Global {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    }
+
+    public static int countOccurrences(String string, String key) {
+        int count = 1;
+        for(int i = 0; i < string.length()-key.length(); i++) {
+            if(string.substring(i,i+key.length()).equals(key)) {
+                count++;
+            }
+        }
+        return count;
     }
 }

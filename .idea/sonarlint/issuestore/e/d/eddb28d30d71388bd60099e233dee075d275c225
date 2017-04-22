@@ -1,40 +1,37 @@
 
-Fsquid:S1659"*Declare "selectionEnd" on a separate line.(Îüö8É·Äú³+
-Isquid:S1948"-Make "unhighlight" transient or serializable.(³ÉğÎ8™ÛÀ¶+
-}squid:S1188"\Reduce this anonymous class number of lines from 23 to at most 20, or make it a named class.(¦Ì·¡ùÿÿÿÿ8É·Äú³+
-|"squid:ClassVariableVisibilityCheck"PMake undo a static final constant or non-public and provide accessors if needed.(—ˆ‚
-?squid:S1148"#Use a logger to log this exception.(›úÎ8É·Äú³+
-Usquid:S1161":Add the "@Override" annotation above this method signature(‡ä€8É·Äú³+
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æÎ±Œ8É·Äú³+
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
-Zsquid:S3400"9Remove this method and declare a constant for this value.(Ö§”Óşÿÿÿÿ8É·Äú³+
-Gsquid:S1948"+Make "highlight" transient or serializable.(›ËÄá8™ÛÀ¶+
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(®î’×üÿÿÿÿ8É·Äú³+
-Tsquid:UselessParenthesesCheck"!Remove those useless parentheses.(æÄÇùÿÿÿÿ8É·Äú³+
-Ksquid:S1066"/Merge this if statement with the enclosing one.(¶¤Ôš8É·Äú³+
-vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(¿™¶şÿÿÿÿ8É·Äú³+
-Hsquid:S1602",Remove useless curly braces around statement(ê¨¥Ï8çŠÀÁ¶+
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(§‡®êúÿÿÿÿ8É·Äú³+
-Msquid:S1948"1Make "undoableListner" transient or serializable.(ä–¿¬8™ÛÀ¶+
-Isquid:S1604"(Make this anonymous inner class a lambda(—Ò€ùÿÿÿÿ8É·Äú³+
-vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Åç‘‹úÿÿÿÿ8É·Äú³+
-"squid:ClassVariableVisibilityCheck"XMake initialising a static final constant or non-public and provide accessors if needed.(·óˆÓøÿÿÿÿ8Ø”ı²+
-„squid:S1319"oThe type of the "undo" object should be an interface such as "List" rather than the implementation "ArrayList".(—ˆ‚
-Ksquid:S1948"*Make "document" transient or serializable.(ÑÊÜ™ùÿÿÿÿ8™ÛÀ¶+
+ssquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 51 to the 15 allowed.(ó¡×ïÿÿÿÿÿ8¶¿Çå·+
+vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Åç‘‹úÿÿÿÿ8™íß¾¸+
+?squid:S1148"#Use a logger to log this exception.(›úÎ8™íß¾¸+
+Tsquid:UselessParenthesesCheck"!Remove those useless parentheses.(æÄÇùÿÿÿÿ8™íß¾¸+
+Osquid:S1444"3Make this "public static shadowOpacity" field final(»™ä8ú—Íà·+
+Psquid:S1068"/Remove this unused "highlighted" private field.(¾Ñ óıÿÿÿÿ8Ë®ğ¸·+
+Fsquid:S1166"%Either log or rethrow this exception.(öç»’úÿÿÿÿ8™íß¾¸+
 Asquid:S1948"%Make "ses" transient or serializable.(îõ±„8™ÛÀ¶+
-Isquid:S1604"(Make this anonymous inner class a lambda(Ô–Ùışÿÿÿÿ8É·Äú³+
-lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 50 to the 15 allowed.(ó¡×ïÿÿÿÿÿ
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ä Ïúüÿÿÿÿ8É·Äú³+
-msquid:S1192"LDefine a constant instead of duplicating this literal "unhighlight" 3 times.(«æÅ£ıÿÿÿÿ8É·Äú³+
-fsquid:S1192"JDefine a constant instead of duplicating this literal "highlight" 4 times.(¥Ä¯˜8É·Äú³+
+Fsquid:S1659"*Declare "selectionEnd" on a separate line.(Îüö8™íß¾¸+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÁÕŒüÿÿÿÿ
+|"squid:ClassVariableVisibilityCheck"PMake undo a static final constant or non-public and provide accessors if needed.(—ˆ‚
 ¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Œé¯ìúÿÿÿÿ8ÁíÃú³+
+Ksquid:S1066"/Merge this if statement with the enclosing one.(¶¤Ôš8¶¿Çå·+
+}squid:S1188"\Reduce this anonymous class number of lines from 23 to at most 20, or make it a named class.(¦Ì·¡ùÿÿÿÿ8™íß¾¸+
+Ksquid:S1948"*Make "document" transient or serializable.(ÑÊÜ™ùÿÿÿÿ8™ÛÀ¶+
+œsquid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Î‡…H8™íß¾¸+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ğ£®¾ÿÿÿÿÿ8™íß¾¸+
+Fsquid:S1166"%Either log or rethrow this exception.(öç»’úÿÿÿÿ8™íß¾¸+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(œˆ¼şÿÿÿÿ8Çôå¹+
 †"squid:ClassVariableVisibilityCheck"SMake opacity a static final constant or non-public and provide accessors if needed.(ƒ€ÚÊ8ÎªÌÁ¶+
-?squid:S1148"#Use a logger to log this exception.(›úÎ8É·Äú³+
-Fsquid:S1166"%Either log or rethrow this exception.(öç»’úÿÿÿÿ8É·Äú³+
-Msquid:S1612",Replace this lambda with a method reference.(¬İÖ„ıÿÿÿÿ8ÇƒÅú³+
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ãÆĞÂ8É·Äú³+
-Gsquid:S1172"+Remove this unused method parameter "file".(áú€˜8É·Äú³+
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(°ö²ÿÿÿÿÿ8É·Äú³+
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(°ö²ÿÿÿÿÿ8¶¿Çå·+
+Œ"squid:ClassVariableVisibilityCheck"YMake shadowOpacity a static final constant or non-public and provide accessors if needed.(»™ä8ûûÉà·+
+Esquid:S1068")Remove this unused "focus" private field.(¯ÚÍö8Ë®ğ¸·+
+Msquid:S1612",Replace this lambda with a method reference.(¬İÖ„ıÿÿÿÿ8¶¿Çå·+
+Nsquid:S1948"-Make "unhighlight" transient or serializable.(ìªÌüÿÿÿÿ8™ÛÀ¶+
+Msquid:S1948"1Make "undoableListner" transient or serializable.(ä–¿¬8™ÛÀ¶+
+zsquid:S1450"YRemove the "highlight2" field and declare it as a local variable in the relevant methods.(“²²şùÿÿÿÿ8¶òÇå·+
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ş§”ùÿÿÿÿ8™íß¾¸+
+„squid:S1319"oThe type of the "undo" object should be an interface such as "List" rather than the implementation "ArrayList".(—ˆ‚
+qsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(—àğÚ8™íß¾¸+
+vsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(¿™¶şÿÿÿÿ8™íß¾¸+
+Lsquid:S1948"+Make "highlight" transient or serializable.(Ä¼¡…ûÿÿÿÿ8™ÛÀ¶+
+?squid:S1148"#Use a logger to log this exception.(›úÎ8™íß¾¸+
+"squid:ClassVariableVisibilityCheck"XMake initialising a static final constant or non-public and provide accessors if needed.(·óˆÓøÿÿÿÿ8Ø”ı²+
+Msquid:S1948",Make "highlight2" transient or serializable.(“²²şùÿÿÿÿ8¶òÇå·+
 osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(‹üı”ùÿÿÿÿ8™ÛÀ¶+
-Zsquid:UnusedPrivateMethod"0Remove this unused private "extractFile" method.(áú€˜8ôÄ¨û³+
-Fsquid:S1166"%Either log or rethrow this exception.(öç»’úÿÿÿÿ8É·Äú³+
