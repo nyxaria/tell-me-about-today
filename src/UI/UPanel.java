@@ -125,7 +125,7 @@ public class UPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+        ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity > 1f ? 1f : opacity));
 
         super.paintComponent(g);
         Component c = this; Graphics graphics = g; int x = 1; int y = 1; int width = getWidth()-2; int height = getHeight()-2;

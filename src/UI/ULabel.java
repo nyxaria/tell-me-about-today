@@ -1,13 +1,13 @@
 package UI;
 
-import Modules.Main;
-
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 
 /**
  * Created by gedr on 14/01/2017.
@@ -20,6 +20,8 @@ public class ULabel extends JLabel implements MouseListener {
     private int squareX;
     private boolean mouseOver;
     private boolean mouseDown;
+    public static Image cogImage;
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -188,9 +190,8 @@ public class ULabel extends JLabel implements MouseListener {
                 g2.drawOval(5, 5, squareX - 10, squareX - 10);
                 g2.setColor(Color.lightGray);
 
-                if(mouseDown)
-                    g2.setColor(Color.lightGray.darker());
-                g2.fillOval(5,5, squareX - 10, squareX - 10);
+                if(mouseDown) g2.setColor(Color.lightGray.darker());
+                g2.fillOval(5, 5, squareX - 10, squareX - 10);
                 g2.setColor(Color.darkGray);
                 if(mouseOver) {
                     g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
@@ -199,36 +200,62 @@ public class ULabel extends JLabel implements MouseListener {
                 }
 
                 break;
+            case "x_transparent":
 
+                g2.setColor(Color.gray);
+//                g2.drawOval(5, 5, squareX - 10, squareX - 10);
+                g2.setColor(Color.lightGray);
+
+                if(mouseDown) g2.setColor(Color.lightGray.darker());
+//                g2.fillOval(5, 5, squareX - 10, squareX - 10);
+                g2.setColor(new Color(200,200,200,200));
+                if(mouseOver) {
+                    g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+                    int x = 2;
+                    g2.drawLine(6-x, 6, squareX - 6-x, squareX - 6);
+                    g2.drawLine(6-x, squareX - 6, squareX - 6-x, 6);
+                }
+
+                break;
             case "image_picture":
 
                 g2.setColor(Color.black);
-                g2.drawRect(squareX/6, squareX*2/10, squareX*4/6, squareX*6/9);
+                g2.drawRect(squareX / 6, squareX * 2 / 10, squareX * 4 / 6, squareX * 6 / 9);
                 g2.setColor(Color.white);
-                g2.fillRect(squareX/6, squareX*2/10, squareX*4/6, squareX*6/9);
+                g2.fillRect(squareX / 6, squareX * 2 / 10, squareX * 4 / 6, squareX * 6 / 9);
 
-                if(U.theme == U.Theme.Dark)
-                    g2.setPaint(new GradientPaint(0,0,Color.YELLOW,0, 20,Color.RED));
-                else
-                    g2.setColor(new Color(135,206,250));
-                g2.fillRect(squareX/6 + 1, squareX*2/10 + 1, squareX*4/6 - 2, squareX*2*6/9/3);
-                if(U.theme == U.Theme.Dark)
-                    g2.setColor(Color.orange);
-                else
-                    g2.setColor(Color.yellow);
-                g2.fillOval(squareX/6 + squareX*80/500, squareX*53/200 + squareX/8, 3, 3);
+                if(U.theme == U.Theme.Dark) g2.setPaint(new GradientPaint(0, 0, Color.YELLOW, 0, 20, Color.RED));
+                else g2.setColor(new Color(135, 206, 250));
+                g2.fillRect(squareX / 6 + 1, squareX * 2 / 10 + 1, squareX * 4 / 6 - 2, squareX * 2 * 6 / 9 / 3);
+                if(U.theme == U.Theme.Dark) g2.setColor(Color.orange);
+                else g2.setColor(Color.yellow);
+                g2.fillOval(squareX / 6 + squareX * 80 / 500, squareX * 53 / 200 + squareX / 8, 3, 3);
                 //g2.drawRect(0,0,squareX,squareX);
                 g2.setColor(Color.lightGray.darker());
-                g2.fillPolygon(new int[]{squareX/6 + squareX*73/50/3, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6/5, squareX/6 + squareX*73/50/3},
-                        new int[]{squareX*2/10 + squareX*4*6/10/3/4, squareX*2/10 + squareX*2*6/12/3, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*4*6/10/3/4}, 5);
+                g2.fillPolygon(new int[]{squareX / 6 + squareX * 73 / 50 / 3, squareX / 6 + squareX * 4 / 6 - 1, squareX / 6 + squareX * 4 / 6 - 1, squareX / 6 + squareX * 4 / 6 / 5, squareX / 6 + squareX * 73 / 50 / 3}, new int[]{squareX * 2 / 10 + squareX * 4 * 6 / 10 / 3 / 4, squareX * 2 / 10 + squareX * 2 * 6 / 12 / 3, squareX * 2 / 10 + squareX * 2 * 6 / 9 / 3 + 1, squareX * 2 / 10 + squareX * 2 * 6 / 9 / 3 + 1, squareX * 2 / 10 + squareX * 4 * 6 / 10 / 3 / 4}, 5);
                 g2.setColor(Color.white);
-//                g2.fillPolygon(new int[]{squareX/6 + squareX*73/50/3, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6/5, squareX/6 + squareX*73/50/3},
-                    //new int[]{squareX*2/10 + squareX*4*6/10/3/4, squareX*2/10 + squareX*2*6/12/3, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*4*6/10/3/4}, 5);
+                //                g2.fillPolygon(new int[]{squareX/6 + squareX*73/50/3, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6/5, squareX/6 + squareX*73/50/3},
+                //new int[]{squareX*2/10 + squareX*4*6/10/3/4, squareX*2/10 + squareX*2*6/12/3, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*4*6/10/3/4}, 5);
+                break;
+            case "settings":
+                RescaleOp rescaleOp = new RescaleOp(1f + (U.theme == U.Theme.Light ? -.5f : -.5f), 1, null);
+                BufferedImage img = new BufferedImage(cogImage.getWidth(null), cogImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                img.getGraphics().drawImage(cogImage, 0, 0, null);
+
+                g2.drawImage(rescaleOp.filter(img, img), getWidth()/2 - cogImage.getWidth(null)/2-2, getHeight()/2 - cogImage.getHeight(null)/2 ,this);
 
         }
         g.dispose();
 
     }
 
+    public static BufferedImage imageToBufferedImage(Image im) {
+        BufferedImage bi = new BufferedImage
+                (im.getWidth(null),im.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+        Graphics bg = bi.getGraphics();
+        bg.drawImage(im, 0, 0, null);
+        bg.dispose();
+        return bi;
+    }
 
 }

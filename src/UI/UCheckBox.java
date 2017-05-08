@@ -20,6 +20,7 @@ public class UCheckBox extends JComponent implements MouseListener{
     private Color lineColor = new Color(200,200,210);
     public int reminderIndex;
     public UTextField content;
+    public UWrap wrap;
 
     public UCheckBox() {
         addMouseListener(this);
@@ -28,7 +29,7 @@ public class UCheckBox extends JComponent implements MouseListener{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
+        Global.prettify(g2);
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
@@ -51,11 +52,11 @@ public class UCheckBox extends JComponent implements MouseListener{
 
         //check
         if(checked) {
-            g2.setColor(lineColor);
-//            g2.drawLine(inset + inset/4 + 1, getHeight() - inset - 4, inset + inset/2, getHeight() - inset - 2);
-//            g2.drawLine(inset + inset/2, getHeight() - inset - 2, getWidth() - inset*3/2 + inset/3 + 1, inset + inset/3 - inset*2/3 + 1);
+            g2.setColor(U.theme == U.Theme.Light ? new Color(255,255,255) : new Color(210,210,210));
+            g2.drawLine(inset + inset/4 + 1, getHeight() - inset - 4, inset + inset/2 + 1, getHeight() - inset - 2);
+            g2.drawLine(inset + inset/2 + 1, getHeight() - inset - 2, getWidth() - inset*3/2 + inset/3 + 1, inset + inset/3 - inset*2/3 + 1);
 
-            g2.fillRect(inset + 1, inset + 1, getWidth() - inset*2 - 2, getHeight() - inset*2 - 2);
+//            g2.fillRect(inset + 1, inset + 1, getWidth() - inset*2 - 2, getHeight() - inset*2 - 2);
         }
     }
 
@@ -73,7 +74,7 @@ public class UCheckBox extends JComponent implements MouseListener{
         checked = !checked;
         repaint();
 
-        if(content == null) return;
+        if(content == null || content.getText().equals("add reminder") || content.isAddReminder) return;
         Main.activeDay.reminders.add(reminderIndex, (checked ? "y" : "n") + content.getText());
         Main.activeDay.reminders.remove(reminderIndex+1);
                 mouseDown = false;

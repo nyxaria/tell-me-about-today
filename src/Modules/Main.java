@@ -57,13 +57,12 @@ public class Main {
     public static ULabel navBarTitle;
 
     private static JFrame settingsFrame;
-    private static boolean settingUp;
+    public static boolean settingUp;
     public static boolean scrollingSettings;
-    private static SettingsPane settingsPane;
+    public static SettingsPane settingsPane;
 
     public static void main(String args[]) {
         UIManager.put("List.lockToPositionOnScroll", Boolean.FALSE);
-
         try {
             Global.init();
             initiate();
@@ -124,7 +123,7 @@ public class Main {
         ((FlowLayout) toolbarWrap.getLayout()).setVgap(0);
         ((FlowLayout) toolbarWrap.getLayout()).setHgap(0);
 
-        UButton settingsButton = new UButton("icon settings", Size.Small, U.Shape.Square, true);
+        UButton settingsButton = new UButton("icon:settings", Size.Small, U.Shape.Square, true);
         settingsButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -132,8 +131,11 @@ public class Main {
                     if(settingsView) {
                         rightScrollPane.scrollTo(0f);
                         settingsView = false;
+                        settingsPane.updateSettings();
                     } else {
+                        //settingsPane.resize();
                         rightScrollPane.scrollTo(1f);
+                        settingsPane.active(true);
                         settingsView = true;
                     }
                 }
@@ -267,7 +269,7 @@ public class Main {
         Main.mainPane.add(navBarPane, BorderLayout.NORTH);
         Main.mainPane.add(centerPane, BorderLayout.CENTER);
         taskList.setPreferredSize(new Dimension(taskList.getPreferredSize().width, 0));
-        taskScrollPane.setPreferredSize(new Dimension(taskList.getPreferredSize().width, (mainFrame.getHeight() - navBarPane.getPreferredSize().height)*2/5));
+        taskScrollPane.setPreferredSize(new Dimension(taskList.getPreferredSize().width, (mainFrame.getHeight() - navBarPane.getPreferredSize().height)*3/5));
         mainFrame.setVisible(true);
 
         leftPane.setPreferredSize(new Dimension((int) leftPane.getPreferredSize().getWidth(), size));
@@ -375,6 +377,7 @@ public class Main {
                     public void mousePressed(MouseEvent e) {
                         if(e.getXOnScreen() > wrap.getLocationOnScreen().getX() + 5 && e.getXOnScreen() < wrap.getLocationOnScreen().getX() + wrap.getWidth() - 5 && e.getYOnScreen() > wrap.getLocationOnScreen().getY() + 5 && e.getYOnScreen() < wrap.getLocationOnScreen().getY() + wrap.getHeight() - 5) {
                             if(settingUp) return;
+                            if(wrap.getBackground().equals(accent)) return;
                             settingUp = true;
                             if(activeDay != null) {
                                 activeDay.wrap.setBackground(secondary);
@@ -389,11 +392,10 @@ public class Main {
                                 day.textArea.start();
                             }).start();
                             activeDays.add(day);
-                            activeDay = day;
                             new Thread(() -> {
                                 taskList.repaint();
+                                activeDay = day;
                                 taskList.setList();
-                                settingUp = false;
                             }).start();
 
                         }
@@ -505,7 +507,7 @@ public class Main {
             //          x create updatable tasks,
             //            add task function
             //            command line esque
-            //            settings button in tool bar
+            //          x settings button in tool bar
             //            add daily plan top right
 
             wrap.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

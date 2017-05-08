@@ -1,0 +1,4 @@
+text=Monday, 8th May year
+Title
+
+What did you get up to today?|reminders=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and write about your day`nSpeak to one stranger`yChores`nadd reminder

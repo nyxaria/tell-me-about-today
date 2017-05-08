@@ -2,6 +2,7 @@ package UI;
 
 import Modules.Main;
 
+import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
@@ -64,17 +65,32 @@ public class U {
             Main.taskList.setBackground(tertiary);
             if(Main.taskList.checkboxes != null) for(UCheckBox check : Main.taskList.checkboxes) {
                 check.content.setBackground(tertiary);
-                check.content.setForeground(text);
+                if(check.content.wrap.opacity==1f)
+                    check.content.setForeground(text);
                 check.content.setSelectedTextColor(text);
                 StyleContext sc = StyleContext.getDefaultStyleContext();
                 UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, text);
                 UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 225));
-                //TextField.strike.addAttribute("strike-color", new Color(180,180,180, 215));
+
                 check.mouseReleased(null);
                 check.mouseReleased(null);
             }
 
         }
+        if(Main.settingsPane!=null)
+        for(JComponent comp : Main.settingsPane.dataFields) {
+            if(comp instanceof UTextField) {
+                ((UTextField) comp).wrap.setBackground(new Color(240,240,240));
+                comp.setBackground(new Color(240,240,240));
+                ((UTextField) comp).wrap.title.inverted(false);
+                comp.setForeground(new Color(58,58,58));
+                ((UTextField) comp).setDisabledTextColor(comp.getForeground());
+            } else if(comp instanceof UCheckBox) {
+                ((UCheckBox) comp).wrap.setBackground(new Color(240,240,240));
+                ((UCheckBox) comp).wrap.title.inverted(false);
+            }
+        }
+
         for(UWrap wrap : Main.activeWraps) {
             wrap.setBackground(secondary);
             if(wrap.content != null) {
@@ -115,12 +131,13 @@ public class U {
             Main.taskList.setBackground(tertiary);
             if(Main.taskList != null && Main.taskList.checkboxes != null) for(UCheckBox check : Main.taskList.checkboxes) {
                 check.content.setBackground(tertiary);
-                check.content.setForeground(new Color(255, 255, 255));
+                if(check.content.wrap.opacity==1f)
+                    check.content.setForeground(new Color(255, 255, 255));
                 check.content.setSelectedTextColor(Color.white);
 
                 StyleContext sc = StyleContext.getDefaultStyleContext();
                 UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, new Color(255, 255, 255));
-                UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 215));
+                UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(110,110,110, 205));
 
                 check.mouseReleased(null);
                 check.mouseReleased(null);
@@ -134,6 +151,21 @@ public class U {
                 wrap.date.inverted(false);
             }
         }
+
+        if(Main.settingsPane!=null)
+        for(JComponent comp : Main.settingsPane.dataFields) {
+            if(comp instanceof UTextField) {
+                ((UTextField) comp).wrap.setBackground(new Color(48, 48, 48));
+                ((UTextField) comp).wrap.title.inverted(true);
+                comp.setForeground(new Color(240,240,240));
+                ((UTextField) comp).setDisabledTextColor(comp.getForeground());
+                comp.setBackground(new Color(48, 48, 48));
+            } else if(comp instanceof UCheckBox) {
+                ((UCheckBox) comp).wrap.setBackground(new Color(48, 48, 48));
+                ((UCheckBox) comp).wrap.title.inverted(true);
+            }
+        }
+
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);
         theme = Theme.Light;
     }

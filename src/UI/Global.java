@@ -1,6 +1,14 @@
 package UI;
 
+import Modules.Main;
+import net.coobird.thumbnailator.Thumbnails;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +39,22 @@ public class Global {
         istream = Global.class.getResourceAsStream("/res/Cantarell-Oblique.ttf");
         itallic = Font.createFont(Font.TRUETYPE_FONT, istream);
 
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ULabel.cogImage = ImageIO.read(Main.class.getResource("/res/FEZ-04-512.png"));
+                    ULabel.cogImage = createOutlineImage(ULabel.imageToBufferedImage(ULabel.cogImage));
+                    ULabel.cogImage = Thumbnails.of(ULabel.imageToBufferedImage(ULabel.cogImage)).size(15, 15).asBufferedImage();
+                    Main.navBarPane.repaint();
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         initSettings();
     }
 
@@ -40,7 +64,7 @@ public class Global {
             new File(U.data).mkdirs();
             try(PrintWriter out = new PrintWriter(U.settings)) {
                 out.println("created=" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-                out.println("reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry for today`nSpeak to one stranger");
+                out.println("reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and write about your day`nSpeak to one stranger`nChores`nadd reminder");
                 out.println("theme=Light");
                 out.println("titleTemplate=Title");
                 out.println("dateTemplate=day, ddsuffix month year");
@@ -50,7 +74,7 @@ public class Global {
                 e.printStackTrace();
             }
             dateCreated = new Date();
-            reminderTemplate = "nWorkout`nMeditate`nRead for 30 minutes`nWrite a diary entry for today`nSpeak to one stranger`nChores";
+            reminderTemplate = "nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and write about your day`nSpeak to one stranger`nChores`nadd reminder";
             U.theme = U.Theme.Light;
             titleTemplate = "Title";
             dateTemplate = "day, ddsuffix month yyyy";
@@ -136,11 +160,67 @@ public class Global {
 
     public static int countOccurrences(String string, String key) {
         int count = 1;
-        for(int i = 0; i < string.length()-key.length(); i++) {
-            if(string.substring(i,i+key.length()).equals(key)) {
+        for(int i = 0; i < string.length() - key.length(); i++) {
+            if(string.substring(i, i + key.length()).equals(key)) {
                 count++;
             }
         }
         return count;
+    }
+
+    public static Area getOutline(BufferedImage bi) {
+        GeneralPath gp = new GeneralPath();
+        boolean cont = false;
+
+        for(int xx = 0; xx < bi.getWidth(); xx++) {
+            for(int yy = 0; yy < bi.getHeight(); yy++) {
+                if(bi.getRGB(xx, yy) != 0) {
+                    if(cont) {
+                        gp.lineTo(xx, yy);
+                        gp.lineTo(xx, yy + 1);
+                        gp.lineTo(xx + 1, yy + 1);
+                        gp.lineTo(xx + 1, yy);
+                        gp.lineTo(xx, yy);
+                    } else {
+                        gp.moveTo(xx, yy);
+                    }
+                    cont = true;
+                } else {
+                    cont = false;
+                }
+            }
+            cont = false;
+        }
+
+        gp.closePath();
+        return new Area(gp);
+    }
+
+    public static BufferedImage createOutlineImage(BufferedImage image) throws Exception {
+        Area area = getOutline(image);
+        final BufferedImage result = new BufferedImage(18 * 8, 18 * 8, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = result.createGraphics();
+        prettify(g);
+
+        AffineTransform old = g.getTransform();
+        AffineTransform tr2 = new AffineTransform(old);
+
+        tr2.scale(18f / area.getBounds().getWidth() * 8, 18f / area.getBounds().getHeight() * 8);
+
+        g.setTransform(tr2);
+
+        g.setColor(new Color(60,60,60,100));
+
+        g.setClip(area);
+
+        g.setStroke(new BasicStroke(1));
+        g.fillRect(0, 0, image.getWidth(), image.getHeight());
+
+        g.setClip(0,0,image.getWidth(),image.getHeight());
+        g.setColor(Color.gray);
+        g.setStroke(new BasicStroke(1));
+
+        g.draw(area);
+        return result;
     }
 }

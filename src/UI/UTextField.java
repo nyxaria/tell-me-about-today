@@ -7,6 +7,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.Executors;
@@ -19,15 +21,18 @@ import java.util.concurrent.TimeUnit;
 public class UTextField extends JTextPane {
 
     public static AttributeSet strike;
+    public final DefaultStyledDocument document;
     int lineCount = 0;
     public UWrap wrap;
 
     int maxNumberOfCharacters = 110;
     public int reminderIndex;
+    public boolean isAddReminder;
+    public JPanel borderWrap;
 
-    public UTextField(String s, int sizeInt, Color textColor, Color borderColor) {
+    public UTextField(String s, float fontSize, Color textColor, Color borderColor) {
 
-        DefaultStyledDocument document = new DefaultStyledDocument() {
+        document = new DefaultStyledDocument() {
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
                 if((getLength() + str.length()) <= maxNumberOfCharacters) {
@@ -44,7 +49,6 @@ public class UTextField extends JTextPane {
             }
         });
 
-
         setStyledDocument(document);
         setText(s);
         lineCount = countLines();
@@ -52,19 +56,22 @@ public class UTextField extends JTextPane {
         setForeground(textColor);
         setDisabledTextColor(textColor);
 
-        if(U.theme == U.Theme.Light) {
+        if(U.theme == U.Theme.Light)
             setSelectedTextColor(Color.white);
-        } else {
+        else
             setSelectedTextColor(U.text);
-        }
 
         StyleContext sc = StyleContext.getDefaultStyleContext();
         UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, new Color(255, 255, 255));
-        UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 215));
+        if(U.theme == U.Theme.Light)
+            UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(110, 110, 110, 205));
+        else
+            UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 215));
 
         setBackground(U.tertiary);
-
-        setFont(Global.plain.deriveFont((float) sizeInt));
+        putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+        getDocument().putProperty("ZOOM_FACTOR", fontSize);
+        setFont(Global.plain.deriveFont(fontSize));
         setSelectionColor(new Color(180, 180, 180, 160));
         DefaultCaret dc = new DefaultCaret() {
             @Override
@@ -110,15 +117,43 @@ public class UTextField extends JTextPane {
             public void keyReleased(KeyEvent e) { resize(); }
         });
 
+        addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(getText().equals("add reminder") && wrap.opacity == .35f) {
+                    wrap.setOpacity(1f);
+                    Main.taskScrollPane.repaint();
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(isAddReminder && getText().equals("add reminder")) {
+                    wrap.setOpacity(.35f);
+                    Main.taskScrollPane.repaint();
+                } else if(isAddReminder) {
+                    borderWrap.setVisible(true);
+                    isAddReminder = false;
+
+                    Main.taskList.addField("nadd reminder");
+                    Main.activeDay.reminders.add("nadd reminder");
+
+                    wrap.listPane.expandingHeight += 25;
+                    wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));
+                    Main.taskScrollPane.repaint();
+                }
+            }
+        });
+
         document.addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                if(wrap.listPane != null && wrap.listPane.expandingHeight==0) {
-                    wrap.listPane.expandingHeight = 2;
+                if(wrap.listPane != null && wrap.listPane.expandingHeight == 0 && getText().length() != 0) {
+                    wrap.listPane.expandingHeight = 1;
                     for(Component comp : wrap.listPane.getComponents()) {
                         wrap.listPane.expandingHeight += comp.getPreferredSize().height;
                     }
-                    System.out.println(wrap.listPane.expandingHeight);
                 }
                 resize();
             }
@@ -136,7 +171,6 @@ public class UTextField extends JTextPane {
                     for(Component comp : wrap.listPane.getComponents()) {
                         wrap.listPane.expandingHeight += comp.getPreferredSize().height;
                     }
-                    System.out.println(wrap.listPane.expandingHeight);
 
                     if(wrap.opacity == 0) {
                         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -145,11 +179,15 @@ public class UTextField extends JTextPane {
                             if(wrap.opacity + .01f > 1f) {
                                 wrap.setOpacity(1f);
                                 executor.shutdown();
+                            } else if(getText().equals("add reminder") && wrap.opacity >= .35f) {
+                                wrap.setOpacity(.35f);
+                                executor.shutdown();
                             } else {
                                 wrap.setOpacity(wrap.opacity + .01f);
                             }
+
                         };
-                        executor.scheduleAtFixedRate(r, 0, 30, TimeUnit.MILLISECONDS);
+                        executor.scheduleAtFixedRate(r, 0, 17, TimeUnit.MILLISECONDS);
                     }
 
                 }
@@ -158,19 +196,26 @@ public class UTextField extends JTextPane {
 
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        final Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g2d.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING, java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        super.paintComponent(g2d);
+    }
+
     protected void resize() {
         if(lineCount != countLines() && countLines() != 0) {
             int delta = countLines() - lineCount;
             lineCount = countLines();
             wrap.setPreferredSize(new Dimension(wrap.getWidth(), wrap.getPreferredSize().height + (14 * delta)));
-
-
-            //if(lineCount == 1) wrap.setPreferredSize(new Dimension(wrap.getWidth(), 14));
             if(wrap.listPane != null) {
                 wrap.listPane.expandingHeight += delta * 14;
                 wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));
-//                wrap.listPane.getParent().repaint();
-//                wrap.listPane.getParent().revalidate();
+                if(wrap.listPane instanceof SettingsPane) {
+                    wrap.listPane.getParent().setPreferredSize(new Dimension(Main.screen.width / 8, wrap.listPane.getParent().getHeight() + delta * 14));
+                    Main.rightScrollPane.scrollTo(1f);
+                }
             }
         }
         if(Main.taskScrollPane != null) Main.taskScrollPane.getVerticalScrollBar().repaint();
@@ -193,14 +238,18 @@ public class UTextField extends JTextPane {
             }
 
         } catch(BadLocationException e) {
-            //setText(getText().substring(0, getText().length() - 1));
             return lineCount;
         }
 
-        if(getText().charAt(getText().length()-1) == '\n')
-            lineCount++;
+        if(getText().length() != 0 && getText().charAt(getText().length() - 1) == '\n') lineCount++;
         return lineCount;
 
+    }
+
+    @Override
+    public void updateUI() {
+        super.updateUI();
+        putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
     }
 }
 

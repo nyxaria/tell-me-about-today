@@ -38,6 +38,8 @@ public class TranslucentScrollBar extends JScrollPane {
         if(activeColor.getAlpha() == unactive.getAlpha()) {
             activeColor = unactive;
             scrollWidth = 0;
+            executor.shutdown();
+            executor = null;
         }
     };
 
@@ -45,8 +47,6 @@ public class TranslucentScrollBar extends JScrollPane {
         super(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         if(!scrollVisible) {
             setWheelScrollingEnabled(false);
-            //setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
-
         }
         setViewportView(pane);
         setComponentZOrder(getVerticalScrollBar(), 0);
@@ -57,7 +57,6 @@ public class TranslucentScrollBar extends JScrollPane {
 
         this.scrollVisible = scrollVisible;
 
-        if(scrollVisible) executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
 
         getVerticalScrollBar().addMouseListener(new MouseListener() {
             @Override
@@ -76,6 +75,12 @@ public class TranslucentScrollBar extends JScrollPane {
             public void mouseReleased(MouseEvent e) {
                 lastInteraction = System.currentTimeMillis();
                 activeColor = hover;
+                if(scrollVisible) {
+                    if(executor!=null)
+                        executor.shutdown();
+                    executor = Executors.newScheduledThreadPool(1);
+                    executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
+                }
             }
 
             @Override
@@ -90,12 +95,25 @@ public class TranslucentScrollBar extends JScrollPane {
                 lastInteraction = System.currentTimeMillis();
                 activeColor = hover;
                 forceActive = false;
+                if(scrollVisible) {
+                    if(executor!=null)
+                        executor.shutdown();
+                    executor = Executors.newScheduledThreadPool(1);
+                    executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
+                }
             }
         });
 
         addMouseWheelListener(e -> {
             activeColor = dragging;
             lastInteraction = System.currentTimeMillis();
+
+            if(scrollVisible) {
+                if(executor!=null)
+                    executor.shutdown();
+                executor = Executors.newScheduledThreadPool(1);
+                executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
+            }
         });
 
         getViewport().addChangeListener(new ChangeListener() {
@@ -161,7 +179,7 @@ public class TranslucentScrollBar extends JScrollPane {
 
             @Override
             protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
-                if(!scrollVisible) return;
+                if(!scrollVisible || Main.writingZone.opacity != 1f) return;
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 JScrollBar sb = (JScrollBar) c;
@@ -189,16 +207,18 @@ public class TranslucentScrollBar extends JScrollPane {
     float t = 0;
     public void scrollTo(final float v) {
         Runnable doAssist = () -> {
+            if(exec!=null)
+            exec.shutdown();
             exec = Executors.newScheduledThreadPool(1);
             Main.scrollingSettings = true;
-            int target = (int) v*(getVerticalScrollBar().getMaximum()-getHeight());
             int start = getVerticalScrollBar().getValue();
+            int target = (int) v*(getVerticalScrollBar().getMaximum()-getHeight());
             t = 0;
             exec.scheduleAtFixedRate(() -> {
-                if(getVerticalScrollBar().getValue() != Math.abs(target-1)) {
+                if((getVerticalScrollBar().getValue() > target+1 && v==0) || (getVerticalScrollBar().getValue() < getVerticalScrollBar().getMaximum()-getHeight()-1 && start != getVerticalScrollBar().getMaximum()-getHeight())) {
                     if(v == 1) {
                         try {
-                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue((int)((1-Math.pow(Math.E,-.0005*Math.pow(t,.5) + -45*t*t*t))*target)));
+                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue(start + (int)((1-Math.pow(Math.E,-.00005*Math.pow(t,.5) + -55*t*t*t))*target)) );
                         } catch(InterruptedException | InvocationTargetException e) {
                             e.printStackTrace();
                         }
@@ -212,7 +232,7 @@ public class TranslucentScrollBar extends JScrollPane {
                 } else {
                     getVerticalScrollBar().setValue(target);
                     exec.shutdown();
-                    Main.scrollingSettings = false;
+                        Main.scrollingSettings = false;
                 }
                 t+=.005;
                 repaint();
