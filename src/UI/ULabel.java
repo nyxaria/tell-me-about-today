@@ -202,20 +202,15 @@ public class ULabel extends JLabel implements MouseListener {
                 break;
             case "x_transparent":
 
-                g2.setColor(Color.gray);
-//                g2.drawOval(5, 5, squareX - 10, squareX - 10);
-                g2.setColor(Color.lightGray);
+                if(mouseDown) g2.setColor(Color.white);
+                else g2.setColor(new Color(250,250,255,160 - (U.theme == U.Theme.Light ? 20 : 0)));
 
-                if(mouseDown) g2.setColor(Color.lightGray.darker());
-//                g2.fillOval(5, 5, squareX - 10, squareX - 10);
-                g2.setColor(new Color(200,200,200,200));
                 if(mouseOver) {
                     g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     int x = 2;
                     g2.drawLine(6-x, 6, squareX - 6-x, squareX - 6);
                     g2.drawLine(6-x, squareX - 6, squareX - 6-x, 6);
                 }
-
                 break;
             case "image_picture":
 

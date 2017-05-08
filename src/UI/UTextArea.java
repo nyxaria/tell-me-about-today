@@ -24,7 +24,6 @@ public class UTextArea extends JTextPane {
     private Style highlight;
     private Style highlight2;
 
-    Color highlightColor = new Color(168, 168, 168);
     int lastHighlighted;
     private boolean highlighted;
     ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
@@ -39,7 +38,7 @@ public class UTextArea extends JTextPane {
     public float opacity = 1f;
     public static float shadowOpacity = 0.8f;
 
-    public UTextArea(String file) {
+    public UTextArea() {
         setBackground(U.transparent);
         setFont(Global.plain.deriveFont((float) 13));
         undoManager = new UndoManager();
@@ -199,16 +198,13 @@ public class UTextArea extends JTextPane {
 
     public void setUpStyles() {
         int inverted = U.theme == U.Theme.Dark ? 0 : 168;
-//        removeStyle("highlight");
-//        removeStyle("highlight2");
-//        removeStyle("unhighlight");
         highlight = addStyle("highlight", null);
-        int val = Math.abs(inverted - 168);
+        int val = Math.abs(inverted - 158);
         StyleConstants.setForeground(highlight, new Color(val, val, val));
 
         highlight2 = addStyle("highlight2", null);
-        val = Math.abs(inverted - 192);
-        if(val != 192) val += 65;
+        val = Math.abs(inverted - 188);
+        if(val !=188) val += 65;
         StyleConstants.setForeground(highlight2, new Color(val,val,val));
 
         unhighlight = addStyle("unhighlight", null);
@@ -252,7 +248,6 @@ public class UTextArea extends JTextPane {
                     Main.taskScrollPane.scrollWidth = 0;
                 } else {
                     opacity += .03f;
-                    //Main.taskScrollPane.activeColor = new Color(Main.taskScrollPane.activeColor.getRed(), Main.taskScrollPane.activeColor.getGreen(), Main.taskScrollPane.activeColor.getBlue(), (int) (Main.taskScrollPane.unactive.getAlpha()*opacity));
                 }
                 repaint();
             }, 0, 100, TimeUnit.MILLISECONDS);
@@ -280,9 +275,6 @@ public class UTextArea extends JTextPane {
 
         super.paintComponent(g);
 
-        getParent().repaint();
-
-
-
+        //getParent().repaint();
     }
 }

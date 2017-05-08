@@ -7,10 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +26,8 @@ public class UTextField extends JTextPane {
     public int reminderIndex;
     public boolean isAddReminder;
     public JPanel borderWrap;
+    boolean once = true;
+    public boolean hover;
 
     public UTextField(String s, float fontSize, Color textColor, Color borderColor) {
 
@@ -56,23 +55,23 @@ public class UTextField extends JTextPane {
         setForeground(textColor);
         setDisabledTextColor(textColor);
 
-        if(U.theme == U.Theme.Light)
-            setSelectedTextColor(Color.white);
-        else
-            setSelectedTextColor(U.text);
-
         StyleContext sc = StyleContext.getDefaultStyleContext();
         UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, new Color(255, 255, 255));
-        if(U.theme == U.Theme.Light)
+
+        if(U.theme == U.Theme.Light) {
+            setSelectedTextColor(Color.white);
+            setSelectionColor(new Color(220, 220, 220, 135));
             UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(110, 110, 110, 205));
-        else
+        } else {
+            setSelectedTextColor(U.text);
+            setSelectionColor(new Color(180, 180, 180, 135));
             UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(180, 180, 180, 215));
+        }
 
         setBackground(U.tertiary);
         putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
         getDocument().putProperty("ZOOM_FACTOR", fontSize);
         setFont(Global.plain.deriveFont(fontSize));
-        setSelectionColor(new Color(180, 180, 180, 160));
         DefaultCaret dc = new DefaultCaret() {
             @Override
             public void paint(Graphics g) {
@@ -117,10 +116,22 @@ public class UTextField extends JTextPane {
             public void keyReleased(KeyEvent e) { resize(); }
         });
 
-        addFocusListener(new FocusListener() {
+        addMouseListener(new MouseAdapter() {
 
             @Override
+            public void mouseEntered(MouseEvent e) {
+                hover = true;
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                hover = false;
+            }
+        });
+        addFocusListener(new FocusListener() {
+            @Override
             public void focusGained(FocusEvent e) {
+                if(!hover) return;
                 if(getText().equals("add reminder") && wrap.opacity == .35f) {
                     wrap.setOpacity(1f);
                     Main.taskScrollPane.repaint();
@@ -165,7 +176,20 @@ public class UTextField extends JTextPane {
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                resize();
+                Runnable doAssist = () -> {
+                    if(once && !isAddReminder) {
+                        maxNumberOfCharacters++;
+                        wrap.setVisible(true);
+                        setText(getText() + " ");
+                        setText(getText().substring(0, getText().length() - 1));
+                        maxNumberOfCharacters--;
+                        wrap.checkbox.mouseReleased(null);
+                        wrap.checkbox.mouseReleased(null);
+                        once = false;
+                    }
+
+                };
+                SwingUtilities.invokeLater(doAssist);
                 if(wrap != null && wrap.listPane != null) {
                     wrap.listPane.expandingHeight = 2;
                     for(Component comp : wrap.listPane.getComponents()) {
@@ -179,15 +203,19 @@ public class UTextField extends JTextPane {
                             if(wrap.opacity + .01f > 1f) {
                                 wrap.setOpacity(1f);
                                 executor.shutdown();
+
                             } else if(getText().equals("add reminder") && wrap.opacity >= .35f) {
                                 wrap.setOpacity(.35f);
                                 executor.shutdown();
+
                             } else {
+
                                 wrap.setOpacity(wrap.opacity + .01f);
                             }
 
                         };
                         executor.scheduleAtFixedRate(r, 0, 17, TimeUnit.MILLISECONDS);
+
                     }
 
                 }
@@ -208,7 +236,9 @@ public class UTextField extends JTextPane {
         if(lineCount != countLines() && countLines() != 0) {
             int delta = countLines() - lineCount;
             lineCount = countLines();
+
             wrap.setPreferredSize(new Dimension(wrap.getWidth(), wrap.getPreferredSize().height + (14 * delta)));
+
             if(wrap.listPane != null) {
                 wrap.listPane.expandingHeight += delta * 14;
                 wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));

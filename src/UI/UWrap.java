@@ -13,6 +13,7 @@ public class UWrap extends UPanel {
     public UPanel listPane;
     private int delta = 0;
     public ULabel date;
+    public UCheckBox checkbox;
 
     public UWrap(BorderLayout layout, Color shadowColor, int shadowSize, float shadowOpacity, int cornerSize, boolean showTopShadow, boolean showLeftShadow, boolean showBottomShadow, boolean showRightShadow) {
         super(layout, shadowColor, shadowSize, shadowOpacity, cornerSize, showTopShadow, showLeftShadow, showBottomShadow, showRightShadow);

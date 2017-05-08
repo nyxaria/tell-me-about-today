@@ -215,7 +215,7 @@ public class Main {
 
         UPanel centerPane = new UPanel(new BorderLayout());
 
-        writingZone = new UTextArea("");
+        writingZone = new UTextArea();
 
         if(U.theme == Theme.Dark)
             U.dark();
@@ -269,7 +269,7 @@ public class Main {
         Main.mainPane.add(navBarPane, BorderLayout.NORTH);
         Main.mainPane.add(centerPane, BorderLayout.CENTER);
         taskList.setPreferredSize(new Dimension(taskList.getPreferredSize().width, 0));
-        taskScrollPane.setPreferredSize(new Dimension(taskList.getPreferredSize().width, (mainFrame.getHeight() - navBarPane.getPreferredSize().height)*3/5));
+        taskScrollPane.setPreferredSize(new Dimension(taskList.getPreferredSize().width, (mainFrame.getHeight() - navBarPane.getPreferredSize().height)));
         mainFrame.setVisible(true);
 
         leftPane.setPreferredSize(new Dimension((int) leftPane.getPreferredSize().getWidth(), size));
@@ -287,14 +287,14 @@ public class Main {
         String htmlPrefix = "<html><body style='text-align:left;width: ";
 
         for(int i = 0; i < TimeUnit.DAYS.convert(new Date().getTime() - Global.dateCreated.getTime(), TimeUnit.MILLISECONDS) + 1; i++) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
             Calendar c = Calendar.getInstance();
             c.setTime(new Date());
             c.add(Calendar.DATE, -i);  // number of days to add
             UWrap wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, false, true, true, true);
             activeWraps.add(wrap);
-            if(new File(data + sdf.format(c.getTime()) + ".txt").exists()) {
-                Day day = new Day(sdf.format(c.getTime()), writingZone);
+            if(new File(data + new SimpleDateFormat("dd-MM-yyyy").format(c.getTime()) + ".txt").exists()) {
+                Day day = new Day(format(c.getTime()), writingZone);
                 activeDays.add(day);
                 String text = "";
                 String[] cont = day.text.split("\n");
@@ -326,14 +326,14 @@ public class Main {
                     date.setVerticalAlignment(SwingConstants.TOP);
                     date.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 8));
                     title = new ULabel(htmlPrefix + (wrapTextWidth - 5) + "px'>" + titleText.trim().replace(".", ".<wbr>"), Size.Smaller, U.Shape.Normal, false, Style.Plain);
-                } else if(format(new Date()).equals(sdf.format(c.getTime()))) { //+"Today - "
+                } else if(format(new Date()).equals(format(c.getTime()))) { //+"Today - "
                     date = new ULabel("Today", Size.Tiny, U.Shape.Normal, false, Style.Plain);
                     date.setVerticalAlignment(SwingConstants.TOP);
                     date.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 8));
                     title = new ULabel(htmlPrefix + (wrapTextWidth - 5) + "px'>" + titleText.trim().replace(".", ".<wbr>"), Size.Smaller, U.Shape.Normal, false, Style.Plain);
                 } else {
-                    String[] dateData = sdf.format(c.getTime()).split("-");
-                    String dateFormatted = (dateData[(Global.americanFormat ? 1:0)].startsWith("0") ? dateData[(Global.americanFormat ? 1:0)].replace("0", "") : dateData[(Global.americanFormat ? 1:0)]) + Day.getDayOfMonthSuffix(Integer.parseInt(dateData[(Global.americanFormat ? 1:0)]) + 1) + " of " + new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[(Global.americanFormat ? 0:1)]) - 1];
+                    String[] dateData = format(c.getTime()).split("-");
+                    String dateFormatted = new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1] + " " + (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0]) + Day.getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1) ;
                     date = new ULabel(dateFormatted, Size.Tiny, U.Shape.Normal, false, Style.Plain);
                     date.setVerticalAlignment(SwingConstants.TOP);
                     date.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 7));
@@ -415,7 +415,7 @@ public class Main {
                 wrap.content = content;
                 day.wrap = wrap;
 
-            } else if(sdf.format(c.getTime()).equals(format(new Date()))) {
+            } else if(new SimpleDateFormat("dd-MM-yyyy").format(c.getTime()).equals(new SimpleDateFormat("dd-MM-yyyy").format(new Date()))) {
                 ULabel date = new ULabel("Today", Size.Tiny, U.Shape.Normal, false, Style.Plain);
                 wrap.date = date;
                 date.setVerticalAlignment(SwingConstants.TOP);
@@ -445,7 +445,7 @@ public class Main {
                 topWrap.setOpaque(false);
                 wrap.add(topWrap, BorderLayout.NORTH);
                 titleWrap.setOpaque(false);
-                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth()/7%2), title.getPreferredSize().height +  25));
+                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth()/7%2), title.getPreferredSize().height +  24));
                 leftPane.add(wrap);
 
                 boolean inverted = U.theme == Theme.Dark;
@@ -505,15 +505,15 @@ public class Main {
             wrap.setOpaque(false);
 
             //          x create updatable tasks,
-            //            add task function
-            //            command line esque
+            //          x add task function
             //          x settings button in tool bar
             //            add daily plan top right
+            //            add basic formatting
 
             wrap.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             wrap.setBackground(secondary);
             wrap.setAlignmentX(Component.LEFT_ALIGNMENT);
-            wrap.setName(sdf.format(c.getTime()));
+            wrap.setName(format(c.getTime()));
         }
     }
 

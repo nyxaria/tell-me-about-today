@@ -10,9 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-/**
- * Created by gedr on 26/03/2017.
- */
 public class UTaskList extends UPanel {
 
     public ArrayList<UCheckBox> checkboxes;
@@ -31,7 +28,7 @@ public class UTaskList extends UPanel {
         setLayout(layout);
         for(int i = 0; i < reminders.size(); i++) //foreach throws concurrentmodificationexception for some reason - something to do with implementation of lambda?
             addField(reminders.get(i));
-//
+        //
         Main.settingUp = false;
 
     }
@@ -65,10 +62,11 @@ public class UTaskList extends UPanel {
 
         content.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 Main.activeDay.reminders.add(content.reminderIndex, (checkbox.checked ? "y" : "n") + content.getText());
                 Main.activeDay.reminders.remove(content.reminderIndex + 1);
             }
+
         });
 
         wrap.add(checkBoxWrap, BorderLayout.WEST);
@@ -80,12 +78,8 @@ public class UTaskList extends UPanel {
         wrap.setBackground(new Color(48, 48, 52, 0));
 
         wrap.setOpacity(0);
-
-        Runnable doAssist = () -> {
-            checkbox.mouseReleased(null);
-            checkbox.mouseReleased(null);
-        };
-        SwingUtilities.invokeLater(doAssist);
+        wrap.setVisible(false);
+        wrap.checkbox = checkbox;
         JPanel layer = new JPanel();
         layer.setLayout(new OverlayLayout(layer));
         layer.setOpaque(false);
@@ -114,7 +108,7 @@ public class UTaskList extends UPanel {
 
                 remove(layer);
                 repaint();
-
+                Main.activeDay.save();
             }
         });
 
@@ -122,11 +116,11 @@ public class UTaskList extends UPanel {
 
         content.borderWrap = borderWrap;
         layer.add(wrap);
-        System.out.println(reminder);
 
         if(reminder.trim().equals("nadd reminder")) {
             content.isAddReminder = true;
             borderWrap.setVisible(false);
+            wrap.setVisible(true);
         }
         add(layer);
     }

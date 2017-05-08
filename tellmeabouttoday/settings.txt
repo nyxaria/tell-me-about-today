@@ -1,7 +1,7 @@
-created=07-05-2017
+created=02-05-2017
 reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and write about your day`nSpeak to one stranger`nChores`nother stuff`nadd reminder
-theme=Dark
+theme=Light
 titleTemplate=Title
 dateTemplate=day, ddsuffix month year
 textTemplate=What did you get up to today?
-dateFormat=dd-MM-yyyy
+dateFormat=MM-dd-yyyy

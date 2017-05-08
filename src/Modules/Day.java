@@ -99,13 +99,14 @@ public class Day {
         if(!new File(U.data + date + ".txt").exists()) { //creating for the first time
             try(PrintWriter out = new PrintWriter(U.data + date + ".txt")) {
                 String[] dateData = date.split("-");
-                String dateFormatted = Global.dateTemplate.replace("dd", (dateData[(Global.americanFormat ? 1:0)].startsWith("0") ? dateData[(Global.americanFormat ? 1:0)].replace("0", "") : dateData[(Global.americanFormat ? 1:0)])).
-                        replace("MM", dateData[(Global.americanFormat ? 0:1)]).
+                String dateFormatted = Global.dateTemplate.replace("dd", (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0])).
+                        replace("MM", dateData[1]).
                         replace("yyyy", dateData[2]).
+                        replace("year", dateData[2]).
                         replace("YY", dateData[2].substring(dateData[2].length()-2, dateData[2].length())).
                         replace("day",  day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1]).
-                        replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[(Global.americanFormat ? 0:1)]) - 1]).
-                        replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[(Global.americanFormat ? 1:0)]) + 1));
+                        replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1]).
+                        replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1));
 
                 out.print("text=" + dateFormatted + "\n"+Global.titleTemplate+"\n\n"+Global.textTemplate+"|reminders=" + Global.reminderTemplate);
             }

@@ -21,7 +21,7 @@ public class SettingsPane extends UPanel {
         ((FlowLayout) getLayout()).setVgap(0);
         ((FlowLayout) getLayout()).setHgap(0);
         String htmlPrefix = "<html><body style='text-align:left;width: ";
-        Color background = U.theme == U.Theme.Light ? new Color(48, 48, 48) : new Color(240,240,240);
+        Color background = U.theme == U.Theme.Light ? new Color(48, 48, 48) : new Color(240, 240, 240);
         int wrapTextWidth = getWidth() * 3 / 5 - 30;
         for(String setting : settings) {
             UWrap wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, true, true, true, true);
@@ -43,10 +43,9 @@ public class SettingsPane extends UPanel {
                     defaultVal = Global.textTemplate;
                     break;
                 case "American Date Format":
-                    defaultVal = Global.americanFormat ? "y" : "n";
                     UCheckBox checkbox = new UCheckBox();
 
-                    checkbox.checked = defaultVal.charAt(0) == 'y';
+                    checkbox.checked = Global.americanFormat;
 
                     checkbox.setPreferredSize(new Dimension(16, 16));
                     checkbox.setBorder(BorderFactory.createEmptyBorder(0, 3, 0, 3));
@@ -66,19 +65,18 @@ public class SettingsPane extends UPanel {
                     checkbox.setName(setting);
                     checkbox.wrap = wrap;
                     wrap.title = description;
-
+                    checkbox.inverted(true);
 
             }
-            UTextField content = new UTextField("", 11f, U.theme == U.Theme.Light ? Color.white : new Color(58,58,58), new Color(0, 0, 0, 0));
-
+            UTextField content = new UTextField("", 11f, U.theme == U.Theme.Light ? Color.white : new Color(58, 58, 58), new Color(0, 0, 0, 0));
 
             if(!setting.equals("American Date Format")) {
-                content.setContentType( "text" );
+                content.setContentType("text");
                 wrap.listPane = this;
                 content.wrap = wrap;
 
                 try {
-                    content.getDocument().insertString(0,defaultVal,null);
+                    content.getDocument().insertString(0, defaultVal, null);
                 } catch(BadLocationException e) {
                     e.printStackTrace();
                 }
@@ -89,7 +87,7 @@ public class SettingsPane extends UPanel {
 
                 wrap.add(content, BorderLayout.CENTER);
                 int lineCount = Global.countOccurrences(defaultVal, "\n");
-                content.lineCount = lineCount +1;
+                content.lineCount = lineCount + 1;
                 content.setPreferredSize(new Dimension(getWidth(), 16 * lineCount - 1));
                 //content.setFont(Global.plain.deriveFont((float) 11));
                 wrap.opacity = 1f;
@@ -128,20 +126,22 @@ public class SettingsPane extends UPanel {
     public void updateSettings() {
         for(JComponent comp : dataFields) {
             comp.setEnabled(false);
-                switch(comp.getName()) {
-                    case "Default Reminders":
-                        Global.reminderTemplate = "n" + ((UTextField) comp).getText().trim().replaceAll("\n", "`n") + "`nadd reminder";
-                        break;
-                    case "Title Template":
-                        Global.titleTemplate = ((UTextField) comp).getText();
-                        break;
-                    case "Text Template":
-                        Global.textTemplate = ((UTextField) comp).getText();
-                        break;
-                    case "American Date Format":
-                        Global.americanFormat = ((UCheckBox) comp).checked;
-                        break;
-                }
+            switch(comp.getName()) {
+                case "Default Reminders":
+                    Global.reminderTemplate = "n" + ((UTextField) comp).getText().trim().replaceAll("\n", "`n") + "`nadd reminder";
+                    break;
+                case "Title Template":
+                    Global.titleTemplate = ((UTextField) comp).getText();
+                    break;
+                case "Text Template":
+                    Global.textTemplate = ((UTextField) comp).getText();
+                    break;
+                case "American Date Format":
+                    Global.americanFormat = ((UCheckBox) comp).checked;
+                    if(Global.americanFormat) Global.dateFormat = "MM-dd-yyyy";
+                    else Global.dateFormat = "dd-MM-yyyy";
+                    break;
+            }
         }
         Global.writeSettings();
     }

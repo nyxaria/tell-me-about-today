@@ -133,8 +133,8 @@ public class U {
                 check.content.setBackground(tertiary);
                 if(check.content.wrap.opacity==1f)
                     check.content.setForeground(new Color(255, 255, 255));
-                check.content.setSelectedTextColor(Color.white);
-
+                check.content.setSelectedTextColor(new Color(255,255,255));
+                check.content.setSelectionColor(new Color(220,220,220,135));
                 StyleContext sc = StyleContext.getDefaultStyleContext();
                 UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, new Color(255, 255, 255));
                 UTextField.strike = sc.addAttribute(SimpleAttributeSet.EMPTY, "strike-color", new Color(110,110,110, 205));
