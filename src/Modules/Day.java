@@ -26,6 +26,8 @@ public class Day {
     public String text;
     public ArrayList<String> reminders;
     public UWrap wrap;
+    private boolean creating;
+    public String plainText;
 
     public Day(String date, UTextArea writingZone) {
         this.date = date;
@@ -41,43 +43,53 @@ public class Day {
 
         textArea.setText("");
         textArea.initialising = true;
-        //textArea.setDocument(new DefaultStyledDocument());
+        if(new File(U.data + date + ".txt").exists()) {
+            textArea.loadText(text);
+        } else {
+            String[] dateData = date.split("-");
+            String dateFormatted = Global.dateTemplate.replace("dd", (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0])).
+                    replace("MM", dateData[1]).
+                    replace("yyyy", dateData[2]).
+                    replace("year", dateData[2]).
+                    replace("YY", dateData[2].substring(dateData[2].length() - 2, dateData[2].length())).
+                    replace("day", day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1]).
+                    replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1]).
+                    replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1));
+            SimpleAttributeSet center = new SimpleAttributeSet();
+            StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
 
-        String[] lines = text.split("\n");
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+            SimpleAttributeSet right = new SimpleAttributeSet();
+            StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT);
 
-        SimpleAttributeSet right = new SimpleAttributeSet();
-        StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT);
+            SimpleAttributeSet left = new SimpleAttributeSet();
+            StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT);
 
-        SimpleAttributeSet left = new SimpleAttributeSet();
-        StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT);
-
-        StyledDocument doc = textArea.getStyledDocument();
-        try {
-            if(lines.length > 0) {
-                doc.insertString(doc.getLength(), lines[0] + "\n", null);
+            StyledDocument doc = textArea.getStyledDocument();
+            try {
+                doc.insertString(doc.getLength(), dateFormatted + "\n", null);
                 doc.setParagraphAttributes(0, doc.getLength(), right, false);
-            }
-            if(lines.length > 1) {
-                doc.insertString(doc.getLength(), "" + lines[1] + "", null);
+
+                doc.insertString(doc.getLength(), "" + Global.titleTemplate + "", null);
                 doc.setParagraphAttributes(doc.getLength(), 1, center, false);
-                doc.insertString(doc.getLength(), "\n\n", null);
-            }
+                doc.insertString(doc.getLength(), "\n", null);
 
-            if(lines.length > 3) {
-                doc.setParagraphAttributes(doc.getLength(), 3, left, false);
-                for(int i = 3; i < lines.length; i++) {
-                    doc.insertString(doc.getLength(), lines[i] + (i != lines.length - 1 ? "\n" : ""), null);
-                }
+                doc.setParagraphAttributes(doc.getLength(), 2, left, false);
+                doc.insertString(doc.getLength(), Global.textTemplate, null);
+            } catch(BadLocationException e) {
+                e.printStackTrace();
             }
-        } catch(BadLocationException e) {
-            e.printStackTrace();
+            textArea.updated();
+            text = textArea.getStyledText();
+            plainText = textArea.getText();
+            reminders = new ArrayList(Arrays.asList(Global.reminderTemplate.split("`")));
+            save();
+
+            SimpleAttributeSet aSet = new SimpleAttributeSet();
+            StyleConstants.setLineSpacing(aSet, 1);
+            doc.setParagraphAttributes(0, doc.getLength(), aSet, false);
+
         }
-        textArea.updated();
         textArea.initialising = false;
-
-
 
     }
 
@@ -88,30 +100,14 @@ public class Day {
                 remindersFormatted += s + "`";
             }
             remindersFormatted = remindersFormatted.substring(0, remindersFormatted.length() - 1);
-            out.print("text=" + text + "|reminders=" + remindersFormatted);
-            //System.out.println(text);
+            out.print("text=" + text + "|ptext=" + plainText + "|reminders=" + remindersFormatted);
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public void initialize() throws IOException {
-        if(!new File(U.data + date + ".txt").exists()) { //creating for the first time
-            try(PrintWriter out = new PrintWriter(U.data + date + ".txt")) {
-                String[] dateData = date.split("-");
-                String dateFormatted = Global.dateTemplate.replace("dd", (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0])).
-                        replace("MM", dateData[1]).
-                        replace("yyyy", dateData[2]).
-                        replace("year", dateData[2]).
-                        replace("YY", dateData[2].substring(dateData[2].length()-2, dateData[2].length())).
-                        replace("day",  day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1]).
-                        replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1]).
-                        replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1));
-
-                out.print("text=" + dateFormatted + "\n"+Global.titleTemplate+"\n\n"+Global.textTemplate+"|reminders=" + Global.reminderTemplate);
-            }
-            initialize();
-        } else {
+        if(new File(U.data + date + ".txt").exists()) {
             try(BufferedReader br = new BufferedReader(new FileReader(U.data + date + ".txt"))) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
@@ -130,6 +126,9 @@ public class Day {
                         case "text":
                             text = data;
                             break;
+                        case "ptext":
+                            plainText = data;
+                            break;
                         case "reminders":
                             reminders = new ArrayList(Arrays.asList(data.split("`")));
                     }
@@ -138,7 +137,6 @@ public class Day {
             //textArea.setText(text);
         }
         Main.activeDays.add(this);
-        textArea.updated();
     }
 
     static String getDayOfMonthSuffix(int n) {

@@ -45,7 +45,7 @@ public class UWrap extends UPanel {
 
         String[] cont = text.split("\n");
         text = "";
-        int index = 3;
+        int index = 2;
         if(cont.length > index) {
             while(text.equals("")) {
                 text = cont[index++];

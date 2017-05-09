@@ -10,5 +10,6 @@
     <orderEntry type="library" name="swingx-0.9.3" level="project" />
     <orderEntry type="library" name="SonarLint" level="project" />
     <orderEntry type="library" name="net.coobird:thumbnailator:0.4.8" level="project" />
+    <orderEntry type="library" name="rtfkit_nosrc" level="project" />
   </component>
 </module>

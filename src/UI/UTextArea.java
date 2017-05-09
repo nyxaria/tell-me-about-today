@@ -1,14 +1,22 @@
 package UI;
 
 import Modules.Main;
+import rtf.AdvancedRTFDocument;
+import rtf.AdvancedRTFEditorKit;
 
 import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditListener;
 import javax.swing.text.*;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -42,13 +50,10 @@ public class UTextArea extends JTextPane {
         setBackground(U.transparent);
         setFont(Global.plain.deriveFont((float) 13));
         undoManager = new UndoManager();
-
         setBorder(BorderFactory.createEmptyBorder(2, 14, 2, 6));
-        document = new DefaultStyledDocument();
+        document = new AdvancedRTFDocument();
         setStyledDocument(document);
-
         putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
-
 
         document.addDocumentListener(new DocumentListener() {
             @Override
@@ -61,8 +66,11 @@ public class UTextArea extends JTextPane {
                 SwingUtilities.invokeLater(doAssist);
             }
 
-            @Override public void removeUpdate(DocumentEvent e) {}
-            @Override public void changedUpdate(DocumentEvent e) {}
+            @Override
+            public void removeUpdate(DocumentEvent e) {}
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {}
         });
 
         document.addUndoableEditListener(undoableListner);
@@ -132,18 +140,18 @@ public class UTextArea extends JTextPane {
 
         addMouseListener(new MouseAdapter() {
             int pos = 0;
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getClickCount() == 1)
-                    pos = getCaretPosition();
-                if (e.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(e)) {
+                if(e.getClickCount() == 1) pos = getCaretPosition();
+                if(e.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(e)) {
                     int selectionStart = 0, selectionEnd = getText().length();
-                    for(int start = pos; start > 0; start --) {
+                    for(int start = pos; start > 0; start--) {
                         if(getText().charAt(start) == '\n' && selectionStart == 0) {
                             selectionStart = start;
                         }
                     }
-                    for(int start = pos; start < getText().length(); start ++) {
+                    for(int start = pos; start < getText().length(); start++) {
                         if(getText().charAt(start) == '\n' && selectionEnd == getText().length()) {
                             selectionEnd = start;
                         }
@@ -158,7 +166,6 @@ public class UTextArea extends JTextPane {
         am.put("Undo", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
                 if(!undoManager.canUndo()) return;
                 try {
@@ -181,18 +188,18 @@ public class UTextArea extends JTextPane {
             }
         });
 
-
         addKeyListener(new KeyListener() {
 
-            @Override public void keyTyped(KeyEvent ke) {}
+            @Override
+            public void keyTyped(KeyEvent ke) {}
 
             @Override
             public void keyReleased(KeyEvent ke) {
-                if(getText()!=null && Main.activeDay!=null)
-                    Main.activeDay.wrap.updateText(getText());
+                if(getText() != null && Main.activeDay != null) Main.activeDay.wrap.updateText(getText());
             }
 
-            @Override public void keyPressed(KeyEvent evt) {}
+            @Override
+            public void keyPressed(KeyEvent evt) {}
         });
     }
 
@@ -204,8 +211,8 @@ public class UTextArea extends JTextPane {
 
         highlight2 = addStyle("highlight2", null);
         val = Math.abs(inverted - 188);
-        if(val !=188) val += 65;
-        StyleConstants.setForeground(highlight2, new Color(val,val,val));
+        if(val != 188) val += 65;
+        StyleConstants.setForeground(highlight2, new Color(val, val, val));
 
         unhighlight = addStyle("unhighlight", null);
         StyleConstants.setForeground(unhighlight, U.text);
@@ -219,9 +226,11 @@ public class UTextArea extends JTextPane {
         int selectionStart = getSelectionStart();
         int selectionEnd = getSelectionEnd();
         int caretPos = getCaretPosition();
+
         for(int i = 0; i < getText().length(); i++) {
+            AttributeSet old = getStyledDocument().getCharacterElement(i).getAttributes();
             getStyledDocument().setCharacterAttributes(i, 1, getStyle("highlight"), true);
-            getStyledDocument().setCharacterAttributes(i, 1, getStyle("textColor"), true);
+            getStyledDocument().setCharacterAttributes(i, 1, old, true);
         }
         document.addUndoableEditListener(undoableListner);
 
@@ -229,6 +238,36 @@ public class UTextArea extends JTextPane {
         setSelectionStart(selectionStart);
         setSelectionEnd(selectionEnd);
         requestFocus();
+    }
+
+    public void loadText(String text) {
+        AdvancedRTFEditorKit editor = new AdvancedRTFEditorKit();
+        //setEditorKit(editor);
+        //        InputStream inputStream = new FileInputStream(_helpFile);
+        StringReader builder = new StringReader(text);
+        try {
+            editor.read(builder, getDocument(), 0);
+        } catch(IOException | BadLocationException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String getStyledText() {
+        if(getText().length() > 0) {
+
+            AdvancedRTFEditorKit editor = new AdvancedRTFEditorKit();
+            Writer writer = new StringWriter();
+            try {
+                editor.write(writer, getStyledDocument(), 0, getStyledDocument().getLength());
+                writer.close();
+            } catch(IOException | BadLocationException e) {
+                e.printStackTrace();
+            }
+            return writer.toString();
+        } else {
+            return "";
+        }
     }
 
     public void start() {
@@ -246,6 +285,7 @@ public class UTextArea extends JTextPane {
                     executor.shutdown();
                     Main.taskScrollPane.activeColor = TranslucentScrollBar.unactive;
                     Main.taskScrollPane.scrollWidth = 0;
+
                 } else {
                     opacity += .03f;
                 }
@@ -254,27 +294,26 @@ public class UTextArea extends JTextPane {
 
         };
         SwingUtilities.invokeLater(doAssist);
+
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
 
-
         g.setColor(U.primary);
-        g.fillRect(0,0,getWidth(),getHeight());
-        GradientPaint paint = new GradientPaint(0, 0, new Color(26, 26,26, (int) (255*shadowOpacity)), 5, 0, new Color(0, 0, 0, 0));
+        g.fillRect(0, 0, getWidth(), getHeight());
+        GradientPaint paint = new GradientPaint(0, 0, new Color(26, 26, 26, (int) (255 * shadowOpacity)), 5, 0, new Color(0, 0, 0, 0));
         g2.setPaint(paint);
         g2.fillRect(0, 0, 5, getHeight());
 
-        paint = new GradientPaint(getWidth() - 5, 0,new Color(0, 0, 0, 0) , getWidth(), 0, new Color(26, 26,26, (int) (255*shadowOpacity)));
+        paint = new GradientPaint(getWidth() - 5, 0, new Color(0, 0, 0, 0), getWidth(), 0, new Color(26, 26, 26, (int) (255 * shadowOpacity)));
         g2.setPaint(paint);
         g2.fillRect(getWidth() - 5, 0, 5, getHeight());
 
         ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
 
         super.paintComponent(g);
-
-        //getParent().repaint();
     }
 }

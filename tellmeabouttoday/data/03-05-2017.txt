@@ -1,4 +1,0 @@
-text=Monday, 3rd May 2017
-Title
-
-What did you get up to today?|reminders=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and write about your day`nSpeak to one stranger`nadd reminder

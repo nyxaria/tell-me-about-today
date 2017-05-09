@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2b454c1-fd98-45e3-9126-e3287f8f058c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tellmeabouttoday/data/08-05-2017.txt" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/rtfkit_nosrc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tellmeabouttoday/data/03-05-2017.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Day.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Day.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$6.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$7.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$8.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/Modules/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/MyLabelView.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/MyLabelView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/NewViewFactory.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/NewViewFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/SettingsPane.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/SettingsPane.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/TranslucentScrollBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/U.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UCheckBox.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UCheckBox.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/ULabel.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/ULabel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTaskList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$2.class" />
@@ -21,25 +22,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$6.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextArea.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$1.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$2.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$3.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$4.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$5.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$6.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UTextField.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UWrap.class" afterPath="$PROJECT_DIR$/out/production/tellmeabouttoday/UI/UWrap.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modules/Day.java" afterPath="$PROJECT_DIR$/src/Modules/Day.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modules/Main.java" afterPath="$PROJECT_DIR$/src/Modules/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/SettingsPane.java" afterPath="$PROJECT_DIR$/src/UI/SettingsPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/U.java" afterPath="$PROJECT_DIR$/src/UI/U.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UCheckBox.java" afterPath="$PROJECT_DIR$/src/UI/UCheckBox.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/ULabel.java" afterPath="$PROJECT_DIR$/src/UI/ULabel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTaskList.java" afterPath="$PROJECT_DIR$/src/UI/UTaskList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTextArea.java" afterPath="$PROJECT_DIR$/src/UI/UTextArea.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UTextField.java" afterPath="$PROJECT_DIR$/src/UI/UTextField.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UI/UWrap.java" afterPath="$PROJECT_DIR$/src/UI/UWrap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tellmeabouttoday.iml" afterPath="$PROJECT_DIR$/tellmeabouttoday.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tellmeabouttoday/settings.txt" afterPath="$PROJECT_DIR$/tellmeabouttoday/settings.txt" />
     </list>
     <ignored path="tellmeabouttoday.iws" />
@@ -66,12 +56,27 @@
         <entry file="file://$PROJECT_DIR$/src/Modules/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="510" column="46" selection-start-line="510" selection-start-column="46" selection-end-line="510" selection-end-column="46" />
+              <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#3734:4090" expanded="false" />
-                <element signature="e#23788#23789#0" expanded="true" />
-                <element signature="e#23858#23859#0" expanded="true" />
+                <element signature="class#3854:4210" expanded="false" />
+                <element signature="e#24162#24163#0" expanded="true" />
+                <element signature="e#24232#24233#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTextArea.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+              <folding>
+                <element signature="class#1836:2353" expanded="false" />
+                <element signature="class#3377:3640" expanded="false" />
+                <element signature="class#6108:6456" expanded="false" />
+                <element signature="class#6486:6832" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -94,8 +99,10 @@
         <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
-              <folding />
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -114,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
+              <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -143,39 +150,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Day.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Day.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Modules/Day.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.293542">
+              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UTextField.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UTextField.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7221135">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="181" column="24" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
               <folding>
                 <element signature="class#2626:3463" expanded="false" />
                 <element signature="e#3980#3981#0" expanded="true" />
                 <element signature="e#4024#4025#0" expanded="true" />
                 <element signature="e#4099#4100#0" expanded="true" />
                 <element signature="e#4144#4145#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="U.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/U.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="136" column="73" selection-start-line="136" selection-start-column="73" selection-end-line="136" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -210,17 +205,17 @@
         <option value="$PROJECT_DIR$/src/UI/SettingsPopup.java" />
         <option value="$PROJECT_DIR$/src/UI/TranslucentScrollBar.java" />
         <option value="$PROJECT_DIR$/src/UI/UPanel.java" />
-        <option value="$PROJECT_DIR$/src/UI/UTextArea.java" />
         <option value="$PROJECT_DIR$/src/UI/U.java" />
         <option value="$PROJECT_DIR$/src/UI/ULabel.java" />
-        <option value="$PROJECT_DIR$/src/UI/UWrap.java" />
         <option value="$PROJECT_DIR$/src/UI/UCheckBox.java" />
         <option value="$PROJECT_DIR$/src/UI/SettingsPane.java" />
         <option value="$PROJECT_DIR$/src/UI/Global.java" />
-        <option value="$PROJECT_DIR$/src/Modules/Main.java" />
-        <option value="$PROJECT_DIR$/src/Modules/Day.java" />
-        <option value="$PROJECT_DIR$/src/UI/UTaskList.java" />
+        <option value="$PROJECT_DIR$/src/UI/UWrap.java" />
         <option value="$PROJECT_DIR$/src/UI/UTextField.java" />
+        <option value="$PROJECT_DIR$/src/UI/UTaskList.java" />
+        <option value="$PROJECT_DIR$/src/Modules/Main.java" />
+        <option value="$PROJECT_DIR$/src/UI/UTextArea.java" />
+        <option value="$PROJECT_DIR$/src/Modules/Day.java" />
       </list>
     </option>
   </component>
@@ -368,7 +363,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/rtfkit_nosrc.jar!/" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -744,9 +739,9 @@
           <caret line="126" column="40" selection-start-line="126" selection-start-column="40" selection-end-line="126" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#3734:4090" expanded="false" />
-            <element signature="e#23788#23789#0" expanded="true" />
-            <element signature="e#23858#23859#0" expanded="true" />
+            <element signature="class#3854:4210" expanded="false" />
+            <element signature="e#24162#24163#0" expanded="true" />
+            <element signature="e#24232#24233#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,9 +804,9 @@
           <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#3734:4090" expanded="false" />
-            <element signature="e#23788#23789#0" expanded="true" />
-            <element signature="e#23858#23859#0" expanded="true" />
+            <element signature="class#3854:4210" expanded="false" />
+            <element signature="e#24162#24163#0" expanded="true" />
+            <element signature="e#24232#24233#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1046,20 +1041,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="277" column="10" selection-start-line="277" selection-start-column="10" selection-end-line="277" selection-end-column="10" />
-          <folding>
-            <element signature="class#1565:2057" expanded="false" />
-            <element signature="class#3081:3344" expanded="false" />
-            <element signature="class#4725:5803" expanded="false" />
-            <element signature="class#5834:6183" expanded="false" />
-            <element signature="class#6213:6559" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/U.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1081,13 +1062,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UCheckBox.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
+          <caret line="181" column="24" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
           <folding>
-            <element signature="e#3483#3484#0" expanded="true" />
-            <element signature="e#3511#3512#0" expanded="true" />
+            <element signature="class#2626:3463" expanded="false" />
+            <element signature="e#3980#3981#0" expanded="true" />
+            <element signature="e#4024#4025#0" expanded="true" />
+            <element signature="e#4099#4100#0" expanded="true" />
+            <element signature="e#4144#4145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1095,7 +1079,25 @@
     <entry file="file://$PROJECT_DIR$/src/UI/Global.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
+          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1103,29 +1105,26 @@
     <entry file="file://$PROJECT_DIR$/src/Modules/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="510" column="46" selection-start-line="510" selection-start-column="46" selection-end-line="510" selection-end-column="46" />
+          <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#3734:4090" expanded="false" />
-            <element signature="e#23788#23789#0" expanded="true" />
-            <element signature="e#23858#23859#0" expanded="true" />
+            <element signature="class#3854:4210" expanded="false" />
+            <element signature="e#24162#24163#0" expanded="true" />
+            <element signature="e#24232#24233#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modules/Day.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/UTextArea.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UWrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding />
+          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding>
+            <element signature="class#1836:2353" expanded="false" />
+            <element signature="class#3377:3640" expanded="false" />
+            <element signature="class#6108:6456" expanded="false" />
+            <element signature="class#6486:6832" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1137,25 +1136,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UTaskList.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/UCheckBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
-          <folding />
+          <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
+          <folding>
+            <element signature="e#3483#3484#0" expanded="true" />
+            <element signature="e#3511#3512#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UTextField.java">
+    <entry file="file://$PROJECT_DIR$/src/Modules/Day.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7221135">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="class#2626:3463" expanded="false" />
-            <element signature="e#3980#3981#0" expanded="true" />
-            <element signature="e#4024#4025#0" expanded="true" />
-            <element signature="e#4099#4100#0" expanded="true" />
-            <element signature="e#4144#4145#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="1.293542">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1195,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>1.8 (1)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1235,7 +1231,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>net.coobird:thumbnailator:0.4.8</last-edited>
+          <last-edited>rtfkit_nosrc</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

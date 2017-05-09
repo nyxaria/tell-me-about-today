@@ -4,8 +4,11 @@ import UI.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -256,9 +259,14 @@ public class Main {
 
         leftPane.setPreferredSize(new Dimension((int) screen.getWidth()/7 - 20, size + 1));
 
-        UPanel mainPane = new UPanel(new BorderLayout());
+        UPanel mainPane = new UPanel();
+        mainPane.setLayout(new OverlayLayout(mainPane));
 
-        mainPane.add(new TranslucentScrollBar(writingZone, true), BorderLayout.CENTER);
+
+
+        mainPane.add(new TranslucentScrollBar(writingZone, true));
+
+
 
         rightScrollPane = new TranslucentScrollBar(rightPane, false);
         rightPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 8), mainFrame.getHeight() - navBarPane.getPreferredSize().height + settingsPane.getPreferredSize().height));
@@ -297,8 +305,8 @@ public class Main {
                 Day day = new Day(format(c.getTime()), writingZone);
                 activeDays.add(day);
                 String text = "";
-                String[] cont = day.text.split("\n");
-                int index = 3;
+                String[] cont = day.plainText.split("\n");
+                int index = 2;
                 if(cont.length > index) {
                     while(text.equals("")) {
                         if(cont.length > index) {
@@ -381,22 +389,23 @@ public class Main {
                             settingUp = true;
                             if(activeDay != null) {
                                 activeDay.wrap.setBackground(secondary);
-                                activeDay.text = activeDay.textArea.getText();
+                                activeDay.text = activeDay.textArea.getStyledText();
+                                activeDay.plainText = activeDay.textArea.getText();
                                 activeDay.save();
                             }
                             wrap.setBackground(accent);
                             leftScrollPane.repaint();
                             day.textArea.opacity = 0;
                             new Thread(() -> {
+                                activeDay = day;
+                                taskList.repaint();
                                 day.prioritize();
                                 day.textArea.start();
+
+                                Main.taskList.setList();
+                                Main.taskList.repaint();
                             }).start();
                             activeDays.add(day);
-                            new Thread(() -> {
-                                taskList.repaint();
-                                activeDay = day;
-                                taskList.setList();
-                            }).start();
 
                         }
                     }
@@ -461,7 +470,8 @@ public class Main {
                             settingUp = true;
                             if(activeDay != null) {
                                 activeDay.wrap.setBackground(secondary);
-                                activeDay.text = activeDay.textArea.getText();
+                                activeDay.text = activeDay.textArea.getStyledText();
+                                activeDay.plainText = activeDay.textArea.getText();
                                 activeDay.save();
                             }
 
@@ -477,13 +487,14 @@ public class Main {
                                 today.prioritize();
                                 today.textArea.start();
                                 wrap.updateText(today.textArea.getText());
-
-                            }).start();
-                            new Thread(() -> {
                                 taskList.revalidate();
                                 taskList.repaint();
                                 taskList.setList();
                                 settingUp = false;
+
+                            }).start();
+                            new Thread(() -> {
+
                             }).start();
                         }
                     }
@@ -519,7 +530,8 @@ public class Main {
 
     private static void exit() {
         if(activeDay != null) {
-            activeDay.text = activeDay.textArea.getText();
+            activeDay.text = activeDay.textArea.getStyledText();
+            activeDay.plainText = activeDay.textArea.getText();
             for(Day day : activeDays) {
                 day.save();
             }
@@ -531,6 +543,8 @@ public class Main {
     public static String format(Date date) {
         return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
+
+
 }
 
 
