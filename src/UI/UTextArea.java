@@ -52,18 +52,24 @@ public class UTextArea extends JTextPane {
         undoManager = new UndoManager();
         setBorder(BorderFactory.createEmptyBorder(2, 14, 2, 6));
         document = new AdvancedRTFDocument();
+
         setStyledDocument(document);
         putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+        setEditorKit(new AdvancedRTFEditorKit());
 
         document.addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 if(Main.activeDay != null) {
-                    Main.activeDay.wrap.updateText(getText());
+                    if(getText() != null && Main.activeDay != null) try {
+                        Main.activeDay.wrap.updateText(getDocument().getText(0, getDocument().getLength()));
+                    } catch(BadLocationException ex) {
+                        ex.printStackTrace();
+                    }
                 }
 
-                Runnable doAssist = () -> updated();
-                SwingUtilities.invokeLater(doAssist);
+                    Runnable doAssist = () -> updated();
+                    SwingUtilities.invokeLater(doAssist);
             }
 
             @Override
@@ -83,12 +89,20 @@ public class UTextArea extends JTextPane {
         ses = Executors.newSingleThreadScheduledExecutor();
         ses.scheduleAtFixedRate((Runnable) () -> {
             if(focus) {
-                if(getSelectionStart() - getSelectionEnd() == 0) {
+                if(getSelectionStart() == getSelectionEnd()) {
                     document.removeUndoableEditListener(undoableListner);
                     if(highlighted) {
-                        getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, highlight2, true);
+                        SimpleAttributeSet temp = new SimpleAttributeSet();
+                        AttributeSet old = getStyledDocument().getCharacterElement(lastHighlighted - 1).getAttributes();
+                        temp.addAttributes(old);
+                        temp.addAttributes(highlight2);
+                        getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, temp, true);
                     } else {
-                        getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, highlight, true);
+                        SimpleAttributeSet temp = new SimpleAttributeSet();
+                        AttributeSet old = getStyledDocument().getCharacterElement(lastHighlighted - 1).getAttributes();
+                        temp.addAttributes(old);
+                        temp.addAttributes(highlight);
+                        getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, temp, true);
                     }
                     highlighted = !highlighted;
                     document.addUndoableEditListener(undoableListner);
@@ -114,16 +128,32 @@ public class UTextArea extends JTextPane {
 
                     document.removeUndoableEditListener(undoableListner);
 
-                    getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, unhighlight, true);
+                    SimpleAttributeSet temp = new SimpleAttributeSet();
+                    AttributeSet old = getStyledDocument().getCharacterElement(lastHighlighted - 1).getAttributes();
+                    temp.addAttributes(old);
+                    temp.addAttributes(unhighlight);
 
-                    getStyledDocument().setCharacterAttributes(getCaretPosition() - 1, 1, highlight, true);
+                    getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, temp, true);
+
+                    temp = new SimpleAttributeSet();
+                    AttributeSet newChar = getStyledDocument().getCharacterElement(getCaretPosition() - 1).getAttributes();
+                    temp.addAttributes(newChar);
+                    temp.addAttributes(highlight);
+
+                    getStyledDocument().setCharacterAttributes(getCaretPosition() - 1, 1, temp, true);
 
                     lastHighlighted = getCaretPosition();
                     highlighted = true;
                     document.addUndoableEditListener(undoableListner);
                 } else {
                     document.removeUndoableEditListener(undoableListner);
-                    getStyledDocument().setCharacterAttributes(getSelectionStart(), getSelectionEnd() - getSelectionStart(), unhighlight, true);
+                    for(int i = getSelectionStart(); i < getSelectionEnd(); i++) {
+                        SimpleAttributeSet temp = new SimpleAttributeSet();
+                        AttributeSet old = getStyledDocument().getCharacterElement(i).getAttributes();
+                        temp.addAttributes(old);
+                        temp.addAttributes(unhighlight);
+                        getStyledDocument().setCharacterAttributes(i, 1, temp, true);
+                    }
                     document.addUndoableEditListener(undoableListner);
                 }
 
@@ -195,14 +225,46 @@ public class UTextArea extends JTextPane {
 
             @Override
             public void keyReleased(KeyEvent ke) {
-                if(getText() != null && Main.activeDay != null) Main.activeDay.wrap.updateText(getText());
+                if(getText() != null && Main.activeDay != null) try {
+                    Main.activeDay.wrap.updateText(getDocument().getText(0, getDocument().getLength()));
+                } catch(BadLocationException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void keyPressed(KeyEvent evt) {}
         });
+
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_I, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionModifier("italicize");
+            }
+        });
+
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionModifier("bold");
+            }
+        });
+
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_U, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionModifier("underline");
+            }
+        });
     }
 
+    public void actionModifier(String mod) {
+        String oldName = Main.writingZone.getName();
+        Main.writingZone.setName(mod);
+        MouseEvent me = new MouseEvent(Main.writingZone, 0, 0, 0, 100, 100, 1, false);
+        Main.textToolBar.modifierListener.mousePressed(me);
+        Main.writingZone.setName(oldName);
+    }
     public void setUpStyles() {
         int inverted = U.theme == U.Theme.Dark ? 0 : 168;
         highlight = addStyle("highlight", null);
@@ -226,11 +288,17 @@ public class UTextArea extends JTextPane {
         int selectionStart = getSelectionStart();
         int selectionEnd = getSelectionEnd();
         int caretPos = getCaretPosition();
+        boolean next = false;
+        SimpleAttributeSet prevAttSet = null;
 
-        for(int i = 0; i < getText().length(); i++) {
+        for(int i = 1; i < getDocument().getLength() + 1; i++) {
             AttributeSet old = getStyledDocument().getCharacterElement(i).getAttributes();
+            SimpleAttributeSet set = new SimpleAttributeSet();
+            set.addAttributes(old);
             getStyledDocument().setCharacterAttributes(i, 1, getStyle("highlight"), true);
-            getStyledDocument().setCharacterAttributes(i, 1, old, true);
+
+            getStyledDocument().setCharacterAttributes(i, 1, set, true);
+
         }
         document.addUndoableEditListener(undoableListner);
 
@@ -241,30 +309,32 @@ public class UTextArea extends JTextPane {
     }
 
     public void loadText(String text) {
-        AdvancedRTFEditorKit editor = new AdvancedRTFEditorKit();
-        //setEditorKit(editor);
-        //        InputStream inputStream = new FileInputStream(_helpFile);
         StringReader builder = new StringReader(text);
         try {
-            editor.read(builder, getDocument(), 0);
+            getEditorKit().read(builder, getDocument(), 0);
         } catch(IOException | BadLocationException e) {
             e.printStackTrace();
         }
-
     }
 
     public String getStyledText() {
-        if(getText().length() > 0) {
+        if(getDocument().getLength() > 0) {
+            SimpleAttributeSet temp = new SimpleAttributeSet();
+            AttributeSet old = getStyledDocument().getCharacterElement(lastHighlighted - 1).getAttributes();
+            temp.addAttributes(old);
+            temp.addAttributes(unhighlight);
 
-            AdvancedRTFEditorKit editor = new AdvancedRTFEditorKit();
+            getStyledDocument().setCharacterAttributes(lastHighlighted - 1, 1, temp, true);
+
             Writer writer = new StringWriter();
             try {
-                editor.write(writer, getStyledDocument(), 0, getStyledDocument().getLength());
+                (getEditorKit()).write(writer, getDocument(), 0, getDocument().getLength());
                 writer.close();
             } catch(IOException | BadLocationException e) {
                 e.printStackTrace();
             }
-            return writer.toString();
+            String output = writer.toString();
+            return output;
         } else {
             return "";
         }
@@ -278,7 +348,7 @@ public class UTextArea extends JTextPane {
         Main.taskScrollPane.activeColor = new Color(Main.taskScrollPane.activeColor.getRed(), Main.taskScrollPane.activeColor.getGreen(), Main.taskScrollPane.activeColor.getBlue(), 0);
         Main.taskScrollPane.repaint();
         Runnable doAssist = () -> {
-            setCaretPosition(getText().length());
+            setCaretPosition(getDocument().getLength());
             executor.scheduleAtFixedRate(() -> {
                 if(opacity + .03f > 1f) {
                     opacity = 1f;
@@ -286,16 +356,21 @@ public class UTextArea extends JTextPane {
                     Main.taskScrollPane.activeColor = TranslucentScrollBar.unactive;
                     Main.taskScrollPane.scrollWidth = 0;
 
+
+
                 } else {
                     opacity += .03f;
                 }
                 repaint();
             }, 0, 100, TimeUnit.MILLISECONDS);
-
         };
         SwingUtilities.invokeLater(doAssist);
 
 
+        Main.taskList.revalidate();
+        Main.taskList.repaint();
+        Main.taskList.setList();
+        Main.settingUp = false;
     }
 
     @Override

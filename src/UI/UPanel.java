@@ -51,6 +51,17 @@ public class UPanel extends JPanel {
     public void setOpacity(float f) {
         repaint();
         this.opacity = f;
+        process(this);
+    }
+
+    void process(UPanel parent) {
+        for (Component child : parent.getComponents()) {
+            if(child instanceof UPanel) {
+                UPanel pane = (UPanel) child;
+                pane.setOpacity(opacity);
+                process(pane);
+            }
+        }
     }
 
     HashMap<Position, BufferedImage> images;
@@ -125,6 +136,13 @@ public class UPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        if(shadowColor != null) {
+            g.setColor(getBackground());
+            g.fillRect(shadowSize+1, shadowSize+1, getWidth() - shadowSize * 2-2, getHeight() - shadowSize * 2-2);
+        } else {
+            g.setColor(getBackground());
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
         ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity > 1f ? 1f : opacity));
 
         super.paintComponent(g);
@@ -217,11 +235,7 @@ public class UPanel extends JPanel {
         if(this.showRightShadow || this.showTopShadow) {
             g2.drawImage((Image)images.get(Position.TOP_RIGHT), topRightShadowPoint.x, topRightShadowPoint.y, (ImageObserver)null);
         }
-        if(shadowColor != null) {
-            g2.setColor(getBackground());
-            g2.fillRect(shadowSize, shadowSize, getWidth() - shadowSize * 2, getHeight() - shadowSize * 2);
-        }
-       // g2.setColor(Color.red);
+        // g2.setColor(Color.red);
         //g2.drawRect(0,0, getWidth(), getHeight());
 
         g2.dispose();

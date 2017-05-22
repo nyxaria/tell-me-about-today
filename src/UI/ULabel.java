@@ -203,17 +203,17 @@ public class ULabel extends JLabel implements MouseListener {
             case "x_transparent":
 
                 if(mouseDown) g2.setColor(Color.white);
-                else g2.setColor(new Color(250,250,255,160 - (U.theme == U.Theme.Light ? 20 : 0)));
+                else g2.setColor(new Color(250, 250, 255, 120 - (U.theme == U.Theme.Light ? 20 : 0)));
 
                 if(mouseOver) {
                     g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     int x = 2;
-                    g2.drawLine(6-x, 6, squareX - 6-x, squareX - 6);
-                    g2.drawLine(6-x, squareX - 6, squareX - 6-x, 6);
+                    g2.drawLine(7 - x, 7, squareX - 7 - x, squareX - 7);
+                    g2.drawLine(7 - x, squareX - 7, squareX - 7 - x, 7);
                 }
                 break;
             case "image_picture":
-
+                System.out.println(squareX / 2);
                 g2.setColor(Color.black);
                 g2.drawRect(squareX / 6, squareX * 2 / 10, squareX * 4 / 6, squareX * 6 / 9);
                 g2.setColor(Color.white);
@@ -232,24 +232,38 @@ public class ULabel extends JLabel implements MouseListener {
                 //                g2.fillPolygon(new int[]{squareX/6 + squareX*73/50/3, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6/5, squareX/6 + squareX*73/50/3},
                 //new int[]{squareX*2/10 + squareX*4*6/10/3/4, squareX*2/10 + squareX*2*6/12/3, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*4*6/10/3/4}, 5);
                 break;
-            case "settings":
-                RescaleOp rescaleOp = new RescaleOp(1f + (U.theme == U.Theme.Light ? -.5f : -.5f), 1, null);
-                BufferedImage img = new BufferedImage(cogImage.getWidth(null), cogImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-                img.getGraphics().drawImage(cogImage, 0, 0, null);
+            default:
+                if(text.substring(text.indexOf(":") + 1, text.length()).startsWith("image_")) {
+                    if(text.contains("cog")) {
+                        while(Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length())) == null) {
+                            Global.loadImage(text.substring(text.indexOf("image_") + "image_".length(), text.length()));
+                        }
+                        Image img = Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length()));
+                        RescaleOp rescaleOp = new RescaleOp(1f + (U.theme == U.Theme.Light ? -.5f : -.5f), 1, null);
+                        if(img != null)
+                        g2.drawImage(rescaleOp.filter((BufferedImage) img, (BufferedImage) img), getWidth() / 2 - img.getWidth(null) / 2 - 2, getHeight() / 2 - img.getHeight(null) / 2, this);
+                    } else {
+                        while(Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length()) + "_" + (U.theme == U.Theme.Light ? mouseDown ? "dark" : "light" : mouseDown ? "light" : "dark")) == null) {
+                            Global.loadImage(text.substring(text.indexOf("image_") + "image_".length(), text.length()));
+                        }
+                        Image img = Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length()) + "_" + (U.theme == U.Theme.Light ? mouseDown ? "dark" : "light" : mouseDown ? "light" : "dark"));
+                        g2.drawImage(img, getWidth() / 2 - img.getWidth(null) / 2 - 2, getHeight() / 2 - img.getHeight(null) / 2, this);
+                    }
+                }
 
-                g2.drawImage(rescaleOp.filter(img, img), getWidth()/2 - cogImage.getWidth(null)/2-2, getHeight()/2 - cogImage.getHeight(null)/2 ,this);
+
 
         }
         g.dispose();
 
     }
 
+
+
     public static BufferedImage imageToBufferedImage(Image im) {
-        BufferedImage bi = new BufferedImage
-                (im.getWidth(null),im.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bi = new BufferedImage(im.getWidth(null), im.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         Graphics bg = bi.getGraphics();
         bg.drawImage(im, 0, 0, null);
-        bg.dispose();
         return bi;
     }
 

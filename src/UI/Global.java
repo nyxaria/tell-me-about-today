@@ -13,6 +13,8 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by gedr on 14/01/2017.
@@ -31,6 +33,8 @@ public class Global {
     public static String dateFormat;
     public static boolean americanFormat;
 
+    public static Map<String, Image> images = new HashMap<>();
+
     public static void init() throws Exception {
         InputStream istream = Global.class.getResourceAsStream("/res/Cantarell-Regular.ttf");
         plain = Font.createFont(Font.TRUETYPE_FONT, istream);
@@ -39,23 +43,45 @@ public class Global {
         istream = Global.class.getResourceAsStream("/res/Cantarell-Oblique.ttf");
         itallic = Font.createFont(Font.TRUETYPE_FONT, istream);
 
+        new Thread(() -> {
+            try {
+                do {
+                    images.put("cog", Thumbnails.of(createOutlineImage(ULabel.imageToBufferedImage(ImageIO.read(Main.class.getResource("/res/FEZ-04-512.png"))))).size(15, 15).asBufferedImage());
+                } while(images.get("cog") != null);
 
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    ULabel.cogImage = ImageIO.read(Main.class.getResource("/res/FEZ-04-512.png"));
-                    ULabel.cogImage = createOutlineImage(ULabel.imageToBufferedImage(ULabel.cogImage));
-                    ULabel.cogImage = Thumbnails.of(ULabel.imageToBufferedImage(ULabel.cogImage)).size(15, 15).asBufferedImage();
-                    Main.navBarPane.repaint();
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
+                Main.navBarPane.repaint();
+            } catch(Exception e) {
+                e.printStackTrace();
             }
         }).start();
 
         initSettings();
+    }
+
+    public static void loadImage(String src) {
+        try {
+            images.put(src+"_dark", ImageIO.read(Main.class.getResource("/res/"+src+".png")));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        BufferedImage invert= new BufferedImage(images.get(src+"_dark").getWidth(null), images.get(src+"_dark").getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        invert.getGraphics().drawImage(images.get(src+"_dark"), 0, 0, null);
+        images.put(src+"_light", invertImage(invert));
+    }
+
+
+    public static BufferedImage invertImage(BufferedImage input) {
+
+        for(int x = 0; x < input.getWidth(); x++) {
+            for(int y = 0; y < input.getHeight(); y++) {
+                int rgba = input.getRGB(x, y);
+                Color col = new Color(rgba, true);
+                col = new Color(255 - col.getRed(), 255 - col.getGreen(), 255 - col.getBlue(), col.getAlpha());
+                input.setRGB(x, y, col.getRGB());
+            }
+        }
+
+        return input;
     }
 
     public static void initSettings() {
@@ -209,18 +235,19 @@ public class Global {
 
         g.setTransform(tr2);
 
-        g.setColor(new Color(60,60,60,100));
+        g.setColor(new Color(60, 60, 60, 100));
 
         g.setClip(area);
 
         g.setStroke(new BasicStroke(1));
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
 
-        g.setClip(0,0,image.getWidth(),image.getHeight());
+        g.setClip(0, 0, image.getWidth(), image.getHeight());
         g.setColor(Color.gray);
         g.setStroke(new BasicStroke(1));
 
         g.draw(area);
         return result;
     }
+
 }

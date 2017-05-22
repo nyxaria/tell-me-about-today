@@ -50,7 +50,8 @@ public class U {
         UTextArea.shadowOpacity = 0.8f;
         Main.writingZone.setForeground(text);
         Main.writingZone.setUpStyles();
-        Main.writingZone.updated();
+//        Main.writingZone.updated();
+        Main.textToolBar.setBackground(new Color(200,200,200));
 
 
         TranslucentScrollBar.dragging = new Color(150, 150, 150, 150);
@@ -101,6 +102,14 @@ public class U {
         }
 
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);
+        if(Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
+            if(!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+                Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+            }
+        } else {
+            Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+        }
+
     }
 
     public static void light() {
@@ -118,7 +127,9 @@ public class U {
         UTextArea.shadowOpacity = 0.5f;
         Main.writingZone.setForeground(text);
         Main.writingZone.setUpStyles();
-        Main.writingZone.updated();
+//        Main.writingZone.updated();
+        Main.textToolBar.setBackground(new Color(80,80,90));
+
 
         TranslucentScrollBar.dragging = new Color(100,100,100,180);
         TranslucentScrollBar.hover = new Color(100,100,100,160);
@@ -168,6 +179,13 @@ public class U {
 
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);
         theme = Theme.Light;
+        if(Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
+            if(!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+                Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+            }
+        } else {
+            Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+        }
     }
 
 }

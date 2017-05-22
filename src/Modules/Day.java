@@ -5,10 +5,7 @@ import UI.U;
 import UI.UTextArea;
 import UI.UWrap;
 
-import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+import javax.swing.text.*;
 import java.io.*;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -44,7 +41,13 @@ public class Day {
         textArea.setText("");
         textArea.initialising = true;
         if(new File(U.data + date + ".txt").exists()) {
+
+//            SimpleAttributeSet aSet = new SimpleAttributeSet();
+//            StyleConstants.set(aSet, 1);
+//            Main.writingZone.getStyledDocument().setParagraphAttributes(0, Main.writingZone.getDocument().getLength(), aSet, false);
             textArea.loadText(text);
+//            textArea.updated();
+
         } else {
             String[] dateData = date.split("-");
             String dateFormatted = Global.dateTemplate.replace("dd", (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0])).
@@ -55,21 +58,26 @@ public class Day {
                     replace("day", day[Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1]).
                     replace("month", new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1]).
                     replace("suffix", getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1));
-            SimpleAttributeSet center = new SimpleAttributeSet();
-            StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+            StyleContext sc = new StyleContext();
+            Style center = sc.addStyle("center", null);
+            center.addAttribute(StyleConstants.Alignment, StyleConstants.ALIGN_CENTER);
+            StyleConstants.setUnderline(center, true);
 
-            SimpleAttributeSet right = new SimpleAttributeSet();
-            StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT);
+            Style right = sc.addStyle("right", null);
+            right.addAttribute(StyleConstants.Alignment, StyleConstants.ALIGN_RIGHT);
+            StyleConstants.setUnderline(right, false);
 
-            SimpleAttributeSet left = new SimpleAttributeSet();
-            StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT);
+            Style left = sc.addStyle("left", null);
+            left.addAttribute(StyleConstants.Alignment, StyleConstants.ALIGN_LEFT);
+            StyleConstants.setUnderline(left, false);
 
             StyledDocument doc = textArea.getStyledDocument();
             try {
-                doc.insertString(doc.getLength(), dateFormatted + "\n", null);
-                doc.setParagraphAttributes(0, doc.getLength(), right, false);
+                //doc.insertString(0," \n", right);
+                doc.insertString(doc.getLength(), ""+dateFormatted + "", null);
+                doc.setParagraphAttributes(0, doc.getLength(),right, false);
 
-                doc.insertString(doc.getLength(), "" + Global.titleTemplate + "", null);
+                doc.insertString(doc.getLength(), "\n" + Global.titleTemplate + "", null);
                 doc.setParagraphAttributes(doc.getLength(), 1, center, false);
                 doc.insertString(doc.getLength(), "\n", null);
 
@@ -78,17 +86,23 @@ public class Day {
             } catch(BadLocationException e) {
                 e.printStackTrace();
             }
-            textArea.updated();
+//            textArea.updated();
             text = textArea.getStyledText();
-            plainText = textArea.getText();
+            try {
+                plainText = textArea.getDocument().getText(0, textArea.getDocument().getLength());
+            } catch(BadLocationException e) {
+                e.printStackTrace();
+            }
             reminders = new ArrayList(Arrays.asList(Global.reminderTemplate.split("`")));
             save();
 
-            SimpleAttributeSet aSet = new SimpleAttributeSet();
-            StyleConstants.setLineSpacing(aSet, 1);
-            doc.setParagraphAttributes(0, doc.getLength(), aSet, false);
 
         }
+        textArea.repaint();
+        textArea.updateUI();
+        textArea.revalidate();
+        textArea.updated();
+        ;
         textArea.initialising = false;
 
     }
@@ -97,10 +111,14 @@ public class Day {
         try(PrintWriter out = new PrintWriter(U.data + date + ".txt")) {
             String remindersFormatted = "";
             for(String s : reminders.toArray(new String[0])) {
-                remindersFormatted += s + "`";
+                if(s.trim().equals("n") || s.trim().equals("y")) continue;
+                remindersFormatted += s.trim() + "`";
             }
-            remindersFormatted = remindersFormatted.substring(0, remindersFormatted.length() - 1);
-            out.print("text=" + text + "|ptext=" + plainText + "|reminders=" + remindersFormatted);
+            remindersFormatted = remindersFormatted.substring(0, remindersFormatted.length() - 1).trim();
+            while((remindersFormatted.length() - remindersFormatted.replace("`nadd reminder", "").length())/"`nadd reminder".length() > 1)
+                remindersFormatted = remindersFormatted.substring(0, remindersFormatted.lastIndexOf("`nadd reminder")).trim();
+            if(!remindersFormatted.endsWith("`nadd reminder")) remindersFormatted += "`nadd reminder";
+            out.print("text=EQUALS=" + text + "|SPLIT|ptext=EQUALS=" + plainText + "|SPLIT|reminders=EQUALS=" + remindersFormatted);
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -118,9 +136,9 @@ public class Day {
                     line = br.readLine();
                 }
                 String everything = sb.toString();
-                for(String s : everything.split("\\|")) {
-                    String type = s.substring(0, s.indexOf("="));
-                    String data = s.substring(s.indexOf("=") + 1, s.length());
+                for(String s : everything.split("\\|SPLIT\\|")) {
+                    String type = s.substring(0, s.indexOf("=EQUALS="));
+                    String data = s.substring(s.indexOf("=EQUALS=") + "=EQUALS=".length(), s.length());
 
                     switch(type) {
                         case "text":

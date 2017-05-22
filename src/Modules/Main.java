@@ -3,6 +3,7 @@ package Modules;
 import UI.*;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -63,6 +64,8 @@ public class Main {
     public static boolean settingUp;
     public static boolean scrollingSettings;
     public static SettingsPane settingsPane;
+    public static boolean settingUpSettings = true;
+    public static UTextToolBar textToolBar;
 
     public static void main(String args[]) {
         UIManager.put("List.lockToPositionOnScroll", Boolean.FALSE);
@@ -126,17 +129,16 @@ public class Main {
         ((FlowLayout) toolbarWrap.getLayout()).setVgap(0);
         ((FlowLayout) toolbarWrap.getLayout()).setHgap(0);
 
-        UButton settingsButton = new UButton("icon:settings", Size.Small, U.Shape.Square, true);
+        UButton settingsButton = new UButton("icon:image_cog", Size.Small, U.Shape.Square, true);
         settingsButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(!scrollingSettings) {
+                if(!scrollingSettings && !settingUpSettings) {
                     if(settingsView) {
                         rightScrollPane.scrollTo(0f);
                         settingsView = false;
                         settingsPane.updateSettings();
                     } else {
-                        //settingsPane.resize();
                         rightScrollPane.scrollTo(1f);
                         settingsPane.active(true);
                         settingsView = true;
@@ -219,6 +221,7 @@ public class Main {
         UPanel centerPane = new UPanel(new BorderLayout());
 
         writingZone = new UTextArea();
+        textToolBar = new UTextToolBar();
 
         if(U.theme == Theme.Dark)
             U.dark();
@@ -233,13 +236,13 @@ public class Main {
 
         leftPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 7), 300));
         wrapTextWidth = leftPane.getPreferredSize().width - 63;
+        taskList = new UTaskList();
 
         populateLeftPane();
 
         settingsPane = new SettingsPane();
 
         rightPane = new UPanel(new BorderLayout());
-        taskList = new UTaskList();
         taskList.setBackground(tertiary);
         taskList.setOpaque(true);
         taskList.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, border));
@@ -259,16 +262,25 @@ public class Main {
 
         leftPane.setPreferredSize(new Dimension((int) screen.getWidth()/7 - 20, size + 1));
 
-        UPanel mainPane = new UPanel();
-        mainPane.setLayout(new OverlayLayout(mainPane));
+        UPanel mainPane = new UPanel(new BorderLayout());
+        JLayeredPane lpane = new JLayeredPane();
 
+        TranslucentScrollBar writingScroll = new TranslucentScrollBar(writingZone, true);
+        int parentWidth = (int) (Main.screen.width*((2f/3) - (1f/8)-(1f/7)) - 11);
+        int parentHeight = (int)(Main.screen.getHeight() * 5f / 7) - Main.navBarPane.getPreferredSize().height;
+        writingScroll.setBounds(0,0, parentWidth, parentHeight);
+        lpane.add(writingScroll, 0, 0);
+        lpane.add(textToolBar, 1, 0);
+        lpane.setOpaque(false);
 
-
-        mainPane.add(new TranslucentScrollBar(writingZone, true));
+        mainPane.add(lpane);
 
 
 
         rightScrollPane = new TranslucentScrollBar(rightPane, false);
+        rightScrollPane.scrollWidth = 0;
+        rightScrollPane.setBackground(tertiary);
+        rightScrollPane.setOpaque(true);
         rightPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 8), mainFrame.getHeight() - navBarPane.getPreferredSize().height + settingsPane.getPreferredSize().height));
         centerPane.add(rightScrollPane, BorderLayout.EAST);
         centerPane.add(mainPane, BorderLayout.CENTER);
@@ -289,6 +301,8 @@ public class Main {
                 }
             }
         }, 30, 30, TimeUnit.SECONDS);
+
+        System.out.println(mainPane.getWidth() + " d ");
     }
 
     private static void populateLeftPane() {
@@ -306,6 +320,7 @@ public class Main {
                 activeDays.add(day);
                 String text = "";
                 String[] cont = day.plainText.split("\n");
+                System.out.println(day.plainText);
                 int index = 2;
                 if(cont.length > index) {
                     while(text.equals("")) {
@@ -317,7 +332,7 @@ public class Main {
                     }
                 }
                 String titleText = "";
-                if(cont.length >= 1) {
+                if(cont.length >= 1 && cont.length >1) {
                     titleText = cont[1];
                 }
 
@@ -390,20 +405,25 @@ public class Main {
                             if(activeDay != null) {
                                 activeDay.wrap.setBackground(secondary);
                                 activeDay.text = activeDay.textArea.getStyledText();
-                                activeDay.plainText = activeDay.textArea.getText();
+                                try {
+                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+                                } catch(BadLocationException e1) {
+                                    e1.printStackTrace();
+                                }
                                 activeDay.save();
                             }
                             wrap.setBackground(accent);
                             leftScrollPane.repaint();
+                            taskList.setOpacity(0f);
                             day.textArea.opacity = 0;
                             new Thread(() -> {
                                 activeDay = day;
                                 taskList.repaint();
                                 day.prioritize();
                                 day.textArea.start();
-
-                                Main.taskList.setList();
-                                Main.taskList.repaint();
+//
+//                                Main.taskList.setList();
+//                                Main.taskList.repaint();
                             }).start();
                             activeDays.add(day);
 
@@ -471,7 +491,11 @@ public class Main {
                             if(activeDay != null) {
                                 activeDay.wrap.setBackground(secondary);
                                 activeDay.text = activeDay.textArea.getStyledText();
-                                activeDay.plainText = activeDay.textArea.getText();
+                                try {
+                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+                                } catch(BadLocationException e1) {
+                                    e1.printStackTrace();
+                                }
                                 activeDay.save();
                             }
 
@@ -482,18 +506,16 @@ public class Main {
                             leftScrollPane.repaint();
                             activeDays.add(today);
                             activeDay = today;
+                            taskList.setOpacity(0f);
 
                             new Thread(() -> {
                                 today.prioritize();
                                 today.textArea.start();
-                                wrap.updateText(today.textArea.getText());
-                                taskList.revalidate();
-                                taskList.repaint();
-                                taskList.setList();
-                                settingUp = false;
-
-                            }).start();
-                            new Thread(() -> {
+                                try {
+                                    wrap.updateText(today.textArea.getDocument().getText(0,today.textArea.getDocument().getLength()));
+                                } catch(BadLocationException ex) {
+                                    ex.printStackTrace();
+                                }
 
                             }).start();
                         }
@@ -519,7 +541,7 @@ public class Main {
             //          x add task function
             //          x settings button in tool bar
             //            add daily plan top right
-            //            add basic formatting
+            //          x add basic formatting
 
             wrap.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             wrap.setBackground(secondary);
@@ -531,7 +553,11 @@ public class Main {
     private static void exit() {
         if(activeDay != null) {
             activeDay.text = activeDay.textArea.getStyledText();
-            activeDay.plainText = activeDay.textArea.getText();
+            try {
+                activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+            } catch(BadLocationException e1) {
+                e1.printStackTrace();
+            }
             for(Day day : activeDays) {
                 day.save();
             }

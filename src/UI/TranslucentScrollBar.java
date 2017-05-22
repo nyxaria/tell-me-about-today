@@ -57,7 +57,6 @@ public class TranslucentScrollBar extends JScrollPane {
 
         this.scrollVisible = scrollVisible;
 
-
         getVerticalScrollBar().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -76,8 +75,7 @@ public class TranslucentScrollBar extends JScrollPane {
                 lastInteraction = System.currentTimeMillis();
                 activeColor = hover;
                 if(scrollVisible) {
-                    if(executor!=null)
-                        executor.shutdown();
+                    if(executor != null) executor.shutdown();
                     executor = Executors.newScheduledThreadPool(1);
                     executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
                 }
@@ -96,8 +94,7 @@ public class TranslucentScrollBar extends JScrollPane {
                 activeColor = hover;
                 forceActive = false;
                 if(scrollVisible) {
-                    if(executor!=null)
-                        executor.shutdown();
+                    if(executor != null) executor.shutdown();
                     executor = Executors.newScheduledThreadPool(1);
                     executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
                 }
@@ -109,8 +106,7 @@ public class TranslucentScrollBar extends JScrollPane {
             lastInteraction = System.currentTimeMillis();
 
             if(scrollVisible) {
-                if(executor!=null)
-                    executor.shutdown();
+                if(executor != null) executor.shutdown();
                 executor = Executors.newScheduledThreadPool(1);
                 executor.scheduleAtFixedRate(r, 0, 5, TimeUnit.MILLISECONDS);
             }
@@ -203,28 +199,29 @@ public class TranslucentScrollBar extends JScrollPane {
         setBorder(BorderFactory.createEmptyBorder());
         setOpaque(false);
     }
+
     ScheduledExecutorService exec;
     float t = 0;
+
     public void scrollTo(final float v) {
         Runnable doAssist = () -> {
-            if(exec!=null)
-            exec.shutdown();
+            if(exec != null) exec.shutdown();
             exec = Executors.newScheduledThreadPool(1);
             Main.scrollingSettings = true;
             int start = getVerticalScrollBar().getValue();
-            int target = (int) v*(getVerticalScrollBar().getMaximum()-getHeight());
+            int target = (int) v * (getVerticalScrollBar().getMaximum() - getHeight());
             t = 0;
             exec.scheduleAtFixedRate(() -> {
-                if((getVerticalScrollBar().getValue() > target+1 && v==0) || (getVerticalScrollBar().getValue() < getVerticalScrollBar().getMaximum()-getHeight()-1 && start != getVerticalScrollBar().getMaximum()-getHeight())) {
+                if((getVerticalScrollBar().getValue() > target + 1 && v == 0) || (getVerticalScrollBar().getValue() < getVerticalScrollBar().getMaximum() - getHeight() - 1 && start != getVerticalScrollBar().getMaximum() - getHeight())) {
                     if(v == 1) {
                         try {
-                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue(start + (int)((1-Math.pow(Math.E,-.00005*Math.pow(t,.5) + -55*t*t*t))*target)) );
+                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue(start + (int) ((1 - Math.pow(Math.E, -.00005 * Math.pow(t, .5) + -55 * t * t * t)) * target)));
                         } catch(InterruptedException | InvocationTargetException e) {
                             e.printStackTrace();
                         }
                     } else {
                         try {
-                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue((int)((Math.pow(Math.E,-.0005*Math.pow(t,.5) + -45*t*t*t))*start)));
+                            SwingUtilities.invokeAndWait(() -> getVerticalScrollBar().setValue((int) ((Math.pow(Math.E, -.0005 * Math.pow(t, .5) + -45 * t * t * t)) * start)));
                         } catch(InterruptedException | InvocationTargetException e) {
                             e.printStackTrace();
                         }
@@ -232,10 +229,20 @@ public class TranslucentScrollBar extends JScrollPane {
                 } else {
                     getVerticalScrollBar().setValue(target);
                     exec.shutdown();
-                        Main.scrollingSettings = false;
+                    Main.scrollingSettings = false;
+                    Main.taskScrollPane.repaint();
+
+                    if(Main.settingsPane.makeVisible) {
+                        Main.taskList.setOpacity(1f);
+                        Main.settingsPane.setOpacity(1f);
+
+                        Main.settingsPane.makeVisible = false;
+                        Main.settingUpSettings = false;
+                    }
                 }
-                t+=.005;
+                t += .005;
                 repaint();
+                Main.taskScrollPane.repaint();
             }, 0, 15, TimeUnit.MILLISECONDS);
 
         };

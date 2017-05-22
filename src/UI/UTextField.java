@@ -22,12 +22,14 @@ public class UTextField extends JTextPane {
     int lineCount = 0;
     public UWrap wrap;
 
-    int maxNumberOfCharacters = 110;
+    int maxNumberOfCharacters = 130;
     public int reminderIndex;
     public boolean isAddReminder;
     public JPanel borderWrap;
     boolean once = true;
     public boolean hover;
+    public boolean inverted;
+    public UButton deleteButton;
 
     public UTextField(String s, float fontSize, Color textColor, Color borderColor) {
 
@@ -70,7 +72,7 @@ public class UTextField extends JTextPane {
 
         setBackground(U.tertiary);
         putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
-        getDocument().putProperty("ZOOM_FACTOR", fontSize);
+        getDocument().putProperty("ZOOM_FACTOR", fontSize + 1);
         setFont(Global.plain.deriveFont(fontSize));
         DefaultCaret dc = new DefaultCaret() {
             @Override
@@ -93,7 +95,11 @@ public class UTextField extends JTextPane {
                         return;
                     }
                     if(isVisible()) {
-                        g.setColor(new Color(180, 180, 180, 75));
+                        if(inverted) {
+                            if(U.theme == U.Theme.Dark) g.setColor(new Color(50, 50, 60, 150));
+                            else g.setColor(new Color(220, 220, 220, 150));
+                        } else g.setColor(new Color(220, 220, 220, 150));
+
                         g.fillRect(r.x, r.y + 2, 1, r.height - 4);
                     }
                 }
@@ -110,7 +116,10 @@ public class UTextField extends JTextPane {
             public void keyTyped(KeyEvent e) { resize(); }
 
             @Override
-            public void keyPressed(KeyEvent e) { resize(); }
+            public void keyPressed(KeyEvent e) {
+                resize();
+                if(deleteButton != null) deleteButton.repaint();
+            }
 
             @Override
             public void keyReleased(KeyEvent e) { resize(); }
@@ -134,17 +143,25 @@ public class UTextField extends JTextPane {
                 if(!hover) return;
                 if(getText().equals("add reminder") && wrap.opacity == .35f) {
                     wrap.setOpacity(1f);
+                    setText("");
                     Main.taskScrollPane.repaint();
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if(isAddReminder && getText().equals("add reminder")) {
+                if(isAddReminder && getText().trim().equals("")) {
+                    Style style = addStyle("opacityText", null);
                     wrap.setOpacity(.35f);
+
+                    try {
+                        getStyledDocument().insertString(0, "add reminder", style);
+                    } catch(BadLocationException ex) {}
+
+                    updated();
                     Main.taskScrollPane.repaint();
+
                 } else if(isAddReminder) {
-                    borderWrap.setVisible(true);
                     isAddReminder = false;
 
                     Main.taskList.addField("nadd reminder");
@@ -167,58 +184,18 @@ public class UTextField extends JTextPane {
                     }
                 }
                 resize();
+                if(deleteButton != null) deleteButton.repaint();
+
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 resize();
+                if(deleteButton != null) deleteButton.repaint();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                Runnable doAssist = () -> {
-                    if(once && !isAddReminder) {
-                        maxNumberOfCharacters++;
-                        wrap.setVisible(true);
-                        setText(getText() + " ");
-                        setText(getText().substring(0, getText().length() - 1));
-                        maxNumberOfCharacters--;
-                        wrap.checkbox.mouseReleased(null);
-                        wrap.checkbox.mouseReleased(null);
-                        once = false;
-                    }
-
-                };
-                SwingUtilities.invokeLater(doAssist);
-                if(wrap != null && wrap.listPane != null) {
-                    wrap.listPane.expandingHeight = 2;
-                    for(Component comp : wrap.listPane.getComponents()) {
-                        wrap.listPane.expandingHeight += comp.getPreferredSize().height;
-                    }
-
-                    if(wrap.opacity == 0) {
-                        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
-                        Runnable r = () -> {
-                            if(wrap.opacity + .01f > 1f) {
-                                wrap.setOpacity(1f);
-                                executor.shutdown();
-
-                            } else if(getText().equals("add reminder") && wrap.opacity >= .35f) {
-                                wrap.setOpacity(.35f);
-                                executor.shutdown();
-
-                            } else {
-
-                                wrap.setOpacity(wrap.opacity + .01f);
-                            }
-
-                        };
-                        executor.scheduleAtFixedRate(r, 0, 17, TimeUnit.MILLISECONDS);
-
-                    }
-
-                }
             }
         });
 
@@ -233,22 +210,41 @@ public class UTextField extends JTextPane {
     }
 
     protected void resize() {
-        if(lineCount != countLines() && countLines() != 0) {
-            int delta = countLines() - lineCount;
-            lineCount = countLines();
+        if((lineCount != countLines()) && countLines() != 0 || once) {
+            if(wrap.getPreferredSize().height <= 0) {
+                wrap.setPreferredSize(new Dimension(wrap.getPreferredSize().width, 29));
+                lineCount = 1;
 
-            wrap.setPreferredSize(new Dimension(wrap.getWidth(), wrap.getPreferredSize().height + (14 * delta)));
+                SwingUtilities.invokeLater(() -> {
+                    resize();
+                    setVisible(false);
+                    setVisible(true);
+                });
+
+            }
+
+            int delta = countLines() - lineCount;
+
+            wrap.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.getPreferredSize().height + (14 * delta)));
+            wrap.repaint();
 
             if(wrap.listPane != null) {
-                wrap.listPane.expandingHeight += delta * 14;
+                wrap.listPane.expandingHeight += delta * (lineCount == 1 && countLines() == 2 ? 14 : 14);
                 wrap.listPane.setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));
                 if(wrap.listPane instanceof SettingsPane) {
-                    wrap.listPane.getParent().setPreferredSize(new Dimension(Main.screen.width / 8, wrap.listPane.getParent().getHeight() + delta * 14));
-                    Main.rightScrollPane.scrollTo(1f);
+                    wrap.listPane.getParent().setPreferredSize(new Dimension(Main.screen.width / 8, wrap.listPane.getParent().getHeight() + delta * (lineCount == 1 && countLines() == 2 ? 14 : 14)));
+
+                    if(!once) Main.rightScrollPane.scrollTo(1f);
+                    else once = false;
+                    wrap.listPane.getParent().revalidate();
+                    wrap.listPane.revalidate();
                 }
             }
+            lineCount = countLines();
+
         }
         if(Main.taskScrollPane != null) Main.taskScrollPane.getVerticalScrollBar().repaint();
+        if(deleteButton != null) deleteButton.repaint();
     }
 
     private int countLines() {
@@ -280,6 +276,64 @@ public class UTextField extends JTextPane {
     public void updateUI() {
         super.updateUI();
         putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+    }
+
+    public void updated() {
+        Style style = addStyle("textColor", null);
+        StyleConstants.setForeground(style, new Color(255, 255, 255, (int) (255 * wrap.opacity)));
+
+        for(int i = 0; i < getText().length(); i++) {
+            getStyledDocument().setCharacterAttributes(i, 1, getStyle("textColor"), true);
+        }
+    }
+
+    public void init() {
+        Runnable doAssist = () -> {
+            if(once && !isAddReminder) {
+                maxNumberOfCharacters++;
+                wrap.setVisible(true);
+                setText(getText() + " ");
+                setText(getText().substring(0, getText().length() - 1));
+                maxNumberOfCharacters--;
+                wrap.checkbox.mouseReleased(null);
+                wrap.checkbox.mouseReleased(null);
+                once = false;
+            }
+
+        };
+        SwingUtilities.invokeLater(doAssist);
+        if(wrap != null && wrap.listPane != null) {
+            wrap.listPane.expandingHeight = 2;
+            for(Component comp : wrap.listPane.getComponents()) {
+                wrap.listPane.expandingHeight += comp.getPreferredSize().height;
+            }
+
+            if(wrap.opacity == 0) {
+                ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+                Runnable r = () -> {
+                    if(!Main.settingUpSettings) {
+                        if(wrap.opacity + .01f > 1f) {
+                            wrap.setOpacity(1f);
+                            executor.shutdown();
+
+                        } else if(getText().equals("add reminder") && wrap.opacity >= .35f) {
+                            wrap.setOpacity(.35f);
+                            executor.shutdown();
+
+                        } else {
+
+                            wrap.setOpacity(wrap.opacity + .01f);
+                        }
+                    }
+
+                };
+                executor.scheduleAtFixedRate(r, 0, 17, TimeUnit.MILLISECONDS);
+
+            }
+
+        }
+        resize();
     }
 }
 

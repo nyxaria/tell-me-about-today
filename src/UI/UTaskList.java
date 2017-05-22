@@ -25,6 +25,7 @@ public class UTaskList extends UPanel {
         setBackground(U.tertiary);
         FlowLayout layout = new FlowLayout();
         layout.setVgap(0);
+        setOpacity(0f);
         setLayout(layout);
         for(int i = 0; i < reminders.size(); i++) //foreach throws concurrentmodificationexception for some reason - something to do with implementation of lambda?
             addField(reminders.get(i));
@@ -70,7 +71,7 @@ public class UTaskList extends UPanel {
         });
 
         wrap.add(checkBoxWrap, BorderLayout.WEST);
-        wrap.setPreferredSize(new Dimension(getWidth(), content.getPreferredSize().height + 13));
+        wrap.setPreferredSize(new Dimension((int) getPreferredSize().getWidth(), content.getPreferredSize().height + 13));
         wrap.listPane = this;
         content.wrap = wrap;
         wrap.setOpaque(false);
@@ -78,7 +79,6 @@ public class UTaskList extends UPanel {
         wrap.setBackground(new Color(48, 48, 52, 0));
 
         wrap.setOpacity(0);
-        wrap.setVisible(false);
         wrap.checkbox = checkbox;
         JPanel layer = new JPanel();
         layer.setLayout(new OverlayLayout(layer));
@@ -89,11 +89,13 @@ public class UTaskList extends UPanel {
 
         UButton deleteButton = new UButton("icon:x_transparent", U.Size.Normal, U.Shape.Square);
         borderWrap.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 4));
-        northWrap.addMouseListener(deleteButton.getMouseListeners()[0]);
+        content.addMouseListener(deleteButton.getMouseListeners()[0]);
         northWrap.add(deleteButton, BorderLayout.NORTH);
         borderWrap.add(northWrap, BorderLayout.EAST);
         northWrap.setOpaque(false);
         borderWrap.setOpaque(false);
+
+        content.deleteButton = deleteButton;
 
         deleteButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -123,6 +125,7 @@ public class UTaskList extends UPanel {
             wrap.setVisible(true);
         }
         add(layer);
+        SwingUtilities.invokeLater(content::init);
 
     }
 }

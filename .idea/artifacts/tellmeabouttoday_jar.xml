@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="tellmeabouttoday:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tellmeabouttoday_jar</output-path>
+    <root id="archive" name="tellmeabouttoday.jar">
+      <element id="module-output" name="tellmeabouttoday" />
+      <element id="library" level="project" name="SonarLint" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/rtfkit_nosrc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/coobird/thumbnailator/0.4.8/thumbnailator-0.4.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../swingx-0.9.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
