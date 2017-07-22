@@ -11,20 +11,19 @@ public class SettingsPane extends UPanel {
     private final String[] settings = {"Default Reminders", "Title Template", "Text Template", "American Date Format"};
 
     public ArrayList<JComponent> dataFields = new ArrayList<>();
-    public boolean makeVisible = false;
 
     public SettingsPane() {
         super();
         setLayout(new FlowLayout());
-        setOpaque(false);
-        setBackground(U.transparent);
+        transparent = true;
+        //        setOpaque(false);
         ((FlowLayout) getLayout()).setVgap(0);
         ((FlowLayout) getLayout()).setHgap(0);
         String htmlPrefix = "<html><body style='text-align:left;width: ";
         Color background = U.theme == U.Theme.Light ? new Color(48, 48, 48) : new Color(240, 240, 240);
+        setBackground(background);
+
         int wrapTextWidth = getWidth() * 3 / 5 - 30;
-
-
 
         for(String setting : settings) {
             UWrap wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, true, true, true, true);
@@ -110,34 +109,8 @@ public class SettingsPane extends UPanel {
         }
 
         setOpacity(0.0f);
-        Main.taskList.setOpacity(0);
-        Main.settingUpSettings = true;
-
+        Main.settingUpSettings = false;
         setPreferredSize(new Dimension(Main.screen.width / 8, expandingHeight));
-        new java.util.Timer().schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
-                resize();
-                Main.rightScrollPane.scrollTo(1f);
-                setVisible(false);
-            }
-        }, 1400);
-        new java.util.Timer().schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
-                Main.rightScrollPane.scrollTo(1f);
-            }
-        }, 800);
-        new java.util.Timer().schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
-                makeVisible = true;
-                Main.rightScrollPane.scrollTo(0f);
-                Main.taskList.setOpacity(1f);
-                setVisible(true);
-            }
-        }, 3200);
-
 
     }
 
@@ -147,19 +120,6 @@ public class SettingsPane extends UPanel {
         }
     }
 
-    public void resize() {
-        SwingUtilities.invokeLater(() -> {
-            dataFields.stream().filter(comp -> comp instanceof UTextField).forEach(comp -> {
-                UTextField field = ((UTextField) comp);
-                //field.once = true;
-                field.resize();
-
-                field.repaint();
-                field.revalidate();
-            });
-        });
-
-    }
 
     public void updateSettings() {
         for(JComponent comp : dataFields) {
@@ -183,4 +143,5 @@ public class SettingsPane extends UPanel {
         }
         Global.writeSettings();
     }
+
 }

@@ -50,7 +50,7 @@ public class U {
         UTextArea.shadowOpacity = 0.8f;
         Main.writingZone.setForeground(text);
         Main.writingZone.setUpStyles();
-//        Main.writingZone.updated();
+        Main.writingZone.updated();
         Main.textToolBar.setBackground(new Color(200,200,200));
 
 
@@ -78,21 +78,23 @@ public class U {
             }
 
         }
-        if(Main.settingsPane!=null)
-        for(JComponent comp : Main.settingsPane.dataFields) {
-            if(comp instanceof UTextField) {
-                ((UTextField) comp).wrap.setBackground(new Color(240,240,240));
-                comp.setBackground(new Color(240,240,240));
-                ((UTextField) comp).wrap.title.inverted(false);
-                comp.setForeground(new Color(58,58,58));
-                ((UTextField) comp).setDisabledTextColor(comp.getForeground());
-            } else if(comp instanceof UCheckBox) {
-                ((UCheckBox) comp).wrap.setBackground(new Color(240,240,240));
-                ((UCheckBox) comp).wrap.title.inverted(false);
+        if(Main.settingsPane!=null) {
+            for(JComponent comp : Main.settingsPane.dataFields) {
+                if(comp instanceof UTextField) {
+                    ((UTextField) comp).wrap.setBackground(new Color(240, 240, 240));
+                    comp.setBackground(new Color(240, 240, 240));
+                    ((UTextField) comp).wrap.title.inverted(false);
+                    comp.setForeground(new Color(58, 58, 58));
+                    ((UTextField) comp).setDisabledTextColor(comp.getForeground());
+                } else if(comp instanceof UCheckBox) {
+                    ((UCheckBox) comp).wrap.setBackground(new Color(240, 240, 240));
+                    ((UCheckBox) comp).wrap.title.inverted(false);
+                }
             }
+            Main.settingsPane.setBackground(new Color(240,240,240));
         }
 
-        for(UWrap wrap : Main.activeWraps) {
+            for(UWrap wrap : Main.activeWraps) {
             wrap.setBackground(secondary);
             if(wrap.content != null) {
                 wrap.content.inverted(true);
@@ -109,6 +111,7 @@ public class U {
         } else {
             Main.mainFrame.getMostRecentFocusOwner().requestFocus();
         }
+
 
     }
 
@@ -127,7 +130,7 @@ public class U {
         UTextArea.shadowOpacity = 0.5f;
         Main.writingZone.setForeground(text);
         Main.writingZone.setUpStyles();
-//        Main.writingZone.updated();
+        Main.writingZone.updated();
         Main.textToolBar.setBackground(new Color(80,80,90));
 
 
@@ -163,18 +166,20 @@ public class U {
             }
         }
 
-        if(Main.settingsPane!=null)
-        for(JComponent comp : Main.settingsPane.dataFields) {
-            if(comp instanceof UTextField) {
-                ((UTextField) comp).wrap.setBackground(new Color(48, 48, 48));
-                ((UTextField) comp).wrap.title.inverted(true);
-                comp.setForeground(new Color(240,240,240));
-                ((UTextField) comp).setDisabledTextColor(comp.getForeground());
-                comp.setBackground(new Color(48, 48, 48));
-            } else if(comp instanceof UCheckBox) {
-                ((UCheckBox) comp).wrap.setBackground(new Color(48, 48, 48));
-                ((UCheckBox) comp).wrap.title.inverted(true);
+        if(Main.settingsPane!=null) {
+            for(JComponent comp : Main.settingsPane.dataFields) {
+                if(comp instanceof UTextField) {
+                    ((UTextField) comp).wrap.setBackground(new Color(48, 48, 48));
+                    ((UTextField) comp).wrap.title.inverted(true);
+                    comp.setForeground(new Color(240, 240, 240));
+                    ((UTextField) comp).setDisabledTextColor(comp.getForeground());
+                    comp.setBackground(new Color(48, 48, 48));
+                } else if(comp instanceof UCheckBox) {
+                    ((UCheckBox) comp).wrap.setBackground(new Color(48, 48, 48));
+                    ((UCheckBox) comp).wrap.title.inverted(true);
+                }
             }
+            Main.settingsPane.setBackground(new Color(48, 48, 48));
         }
 
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);

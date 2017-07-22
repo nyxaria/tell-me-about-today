@@ -20,19 +20,9 @@ import java.util.concurrent.TimeUnit;
 
 import static UI.U.*;
 
-/**
- * Created by gedr on 14/01/2017
- * A program to record your every day life, aspirations, emotions, ect.
- */
 
 public class Main {
 
-    /**
-     * Goals:
-     * - Create appealing UI
-     * - Save Text/Load Text
-     * - Calendar system
-     */
 
     public static JFrame mainFrame;
     public static JPanel mainPane;
@@ -43,7 +33,6 @@ public class Main {
     public static TranslucentScrollBar leftScrollPane;
     public static TranslucentScrollBar taskScrollPane;
     public static TranslucentScrollBar rightScrollPane;
-
 
     public static boolean isMac;
     private static boolean navBarClicked;
@@ -56,11 +45,10 @@ public class Main {
 
     public static ArrayList<Day> activeDays = new ArrayList<>();
     public static Day activeDay;
-    public static UPanel rightPane;
+    public static JLayeredPane rightPane;
     public static ArrayList<UWrap> activeWraps = new ArrayList<>();
     public static ULabel navBarTitle;
 
-    private static JFrame settingsFrame;
     public static boolean settingUp;
     public static boolean scrollingSettings;
     public static SettingsPane settingsPane;
@@ -77,13 +65,11 @@ public class Main {
         }
     }
 
-
     private static void initiate() throws IOException {
         mainFrame = new JFrame();
         mainFrame.setUndecorated(true);
         mainFrame.setBackground(transparent);
         mainFrame.setBounds((int) (screen.getWidth() / 6), (int) (screen.getHeight() / 7), (int) (screen.getWidth() * 4 / 6), (int) (screen.getHeight() * 5 / 7));
-
 
         mainPane = new JPanel();
         mainPane.setBackground(transparent);
@@ -99,8 +85,8 @@ public class Main {
                 qualityHints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
                 g2.setRenderingHints(qualityHints);
                 g2.setPaint(getBackground());
-                g2.fillRoundRect(0, 0, getWidth(), getHeight()/2 + 3, 6, 6);
-                g2.fillRect(0, getHeight()/2, getWidth(), getHeight()/2);
+                g2.fillRoundRect(0, 0, getWidth(), getHeight() / 2 + 3, 6, 6);
+                g2.fillRect(0, getHeight() / 2, getWidth(), getHeight() / 2);
 
                 g2.dispose();
             }
@@ -116,16 +102,24 @@ public class Main {
         UButton exitButton = new UButton("icon:x", Size.Small, U.Shape.Square, true);
         exitButton.setBackground(transparent);
         exitButton.addMouseListener(new MouseListener() {
-            @Override public void mouseClicked(MouseEvent e) { exit(); }
-            @Override public void mousePressed(MouseEvent e) {}
-            @Override public void mouseReleased(MouseEvent e) {}
-            @Override public void mouseEntered(MouseEvent e) {}
-            @Override public void mouseExited(MouseEvent e) {}
+            @Override
+            public void mouseClicked(MouseEvent e) { exit(); }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
         });
         navBarPane.add(exitButton, alignmentArg);
 
         JPanel toolbarWrap = new JPanel();
-        //toolbarWrap.setLayout(new BoxLayout(toolbarWrap, BoxLayout.X_AXIS));
         ((FlowLayout) toolbarWrap.getLayout()).setVgap(0);
         ((FlowLayout) toolbarWrap.getLayout()).setHgap(0);
 
@@ -135,17 +129,20 @@ public class Main {
             public void mouseClicked(MouseEvent e) {
                 if(!scrollingSettings && !settingUpSettings) {
                     if(settingsView) {
-                        rightScrollPane.scrollTo(0f);
                         settingsView = false;
                         settingsPane.updateSettings();
+                        taskScrollPane.disableScrolling(false);
+                        settingsPane.setOpacity(0f);
                     } else {
-                        rightScrollPane.scrollTo(1f);
+                        settingsPane.setOpacity(1f);
+
+                        rightScrollPane.scrollWidth = 0;
                         settingsPane.active(true);
                         settingsView = true;
+                        taskScrollPane.disableScrolling(true);
                     }
                 }
             }
-
             @Override public void mousePressed(MouseEvent e) {}
             @Override public void mouseReleased(MouseEvent e) {}
             @Override public void mouseEntered(MouseEvent e) {}
@@ -171,8 +168,8 @@ public class Main {
             @Override public void mouseExited(MouseEvent e) {}
         });
 
-        imageButton.setPreferredSize(new Dimension(20,20));
-        settingsButton.setPreferredSize(new Dimension(20,20));
+        imageButton.setPreferredSize(new Dimension(20, 20));
+        settingsButton.setPreferredSize(new Dimension(20, 20));
 
         imageButton.setOpaque(false);
         settingsButton.setOpaque(false);
@@ -191,7 +188,8 @@ public class Main {
                 }
             }
 
-            @Override public void mouseMoved(MouseEvent e) {}
+            @Override
+            public void mouseMoved(MouseEvent e) {}
         });
         navBarPane.addMouseListener(new MouseListener() {
             @Override
@@ -202,16 +200,23 @@ public class Main {
 
             }
 
-            @Override public void mouseReleased(MouseEvent e) { navBarClicked = false; }
-            @Override public void mouseClicked(MouseEvent e) {}
-            @Override public void mouseEntered(MouseEvent e) {}
-            @Override public void mouseExited(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) { navBarClicked = false; }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
         });
 
         JPanel centerWrap = new JPanel(new GridBagLayout());
         navBarTitle = new ULabel("Tell Me About Today", Size.Smaller, U.Shape.Normal, false, Style.Plain);
         navBarTitle.setPreferredSize(new Dimension(navBarTitle.getPreferredSize().width, 20));
-        navBarTitle.setBorder(BorderFactory.createEmptyBorder(1,0,0,0));
+        navBarTitle.setBorder(BorderFactory.createEmptyBorder(1, 0, 0, 0));
         navBarTitle.inverted(true);
         navBarTitle.setForeground(text);
         centerWrap.add(navBarTitle);
@@ -223,16 +228,12 @@ public class Main {
         writingZone = new UTextArea();
         textToolBar = new UTextToolBar();
 
-        if(U.theme == Theme.Dark)
-            U.dark();
-        else
-            U.light();
-
+        if(U.theme == Theme.Dark) U.dark();
+        else U.light();
 
         leftPane = new JPanel();
         ((FlowLayout) leftPane.getLayout()).setVgap(0);
         leftPane.setBackground(tertiary);
-
 
         leftPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 7), 300));
         wrapTextWidth = leftPane.getPreferredSize().width - 63;
@@ -242,46 +243,52 @@ public class Main {
 
         settingsPane = new SettingsPane();
 
-        rightPane = new UPanel(new BorderLayout());
+
+        rightPane = new JLayeredPane();
+        rightPane.setLayout(new OverlayLayout(rightPane));
         taskList.setBackground(tertiary);
         taskList.setOpaque(true);
         taskList.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, border));
         JPanel gridWrap = new JPanel(new BorderLayout());
         JPanel flowWrap = new JPanel(new FlowLayout(FlowLayout.LEFT));
         gridWrap.add(taskList, BorderLayout.NORTH);
-        rightPane.add(settingsPane, BorderLayout.SOUTH);
+
+        JPanel settingsWrap = new JPanel(new BorderLayout());
+        settingsWrap.add(settingsPane, BorderLayout.SOUTH);
+        settingsWrap.setBackground(U.transparent);
+        rightPane.add(settingsWrap);
 
         flowWrap.add(taskList);
-        flowWrap.setPreferredSize(new Dimension(100,100));
+        flowWrap.setPreferredSize(new Dimension(100, 100));
         taskScrollPane = new TranslucentScrollBar(taskList, true);
         taskScrollPane.setOpaque(true);
-        rightPane.add(taskScrollPane, BorderLayout.NORTH);
+        JPanel taskScrollWrap = new JPanel(new BorderLayout());
+        taskScrollWrap.add(taskScrollPane);
+        rightPane.add(taskScrollWrap);
         rightPane.setBackground(tertiary);
 
-        leftScrollPane = new TranslucentScrollBar(leftPane,true);
+        leftScrollPane = new TranslucentScrollBar(leftPane, true);
 
-        leftPane.setPreferredSize(new Dimension((int) screen.getWidth()/7 - 20, size + 1));
+        leftPane.setPreferredSize(new Dimension((int) screen.getWidth() / 7 - 20, size + 1));
 
         UPanel mainPane = new UPanel(new BorderLayout());
         JLayeredPane lpane = new JLayeredPane();
 
         TranslucentScrollBar writingScroll = new TranslucentScrollBar(writingZone, true);
-        int parentWidth = (int) (Main.screen.width*((2f/3) - (1f/8)-(1f/7)) - 11);
-        int parentHeight = (int)(Main.screen.getHeight() * 5f / 7) - Main.navBarPane.getPreferredSize().height;
-        writingScroll.setBounds(0,0, parentWidth, parentHeight);
+        int parentWidth = (int) (Main.screen.width * ((2f / 3) - (1f / 8) - (1f / 7)) - 11);
+        int parentHeight = (int) (Main.screen.getHeight() * 5f / 7) - Main.navBarPane.getPreferredSize().height;
+        writingScroll.setBounds(0, 0, parentWidth, parentHeight);
         lpane.add(writingScroll, 0, 0);
         lpane.add(textToolBar, 1, 0);
         lpane.setOpaque(false);
 
         mainPane.add(lpane);
 
-
-
         rightScrollPane = new TranslucentScrollBar(rightPane, false);
         rightScrollPane.scrollWidth = 0;
         rightScrollPane.setBackground(tertiary);
         rightScrollPane.setOpaque(true);
-        rightPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 8), mainFrame.getHeight() - navBarPane.getPreferredSize().height + settingsPane.getPreferredSize().height));
+        rightPane.setPreferredSize(new Dimension((int) (screen.getWidth() / 8), mainFrame.getHeight() - navBarPane.getPreferredSize().height));
         centerPane.add(rightScrollPane, BorderLayout.EAST);
         centerPane.add(mainPane, BorderLayout.CENTER);
         centerPane.add(leftScrollPane, BorderLayout.WEST);
@@ -301,8 +308,6 @@ public class Main {
                 }
             }
         }, 30, 30, TimeUnit.SECONDS);
-
-        System.out.println(mainPane.getWidth() + " d ");
     }
 
     private static void populateLeftPane() {
@@ -320,7 +325,6 @@ public class Main {
                 activeDays.add(day);
                 String text = "";
                 String[] cont = day.plainText.split("\n");
-                System.out.println(day.plainText);
                 int index = 2;
                 if(cont.length > index) {
                     while(text.equals("")) {
@@ -332,7 +336,7 @@ public class Main {
                     }
                 }
                 String titleText = "";
-                if(cont.length >= 1 && cont.length >1) {
+                if(cont.length >= 1 && cont.length > 1) {
                     titleText = cont[1];
                 }
 
@@ -356,7 +360,7 @@ public class Main {
                     title = new ULabel(htmlPrefix + (wrapTextWidth - 5) + "px'>" + titleText.trim().replace(".", ".<wbr>"), Size.Smaller, U.Shape.Normal, false, Style.Plain);
                 } else {
                     String[] dateData = format(c.getTime()).split("-");
-                    String dateFormatted = new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1] + " " + (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0]) + Day.getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1) ;
+                    String dateFormatted = new DateFormatSymbols().getMonths()[Integer.parseInt(dateData[1]) - 1] + " " + (dateData[0].startsWith("0") ? dateData[0].replace("0", "") : dateData[0]) + Day.getDayOfMonthSuffix(Integer.parseInt(dateData[0]) + 1);
                     date = new ULabel(dateFormatted, Size.Tiny, U.Shape.Normal, false, Style.Plain);
                     date.setVerticalAlignment(SwingConstants.TOP);
                     date.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 7));
@@ -366,8 +370,7 @@ public class Main {
                 JPanel topWrap = new JPanel(new BorderLayout());
                 JPanel titleWrap = new JPanel();
 
-                if(titleText.equals(""))
-                    titleWrap.setVisible(false);
+                if(titleText.equals("")) titleWrap.setVisible(false);
 
                 titleWrap.setBorder(BorderFactory.createEmptyBorder(8, 4, 0, 10));
                 title.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -386,7 +389,7 @@ public class Main {
                 contentWrap.add(content, BorderLayout.NORTH);
                 contentWrap.setBorder(BorderFactory.createEmptyBorder(0, 6, 5, 3));
                 wrap.add(contentWrap, BorderLayout.CENTER);
-                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth()/7%2), title.getPreferredSize().height + content.getPreferredSize().height + 25));
+                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth() / 7 % 2), title.getPreferredSize().height + content.getPreferredSize().height + 25));
 
                 leftPane.add(wrap);
 
@@ -406,7 +409,7 @@ public class Main {
                                 activeDay.wrap.setBackground(secondary);
                                 activeDay.text = activeDay.textArea.getStyledText();
                                 try {
-                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0, activeDay.textArea.getDocument().getLength());
                                 } catch(BadLocationException e1) {
                                     e1.printStackTrace();
                                 }
@@ -414,26 +417,31 @@ public class Main {
                             }
                             wrap.setBackground(accent);
                             leftScrollPane.repaint();
-                            taskList.setOpacity(0f);
                             day.textArea.opacity = 0;
+                            taskList.setOpacity(0);
+
                             new Thread(() -> {
                                 activeDay = day;
-                                taskList.repaint();
                                 day.prioritize();
                                 day.textArea.start();
-//
-//                                Main.taskList.setList();
-//                                Main.taskList.repaint();
+                                taskList.repaint();
                             }).start();
                             activeDays.add(day);
 
                         }
                     }
 
-                    @Override public void mouseClicked(MouseEvent e) {}
-                    @Override public void mouseReleased(MouseEvent e) {}
-                    @Override public void mouseEntered(MouseEvent e) {}
-                    @Override public void mouseExited(MouseEvent e) {}
+                    @Override
+                    public void mouseClicked(MouseEvent e) {}
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {}
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {}
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {}
                 };
 
                 content.addMouseListener(clickListener);
@@ -459,7 +467,6 @@ public class Main {
                 title.setVerticalAlignment(SwingConstants.BOTTOM);
                 titleWrap.add(title);
 
-
                 JPanel contentWrap = new JPanel(new BorderLayout());
                 contentWrap.setOpaque(false);
                 ULabel content = new ULabel("<html><body style='width: " + (wrapTextWidth) + "px'>" + "", Size.Tiny, U.Shape.Normal, false, Style.Plain);
@@ -474,7 +481,7 @@ public class Main {
                 topWrap.setOpaque(false);
                 wrap.add(topWrap, BorderLayout.NORTH);
                 titleWrap.setOpaque(false);
-                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth()/7%2), title.getPreferredSize().height +  24));
+                wrap.setPreferredSize(new Dimension((int) (screen.getWidth() / 7 - 2 - screen.getWidth() / 7 % 2), title.getPreferredSize().height + 24));
                 leftPane.add(wrap);
 
                 boolean inverted = U.theme == Theme.Dark;
@@ -492,7 +499,7 @@ public class Main {
                                 activeDay.wrap.setBackground(secondary);
                                 activeDay.text = activeDay.textArea.getStyledText();
                                 try {
-                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+                                    activeDay.plainText = activeDay.textArea.getDocument().getText(0, activeDay.textArea.getDocument().getLength());
                                 } catch(BadLocationException e1) {
                                     e1.printStackTrace();
                                 }
@@ -506,13 +513,12 @@ public class Main {
                             leftScrollPane.repaint();
                             activeDays.add(today);
                             activeDay = today;
-                            taskList.setOpacity(0f);
-
+                            taskList.setOpacity(0);
                             new Thread(() -> {
                                 today.prioritize();
                                 today.textArea.start();
                                 try {
-                                    wrap.updateText(today.textArea.getDocument().getText(0,today.textArea.getDocument().getLength()));
+                                    wrap.updateText(today.textArea.getDocument().getText(0, today.textArea.getDocument().getLength()));
                                 } catch(BadLocationException ex) {
                                     ex.printStackTrace();
                                 }
@@ -521,27 +527,27 @@ public class Main {
                         }
                     }
 
-                    @Override public void mouseClicked(MouseEvent e) {}
-                    @Override public void mouseReleased(MouseEvent e) {}
-                    @Override public void mouseEntered(MouseEvent e) {}
-                    @Override public void mouseExited(MouseEvent e) {}
-                };
-                title.addMouseListener(clickListener);
+                    @Override
+                    public void mouseClicked(MouseEvent e) {}
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {}
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {}
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {}
+                }; title.addMouseListener(clickListener);
                 wrap.addMouseListener(clickListener);
 
                 wrap.title = title;
                 wrap.content = content;
                 wrap.leftPane = leftPane;
-            }
-            size += wrap.getPreferredSize().height;
+            } size += wrap.getPreferredSize().height;
 
             wrap.setOpaque(false);
 
-            //          x create updatable tasks,
-            //          x add task function
-            //          x settings button in tool bar
-            //            add daily plan top right
-            //          x add basic formatting
 
             wrap.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
             wrap.setBackground(secondary);
@@ -554,7 +560,7 @@ public class Main {
         if(activeDay != null) {
             activeDay.text = activeDay.textArea.getStyledText();
             try {
-                activeDay.plainText = activeDay.textArea.getDocument().getText(0,activeDay.textArea.getDocument().getLength());
+                activeDay.plainText = activeDay.textArea.getDocument().getText(0, activeDay.textArea.getDocument().getLength());
             } catch(BadLocationException e1) {
                 e1.printStackTrace();
             }
@@ -569,7 +575,6 @@ public class Main {
     public static String format(Date date) {
         return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
-
 
 }
 

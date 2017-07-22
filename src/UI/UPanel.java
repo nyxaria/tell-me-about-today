@@ -17,6 +17,7 @@ import java.util.Map;
 public class UPanel extends JPanel {
     public float opacity = 1f;
     public int expandingHeight;
+    public boolean transparent;
 
     private static enum Position {
         TOP,
@@ -52,6 +53,11 @@ public class UPanel extends JPanel {
         repaint();
         this.opacity = f;
         process(this);
+    }
+
+    public void setSoftOpacity(float f) {
+        repaint();
+        this.opacity = f;
     }
 
     void process(UPanel parent) {
@@ -136,6 +142,7 @@ public class UPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        if(!transparent)
         if(shadowColor != null) {
             g.setColor(getBackground());
             g.fillRect(shadowSize+1, shadowSize+1, getWidth() - shadowSize * 2-2, getHeight() - shadowSize * 2-2);

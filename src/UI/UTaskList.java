@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class UTaskList extends UPanel {
 
     public ArrayList<UCheckBox> checkboxes;
+    private UWrap wrap;
 
     public UTaskList() {
         setOpaque(false);
@@ -21,7 +22,7 @@ public class UTaskList extends UPanel {
     public void setList() {
         removeAll();
         ArrayList<String> reminders = Main.activeDay.reminders;
-        checkboxes = new ArrayList<UCheckBox>();
+        checkboxes = new ArrayList<>();
         setBackground(U.tertiary);
         FlowLayout layout = new FlowLayout();
         layout.setVgap(0);
@@ -30,6 +31,22 @@ public class UTaskList extends UPanel {
         for(int i = 0; i < reminders.size(); i++) //foreach throws concurrentmodificationexception for some reason - something to do with implementation of lambda?
             addField(reminders.get(i));
         //
+
+
+        SwingUtilities.invokeLater(() -> {
+            new java.util.Timer().schedule(new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    expandingHeight = 1;
+                    for(Component comp : wrap.listPane.getComponents()) {
+                        expandingHeight += comp.getPreferredSize().height;
+                    }
+                    setPreferredSize(new Dimension(wrap.listPane.getWidth(), wrap.listPane.expandingHeight));
+                    Main.taskScrollPane.repaint();
+                }
+            }, 400);
+        });
+
         Main.settingUp = false;
 
     }
@@ -41,7 +58,7 @@ public class UTaskList extends UPanel {
             text = text.substring(0, text.length() - 1);
         }
 
-        UWrap wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, true, true, true, true);
+        wrap = new UWrap(new BorderLayout(), Color.BLACK, 5, 0.6F, 14, true, true, true, true);
 
         UTextField content = new UTextField(text, 11, U.theme == U.Theme.Light ? Color.white : U.text, new Color(0, 0, 0, 0));
 

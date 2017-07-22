@@ -20,12 +20,11 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
     private boolean navBarClicked = false;
     private Point mouseCache;
 
-    private float idleOpacity = 0.4f;
+    private float idleOpacity = 0.3f;
     public UTextToolBar() {
-        //super(new BorderLayout());
 
         int width = 66;
-        setSize(width, 48);
+        setSize(width, 56);
         setOpacity(idleOpacity);
 
         parentWidth = (int) (Main.screen.width * ((2f / 3) - (1f / 8) - (1f / 7)) - 13);
@@ -92,6 +91,7 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
         italicizeText.addMouseListener(modifierListener);
         underlineText.addMouseListener(modifierListener);
 
+        verticalWrap.add(Box.createRigidArea(new Dimension(10,8)));
         verticalWrap.add(textAlignmentWrap);
         verticalWrap.add(Box.createRigidArea(new Dimension(10, 4)));
         verticalWrap.add(textModifiersWrap);
@@ -158,6 +158,7 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
                         StyleConstants.setItalic(modifier, !StyleConstants.isItalic(modifier));
                         break;
                 }
+
                 Main.writingZone.setCaretPosition(i);
 
                 doc.setCharacterAttributes(i, 1, modifier, true);
@@ -178,6 +179,8 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
                 addMouseListeners(child);
             }
         } else {
+            parent.addMouseMotionListener(this);
+            parent.addMouseListener(this);
             parent.addMouseMotionListener(this);
         }
     }
@@ -227,10 +230,10 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
         executor = Executors.newScheduledThreadPool(1);
         Runnable r = () -> {
             if(opacity + .01f > 1f) {
-                setOpacity(1f);
+                setSoftOpacity(1f);
                 executor.shutdown();
             } else {
-                setOpacity(opacity + .01f);
+                setSoftOpacity(opacity + .01f);
             }
 
         };
@@ -247,10 +250,10 @@ public class UTextToolBar extends UPanel implements MouseListener, MouseMotionLi
 
         Runnable r = () -> {
             if(opacity - .01f < idleOpacity) {
-                setOpacity(idleOpacity);
+                setSoftOpacity(idleOpacity);
                 executor.shutdown();
             } else {
-                setOpacity(opacity - .01f);
+                setSoftOpacity(opacity - .01f);
             }
 
         };

@@ -42,9 +42,20 @@ public class TranslucentScrollBar extends JScrollPane {
             executor = null;
         }
     };
+    public void disableScrolling(boolean b) {
+        if(b) {
+            setWheelScrollingEnabled(false);
+            scrollVisible = false;
+        } else {
+            setWheelScrollingEnabled(true);
+            scrollVisible = true;
 
-    public TranslucentScrollBar(JComponent pane, boolean scrollVisible) {
+        }
+    }
+    public TranslucentScrollBar(JComponent pane, boolean sv) {
         super(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        this.scrollVisible = sv;
+
         if(!scrollVisible) {
             setWheelScrollingEnabled(false);
         }
@@ -55,7 +66,6 @@ public class TranslucentScrollBar extends JScrollPane {
         setComponentZOrder(getViewport(), 1);
         getVerticalScrollBar().setOpaque(false);
 
-        this.scrollVisible = scrollVisible;
 
         getVerticalScrollBar().addMouseListener(new MouseListener() {
             @Override
@@ -185,7 +195,7 @@ public class TranslucentScrollBar extends JScrollPane {
                     scrollWidth = 1;
                 }
                 g2.setPaint(activeColor);
-                g2.fillRoundRect(r.x + 4 - scrollWidth, r.y + 1, r.width - 6 + scrollWidth, r.height - 2, 6 + scrollWidth, 5);
+                    g2.fillRoundRect(r.x + 4 - scrollWidth, r.y + 1, r.width - 6 + scrollWidth, r.height - 2, 6 + scrollWidth, 5);
                 g2.dispose();
             }
 
@@ -231,14 +241,6 @@ public class TranslucentScrollBar extends JScrollPane {
                     exec.shutdown();
                     Main.scrollingSettings = false;
                     Main.taskScrollPane.repaint();
-
-                    if(Main.settingsPane.makeVisible) {
-                        Main.taskList.setOpacity(1f);
-                        Main.settingsPane.setOpacity(1f);
-
-                        Main.settingsPane.makeVisible = false;
-                        Main.settingUpSettings = false;
-                    }
                 }
                 t += .005;
                 repaint();
@@ -249,4 +251,5 @@ public class TranslucentScrollBar extends JScrollPane {
         SwingUtilities.invokeLater(doAssist);
 
     }
+
 }

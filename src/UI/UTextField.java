@@ -12,9 +12,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by gedr on 05/04/2017.
- */
 public class UTextField extends JTextPane {
 
     public static AttributeSet strike;
@@ -46,7 +43,7 @@ public class UTextField extends JTextPane {
 
         setEditorKit(new StyledEditorKit() {
             public ViewFactory getViewFactory() {
-                return new NewViewFactory();
+                return new StrikeViewFactory();
             }
         });
 
@@ -71,7 +68,7 @@ public class UTextField extends JTextPane {
         }
 
         setBackground(U.tertiary);
-        putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+        putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, false);
         getDocument().putProperty("ZOOM_FACTOR", fontSize + 1);
         setFont(Global.plain.deriveFont(fontSize));
         DefaultCaret dc = new DefaultCaret() {
@@ -85,7 +82,7 @@ public class UTextField extends JTextPane {
                         return;
                     }
 
-                    Rectangle r = null;
+                    Rectangle r;
                     try {
                         r = comp.modelToView(getDot());
                         if(r == null) {
@@ -177,12 +174,7 @@ public class UTextField extends JTextPane {
         document.addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                if(wrap.listPane != null && wrap.listPane.expandingHeight == 0 && getText().length() != 0) {
-                    wrap.listPane.expandingHeight = 1;
-                    for(Component comp : wrap.listPane.getComponents()) {
-                        wrap.listPane.expandingHeight += comp.getPreferredSize().height;
-                    }
-                }
+
                 resize();
                 if(deleteButton != null) deleteButton.repaint();
 
@@ -207,6 +199,7 @@ public class UTextField extends JTextPane {
         g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
         g2d.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING, java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         super.paintComponent(g2d);
+        Main.rightScrollPane.repaint();
     }
 
     protected void resize() {
@@ -291,7 +284,6 @@ public class UTextField extends JTextPane {
         Runnable doAssist = () -> {
             if(once && !isAddReminder) {
                 maxNumberOfCharacters++;
-                wrap.setVisible(true);
                 setText(getText() + " ");
                 setText(getText().substring(0, getText().length() - 1));
                 maxNumberOfCharacters--;
@@ -337,13 +329,13 @@ public class UTextField extends JTextPane {
     }
 }
 
-class NewViewFactory implements ViewFactory {
+class StrikeViewFactory implements ViewFactory {
     public View create(Element elem) {
         String kind = elem.getName();
         if(kind != null) {
             if(kind.equals(AbstractDocument.ContentElementName)) {
 
-                return new MyLabelView(elem);
+                return new StrikeLabelView(elem);
             } else if(kind.equals(AbstractDocument.ParagraphElementName)) {
                 return new ParagraphView(elem);
             } else if(kind.equals(AbstractDocument.SectionElementName)) {
@@ -356,15 +348,13 @@ class NewViewFactory implements ViewFactory {
             }
 
         }
-
-        // default to text display
         return new LabelView(elem);
     }
 }
 
-class MyLabelView extends LabelView {
+class StrikeLabelView extends LabelView {
 
-    public MyLabelView(Element elem) {
+    public StrikeLabelView(Element elem) {
         super(elem);
     }
 
@@ -380,12 +370,12 @@ class MyLabelView extends LabelView {
             int y = a.getBounds().y + a.getBounds().height - (int) getGlyphPainter().getDescent(this);
 
             y = y - (int) (getGlyphPainter().getAscent(this) * 0.3f);
-            int x1 = (int) a.getBounds().getX();
-            int x2 = (int) (a.getBounds().getX() + a.getBounds().getWidth());
+            int x = (int) a.getBounds().getX();
+            int xx = (int) (a.getBounds().getX() + a.getBounds().getWidth());
 
             Color old = g.getColor();
             g.setColor(c);
-            g.drawLine(x1, y, x2, y);
+            g.drawLine(x, y, xx, y);
             g.setColor(old);
         }
     }

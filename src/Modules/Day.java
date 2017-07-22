@@ -42,11 +42,7 @@ public class Day {
         textArea.initialising = true;
         if(new File(U.data + date + ".txt").exists()) {
 
-//            SimpleAttributeSet aSet = new SimpleAttributeSet();
-//            StyleConstants.set(aSet, 1);
-//            Main.writingZone.getStyledDocument().setParagraphAttributes(0, Main.writingZone.getDocument().getLength(), aSet, false);
             textArea.loadText(text);
-//            textArea.updated();
 
         } else {
             String[] dateData = date.split("-");

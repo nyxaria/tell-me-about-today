@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -36,8 +35,6 @@ public class UTextArea extends JTextPane {
     private boolean highlighted;
     ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
     private boolean focus = false;
-    ArrayList<String> redo = new ArrayList();
-    public ArrayList<String> undo = new ArrayList<>();
     StyledDocument document;
     protected UndoManager undoManager = new UndoManager();
 
@@ -283,18 +280,15 @@ public class UTextArea extends JTextPane {
     public void updated() {
         document.removeUndoableEditListener(undoableListner);
 
-        Style style = addStyle("textColor", null);
-        StyleConstants.setForeground(style, getForeground());
         int selectionStart = getSelectionStart();
         int selectionEnd = getSelectionEnd();
         int caretPos = getCaretPosition();
-        boolean next = false;
-        SimpleAttributeSet prevAttSet = null;
 
-        for(int i = 1; i < getDocument().getLength() + 1; i++) {
+        for(int i = 0; i < getDocument().getLength() + 1; i++) {
             AttributeSet old = getStyledDocument().getCharacterElement(i).getAttributes();
             SimpleAttributeSet set = new SimpleAttributeSet();
             set.addAttributes(old);
+            StyleConstants.setForeground(set, getForeground());
             getStyledDocument().setCharacterAttributes(i, 1, getStyle("highlight"), true);
 
             getStyledDocument().setCharacterAttributes(i, 1, set, true);
@@ -341,8 +335,6 @@ public class UTextArea extends JTextPane {
     }
 
     public void start() {
-        undo.add(getText());
-
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         opacity = 0;
         Main.taskScrollPane.activeColor = new Color(Main.taskScrollPane.activeColor.getRed(), Main.taskScrollPane.activeColor.getGreen(), Main.taskScrollPane.activeColor.getBlue(), 0);
@@ -389,6 +381,7 @@ public class UTextArea extends JTextPane {
 
         ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
 
+        if(g!=null);
         super.paintComponent(g);
     }
 }

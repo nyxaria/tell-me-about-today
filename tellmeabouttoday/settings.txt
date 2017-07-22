@@ -3,5 +3,5 @@ reminderTemplate=nWorkout`nMeditate`nRead for 30 minutes`nWrite diary entry and 
 theme=Dark
 titleTemplate=Title
 dateTemplate=day, ddsuffix month year
-textTemplate=What did you get up to today?
+textTemplate=What did you get d up to today?
 dateFormat=MM-dd-yyyy

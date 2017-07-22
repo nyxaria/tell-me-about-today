@@ -20,30 +20,26 @@ public class ULabel extends JLabel implements MouseListener {
     private int squareX;
     private boolean mouseOver;
     private boolean mouseDown;
-    public static Image cogImage;
+
+    private int sizeInt;
+    private int inverted;
+    private Font font;
+    private boolean hover;
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
     public void mouseEntered(MouseEvent e) {
         if(hover) {
             setForeground(new Color(Math.abs(inverted - 65 - darken), Math.abs(inverted - 65 - darken), Math.abs(inverted - 65 - darken)));
         }
-        //Main.leftScrollPane.getVerticalScrollBar().repaint();
-
     }
 
     @Override
@@ -73,13 +69,6 @@ public class ULabel extends JLabel implements MouseListener {
         darken = b ? 30 : 0;
         setForeground(new Color(Math.abs(inverted - 65 - darken), Math.abs(inverted - 65 - darken), Math.abs(inverted - 65 - darken)));
     }
-
-    private int sizeInt;
-    private int inverted;
-    private Font font;
-    private boolean hover;
-
-    private Dimension baselinePixelDims;
 
     public ULabel(String text, U.Size size, U.Shape shape, boolean hover, U.Style style) {
         super(text);
@@ -150,8 +139,6 @@ public class ULabel extends JLabel implements MouseListener {
                 font = Global.plain.deriveFont((float) sizeInt);
         }
 
-        //baselinePixelDims = font.getStringBounds(text, ((Graphics2D) new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB).getGraphics()).getFontRenderContext());
-
         switch(shape) {
             case Square:
                 if(text.startsWith("icon:")) {
@@ -169,10 +156,6 @@ public class ULabel extends JLabel implements MouseListener {
         setBorder(new CompoundBorder(getBorder(), new EmptyBorder(0, 4, 4, 4)));
         addMouseListener(this);
 
-    }
-
-    public Dimension getTextDims() {
-        return baselinePixelDims;
     }
 
     @Override
@@ -213,7 +196,6 @@ public class ULabel extends JLabel implements MouseListener {
                 }
                 break;
             case "image_picture":
-                System.out.println(squareX / 2);
                 g2.setColor(Color.black);
                 g2.drawRect(squareX / 6, squareX * 2 / 10, squareX * 4 / 6, squareX * 6 / 9);
                 g2.setColor(Color.white);
@@ -225,12 +207,9 @@ public class ULabel extends JLabel implements MouseListener {
                 if(U.theme == U.Theme.Dark) g2.setColor(Color.orange);
                 else g2.setColor(Color.yellow);
                 g2.fillOval(squareX / 6 + squareX * 80 / 500, squareX * 53 / 200 + squareX / 8, 3, 3);
-                //g2.drawRect(0,0,squareX,squareX);
                 g2.setColor(Color.lightGray.darker());
                 g2.fillPolygon(new int[]{squareX / 6 + squareX * 73 / 50 / 3, squareX / 6 + squareX * 4 / 6 - 1, squareX / 6 + squareX * 4 / 6 - 1, squareX / 6 + squareX * 4 / 6 / 5, squareX / 6 + squareX * 73 / 50 / 3}, new int[]{squareX * 2 / 10 + squareX * 4 * 6 / 10 / 3 / 4, squareX * 2 / 10 + squareX * 2 * 6 / 12 / 3, squareX * 2 / 10 + squareX * 2 * 6 / 9 / 3 + 1, squareX * 2 / 10 + squareX * 2 * 6 / 9 / 3 + 1, squareX * 2 / 10 + squareX * 4 * 6 / 10 / 3 / 4}, 5);
                 g2.setColor(Color.white);
-                //                g2.fillPolygon(new int[]{squareX/6 + squareX*73/50/3, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6 - 1, squareX/6 + squareX*4/6/5, squareX/6 + squareX*73/50/3},
-                //new int[]{squareX*2/10 + squareX*4*6/10/3/4, squareX*2/10 + squareX*2*6/12/3, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*2*6/9/3 + 1, squareX*2/10 + squareX*4*6/10/3/4}, 5);
                 break;
             default:
                 if(text.substring(text.indexOf(":") + 1, text.length()).startsWith("image_")) {
@@ -241,7 +220,7 @@ public class ULabel extends JLabel implements MouseListener {
                         Image img = Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length()));
                         RescaleOp rescaleOp = new RescaleOp(1f + (U.theme == U.Theme.Light ? -.5f : -.5f), 1, null);
                         if(img != null)
-                        g2.drawImage(rescaleOp.filter((BufferedImage) img, (BufferedImage) img), getWidth() / 2 - img.getWidth(null) / 2 - 2, getHeight() / 2 - img.getHeight(null) / 2, this);
+                            g2.drawImage(rescaleOp.filter((BufferedImage) img, (BufferedImage) img), getWidth() / 2 - img.getWidth(null) / 2 - 2, getHeight() / 2 - img.getHeight(null) / 2, this);
                     } else {
                         while(Global.images.get(text.substring(text.indexOf("image_") + "image_".length(), text.length()) + "_" + (U.theme == U.Theme.Light ? mouseDown ? "dark" : "light" : mouseDown ? "light" : "dark")) == null) {
                             Global.loadImage(text.substring(text.indexOf("image_") + "image_".length(), text.length()));
@@ -250,15 +229,10 @@ public class ULabel extends JLabel implements MouseListener {
                         g2.drawImage(img, getWidth() / 2 - img.getWidth(null) / 2 - 2, getHeight() / 2 - img.getHeight(null) / 2, this);
                     }
                 }
-
-
-
         }
         g.dispose();
 
     }
-
-
 
     public static BufferedImage imageToBufferedImage(Image im) {
         BufferedImage bi = new BufferedImage(im.getWidth(null), im.getHeight(null), BufferedImage.TYPE_INT_ARGB);
