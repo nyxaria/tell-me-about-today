@@ -34,7 +34,8 @@ public class Main {
     public static TranslucentScrollBar taskScrollPane;
     public static TranslucentScrollBar rightScrollPane;
 
-    public static boolean isMac;
+    public static final boolean isMac = System.getProperty("os.name").toLowerCase().contains("mac");
+
     private static boolean navBarClicked;
     private static boolean settingsView;
     public static int wrapTextWidth;
@@ -93,13 +94,9 @@ public class Main {
         };
         navBarPane.setOpaque(false);
         navBarPane.setLayout(new BorderLayout());
-        String alignmentArg = BorderLayout.EAST;
-        if(System.getProperty("os.name").toLowerCase().contains("mac")) {
-            alignmentArg = BorderLayout.WEST;
-            isMac = true;
-        }
 
-        UButton exitButton = new UButton("icon:x", Size.Small, U.Shape.Square, true);
+
+        UButton exitButton = new UButton("icon:x", isMac ? Size.Small : Size.Medium, U.Shape.Square, true);
         exitButton.setBackground(transparent);
         exitButton.addMouseListener(new MouseListener() {
             @Override
@@ -117,7 +114,7 @@ public class Main {
             @Override
             public void mouseExited(MouseEvent e) {}
         });
-        navBarPane.add(exitButton, alignmentArg);
+        navBarPane.add(exitButton, isMac ? BorderLayout.WEST : BorderLayout.EAST);
 
         JPanel toolbarWrap = new JPanel();
         ((FlowLayout) toolbarWrap.getLayout()).setVgap(0);
@@ -177,7 +174,13 @@ public class Main {
 
         toolbarWrap.add(imageButton);
         toolbarWrap.add(settingsButton);
-        navBarPane.add(toolbarWrap, alignmentArg.equals(BorderLayout.WEST) ? BorderLayout.EAST : BorderLayout.WEST);
+
+        navBarPane.add(toolbarWrap, isMac ? BorderLayout.EAST : BorderLayout.WEST);
+
+        if(!isMac) {
+            toolbarWrap.setBorder(BorderFactory.createEmptyBorder(2,4,0,0));
+            toolbarWrap.setAlignmentY(Component.CENTER_ALIGNMENT);
+        }
 
         navBarPane.setBackground(toolbar);
         navBarPane.addMouseMotionListener(new MouseMotionListener() {
@@ -298,6 +301,8 @@ public class Main {
         taskList.setPreferredSize(new Dimension(taskList.getPreferredSize().width, 0));
         taskScrollPane.setPreferredSize(new Dimension(taskList.getPreferredSize().width, (mainFrame.getHeight() - navBarPane.getPreferredSize().height)));
         mainFrame.setVisible(true);
+        mainFrame.requestFocus();
+        mainFrame.toFront();
 
         leftPane.setPreferredSize(new Dimension((int) leftPane.getPreferredSize().getWidth(), size));
 

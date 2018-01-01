@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="docxkit">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/docxkit.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

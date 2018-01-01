@@ -19,11 +19,9 @@ public class Day {
     public UTextArea textArea;
     String date;
     private String[] day = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-    private String[] vanillaReminders = {"Drink more water", "Watch your posture", "Express your gratitude to someone", "Meditate for 5 minutes", "Clean up working space", "Dance to your favorite song!"};
     public String text;
     public ArrayList<String> reminders;
     public UWrap wrap;
-    private boolean creating;
     public String plainText;
 
     public Day(String date, UTextArea writingZone) {
@@ -82,7 +80,6 @@ public class Day {
             } catch(BadLocationException e) {
                 e.printStackTrace();
             }
-//            textArea.updated();
             text = textArea.getStyledText();
             try {
                 plainText = textArea.getDocument().getText(0, textArea.getDocument().getLength());
@@ -148,14 +145,12 @@ public class Day {
                     }
                 }
             }
-            //textArea.setText(text);
         }
         Main.activeDays.add(this);
     }
 
     static String getDayOfMonthSuffix(int n) {
-        n--;
-        if(n == 1) return "st";
+        if(--n == 1) return "st";
         if(n >= 11 && n <= 13) return "th";
         switch(n % 10) {
             case 1:

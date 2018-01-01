@@ -23,7 +23,6 @@
       <root url="jar://$MAVEN_REPOSITORY$/net/arnx/wmf2svg/0.9.0/wmf2svg-0.9.0.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-scratchpad/3.8/poi-scratchpad-3.8.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/3.8/poi-3.8.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/jaxb-namespaceprefixmapper-interfaces/JAXBNamespacePrefixMapper/2.2.4/JAXBNamespacePrefixMapper-2.2.4.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/antlr/antlr-runtime/3.3/antlr-runtime-3.3.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7.jar!/" />

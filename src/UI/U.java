@@ -20,7 +20,7 @@ public class U {
 
     public static Theme theme = Theme.Dark;
 
-    public enum Size {Tiny, Smaller, Small, Normal, Big, Bigger}
+    public enum Size {Tiny, Smaller, Small, Normal, Big, Medium, Bigger}
 
     public enum Style {Plain, Itallic, Bold}
 
@@ -104,12 +104,14 @@ public class U {
         }
 
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);
-        if(Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
-            if(!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+        if(Main.mainFrame.getMostRecentFocusOwner() != null) {
+            if (Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
+                if (!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+                    Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+                }
+            } else {
                 Main.mainFrame.getMostRecentFocusOwner().requestFocus();
             }
-        } else {
-            Main.mainFrame.getMostRecentFocusOwner().requestFocus();
         }
 
 
@@ -184,12 +186,14 @@ public class U {
 
         if(Main.activeDay != null) Main.activeDay.wrap.setBackground(accent);
         theme = Theme.Light;
-        if(Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
-            if(!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+        if(Main.mainFrame.getMostRecentFocusOwner() != null) {
+            if (Main.mainFrame.getMostRecentFocusOwner() instanceof UTextField) {
+                if (!((UTextField) Main.mainFrame.getMostRecentFocusOwner()).isAddReminder) {
+                    Main.mainFrame.getMostRecentFocusOwner().requestFocus();
+                }
+            } else {
                 Main.mainFrame.getMostRecentFocusOwner().requestFocus();
             }
-        } else {
-            Main.mainFrame.getMostRecentFocusOwner().requestFocus();
         }
     }
 

@@ -121,6 +121,10 @@ public class ULabel extends JLabel implements MouseListener {
                 sizeInt = 40;
                 squareX = 50;
                 break;
+            case Medium:
+                sizeInt = 18;
+                squareX = 26;
+                break;
             case Normal:
             default:
                 squareX = 20;
@@ -168,7 +172,8 @@ public class ULabel extends JLabel implements MouseListener {
 
         switch(text.substring(text.indexOf(":") + 1, text.length())) {
             case "x":
-
+                int off = 0;
+                if(squareX == 22) off = 1;
                 g2.setColor(Color.gray);
                 g2.drawOval(5, 5, squareX - 10, squareX - 10);
                 g2.setColor(Color.lightGray);
@@ -178,8 +183,8 @@ public class ULabel extends JLabel implements MouseListener {
                 g2.setColor(Color.darkGray);
                 if(mouseOver) {
                     g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-                    g2.drawLine(8, 8, squareX - 8, squareX - 8);
-                    g2.drawLine(8, squareX - 8, squareX - 8, 8);
+                    g2.drawLine(9 - off, 9 - off, squareX - 9 + off, squareX - 9 + off);
+                    g2.drawLine(9 - off, squareX - 9 + off, squareX - 9 + off, 9 - off);
                 }
 
                 break;

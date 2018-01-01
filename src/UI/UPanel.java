@@ -1,12 +1,10 @@
 package UI;
 
-import org.jdesktop.swingx.graphics.GraphicsUtilities;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
-import java.awt.image.ImageObserver;
 import java.awt.image.Kernel;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +17,7 @@ public class UPanel extends JPanel {
     public int expandingHeight;
     public boolean transparent;
 
-    private static enum Position {
+    private enum Position {
         TOP,
         TOP_LEFT,
         LEFT,
@@ -29,8 +27,7 @@ public class UPanel extends JPanel {
         RIGHT,
         TOP_RIGHT;
 
-        private Position() {
-        }
+        Position() {}
     }
     private static final Map<Double, Map<Position, BufferedImage>> CACHE = new HashMap();
     private Color shadowColor;
@@ -136,7 +133,7 @@ public class UPanel extends JPanel {
         h = this.shadowSize;
         ((Map)images).put(Position.TOP, this.getSubImage(targetImage, var17, y, var19, h));
         image.flush();
-        CACHE.put(Double.valueOf((double)this.shadowSize + (double)this.shadowColor.hashCode() * 0.3D + (double)this.shadowOpacity * 0.12D), (Map<Position, BufferedImage>) images);
+        CACHE.put(Double.valueOf((double)this.shadowSize + (double)this.shadowColor.hashCode() * 0.3D + (double)this.shadowOpacity * 0.12D), images);
 
     }
 
@@ -209,41 +206,39 @@ public class UPanel extends JPanel {
         Rectangle topShadowRect;
         if(this.showLeftShadow) {
             topShadowRect = new Rectangle(x, topLeftShadowPoint.y + this.shadowSize, this.shadowSize, bottomLeftShadowPoint.y - topLeftShadowPoint.y - this.shadowSize);
-            g2.drawImage((Image)images.get(Position.LEFT), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, (ImageObserver)null);
+            g2.drawImage(images.get(Position.LEFT), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, null);
         }
 
         if(this.showBottomShadow) {
             topShadowRect = new Rectangle(bottomLeftShadowPoint.x + this.shadowSize, y + height - this.shadowSize, bottomRightShadowPoint.x - bottomLeftShadowPoint.x - this.shadowSize, this.shadowSize);
-            g2.drawImage((Image)images.get(Position.BOTTOM), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, (ImageObserver)null);
+            g2.drawImage(images.get(Position.BOTTOM), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, null);
         }
 
         if(this.showRightShadow) {
             topShadowRect = new Rectangle(x + width - this.shadowSize, topRightShadowPoint.y + this.shadowSize, this.shadowSize, bottomRightShadowPoint.y - topRightShadowPoint.y - this.shadowSize);
-            g2.drawImage((Image)images.get(Position.RIGHT), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, (ImageObserver)null);
+            g2.drawImage(images.get(Position.RIGHT), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, null);
         }
 
         if(this.showTopShadow) {
             topShadowRect = new Rectangle(topLeftShadowPoint.x + this.shadowSize, y, topRightShadowPoint.x - topLeftShadowPoint.x - this.shadowSize, this.shadowSize);
-            g2.drawImage((Image)images.get(Position.TOP), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, (ImageObserver)null);
+            g2.drawImage(images.get(Position.TOP), topShadowRect.x, topShadowRect.y, topShadowRect.width, topShadowRect.height, null);
         }
 
         if(this.showLeftShadow || this.showTopShadow) {
-            g2.drawImage((Image)images.get(Position.TOP_LEFT), topLeftShadowPoint.x, topLeftShadowPoint.y, (ImageObserver)null);
+            g2.drawImage(images.get(Position.TOP_LEFT), topLeftShadowPoint.x, topLeftShadowPoint.y, null);
         }
 
         if(this.showLeftShadow || this.showBottomShadow) {
-            g2.drawImage((Image)images.get(Position.BOTTOM_LEFT), bottomLeftShadowPoint.x, bottomLeftShadowPoint.y, (ImageObserver)null);
+            g2.drawImage(images.get(Position.BOTTOM_LEFT), bottomLeftShadowPoint.x, bottomLeftShadowPoint.y, null);
         }
 
         if(this.showRightShadow || this.showBottomShadow) {
-            g2.drawImage((Image)images.get(Position.BOTTOM_RIGHT), bottomRightShadowPoint.x, bottomRightShadowPoint.y, (ImageObserver)null);
+            g2.drawImage(images.get(Position.BOTTOM_RIGHT), bottomRightShadowPoint.x, bottomRightShadowPoint.y, null);
         }
 
         if(this.showRightShadow || this.showTopShadow) {
-            g2.drawImage((Image)images.get(Position.TOP_RIGHT), topRightShadowPoint.x, topRightShadowPoint.y, (ImageObserver)null);
+            g2.drawImage(images.get(Position.TOP_RIGHT), topRightShadowPoint.x, topRightShadowPoint.y, null);
         }
-        // g2.setColor(Color.red);
-        //g2.drawRect(0,0, getWidth(), getHeight());
 
         g2.dispose();
     }
@@ -252,32 +247,10 @@ public class UPanel extends JPanel {
     private BufferedImage getSubImage(BufferedImage img, int x, int y, int w, int h) {
         BufferedImage ret = GraphicsUtilities.createCompatibleTranslucentImage(w, h);
         Graphics2D g2 = ret.createGraphics();
-        g2.drawImage(img, 0, 0, w, h, x, y, x + w, y + h, (ImageObserver)null);
+        g2.drawImage(img, 0, 0, w, h, x, y, x + w, y + h, null);
         g2.dispose();
         return ret;
     }
 
-    public Insets getBorderInsets(Component c) {
-        int top = this.showTopShadow?this.shadowSize:0;
-        int left = this.showLeftShadow?this.shadowSize:0;
-        int bottom = this.showBottomShadow?this.shadowSize:0;
-        int right = this.showRightShadow?this.shadowSize:0;
-        return new Insets(top, left, bottom, right);
-    }
-
-
-//
-//        Graphics2D g2 = (Graphics2D) g;
-//        g2.setColor(getBackground());
-//        g2.fillRect(6,6,getWidth()-3,getHeight()-3);
-//
-//            GradientPaint paint = new GradientPaint(4, 0, new Color(0, 0, 0, 0), 6, 0, new Color(26, 26,26));
-//            g2.setPaint(paint);
-//            g2.fillRect(3,3,3,getHeight()-6);
-//
-//            //g2.fillRect(0,0,getWidth(),getHeight());
-//            paint = new GradientPaint(0,0,Color.BLACK, 10,10,new Color(0,0,0,0));
-//            g2.setPaint(paint);
-//            //g2.fillRect(getWidth()-10,0,10,getHeight());
 
 }
